@@ -9,6 +9,13 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
  *
@@ -24,6 +31,7 @@ public class Home extends javax.swing.JFrame {
         loadFullName();
         loadTableData();
         loadTotal();
+        loadChart();
     }
 
     /**
@@ -55,7 +63,7 @@ public class Home extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         user_label = new javax.swing.JLabel();
         total = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
+        chartJPanel = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -213,14 +221,14 @@ public class Home extends javax.swing.JFrame {
         total.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         total.setText("Rp. 0");
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout chartJPanelLayout = new javax.swing.GroupLayout(chartJPanel);
+        chartJPanel.setLayout(chartJPanelLayout);
+        chartJPanelLayout.setHorizontalGroup(
+            chartJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        chartJPanelLayout.setVerticalGroup(
+            chartJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 121, Short.MAX_VALUE)
         );
 
@@ -244,7 +252,7 @@ public class Home extends javax.swing.JFrame {
                                     .addComponent(total, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
                                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(chartJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
@@ -261,7 +269,7 @@ public class Home extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(chartJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -329,6 +337,71 @@ public class Home extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    public void loadChart() {
+        // Daftar 12 bulan
+        String[] bulanArr = {
+            "Jan", "Feb", "March", "April", "May", "June",
+            "July", "August", "Sept", "Oct", "Nov", "Dec"
+        };
+
+        // Map untuk menyimpan data dari database
+        Map<String, Integer> dataExpense = new HashMap<>();
+        Map<String, Integer> dataIncome = new HashMap<>();
+
+        try {
+            // Query untuk expense
+            String queryExpense = "SELECT MONTHNAME(date) AS bulan, SUM(amount) AS total " +
+                                  "FROM transactions WHERE type='expense' GROUP BY MONTH(date)";
+            ResultSet rs1 = Database.executeQuery(queryExpense);
+            while (rs1.next()) {
+                String bulan = rs1.getString("bulan");
+                int total = rs1.getInt("total");
+                dataExpense.put(bulan, total);
+            }
+
+            // Query untuk income
+            String queryIncome = "SELECT MONTHNAME(date) AS bulan, SUM(amount) AS total " +
+                                 "FROM transactions WHERE type='income' GROUP BY MONTH(date)";
+            ResultSet rs2 = Database.executeQuery(queryIncome);
+            while (rs2.next()) {
+                String bulan = rs2.getString("bulan");
+                int total = rs2.getInt("total");
+                dataIncome.put(bulan, total);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        // Buat dataset untuk grafik
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        for (String bulan : bulanArr) {
+            int nilaiExpense = dataExpense.getOrDefault(bulan, 0);
+            int nilaiIncome = dataIncome.getOrDefault(bulan, 0);
+
+            dataset.addValue(nilaiExpense, "Pengeluaran", bulan);
+            dataset.addValue(nilaiIncome, "Pemasukan", bulan);
+        }
+
+        // Buat grafik garis
+        JFreeChart lineChart = ChartFactory.createLineChart(
+            "Grafik Pemasukan & Pengeluaran Bulanan",
+            "Bulan",
+            "Jumlah (Rp)",
+            dataset,
+            PlotOrientation.VERTICAL,
+            true,
+            true,
+            false
+        );
+        ChartPanel chartPanel = new ChartPanel(lineChart);
+        chartPanel.setPreferredSize(chartJPanel.getSize());
+        chartJPanel.removeAll(); // panel tempat chart ditampilkan
+        chartJPanel.add(chartPanel);
+        chartJPanel.validate();
+    }
+    
     private void loadFullName() {
         String query = "SELECT full_name FROM account WHERE id = '" + Session.id + "'";
         ResultSet rs = Database.executeQuery(query);
@@ -371,11 +444,11 @@ public class Home extends javax.swing.JFrame {
             ResultSet rs = Database.executeQuery(query);
 
             if (rs.next()) {
-                double totalIncome = rs.getInt("total_income");
-                double totalExpense = rs.getInt("total_expense");
-                double totalBalance = totalIncome - totalExpense;
+                int totalIncome = rs.getInt("total_income");
+                int totalExpense = rs.getInt("total_expense");
+                int totalBalance = totalIncome - totalExpense;
 
-                total.setText("Rp. " + String.format("%,.0f", totalBalance));
+                total.setText("Rp. " + String.format("%,d", totalBalance));
             }
             rs.close();
         } catch (Exception e) {
@@ -445,6 +518,7 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel chartJPanel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -460,7 +534,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

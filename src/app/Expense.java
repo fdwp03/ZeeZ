@@ -191,8 +191,6 @@ public class Expense extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        chartJPanel.setBackground(new java.awt.Color(255, 255, 255));
-
         javax.swing.GroupLayout chartJPanelLayout = new javax.swing.GroupLayout(chartJPanel);
         chartJPanel.setLayout(chartJPanelLayout);
         chartJPanelLayout.setHorizontalGroup(
@@ -428,7 +426,7 @@ public class Expense extends javax.swing.JFrame {
         };
 
         // Map untuk menyimpan hasil dari database
-        Map<String, Double> dataBulan = new HashMap<>();
+        Map<String, Integer> dataBulan = new HashMap<>();
 
         // Contoh data dummy, kamu bisa ganti dengan data dari database
         String query = "SELECT MONTH(date) AS bulan, SUM(amount) AS total FROM transactions WHERE type='expense' GROUP BY MONTH(date)";
@@ -436,7 +434,7 @@ public class Expense extends javax.swing.JFrame {
         try {
             while (rs.next()) {
                 int index = rs.getInt("bulan") - 1; // 0-based index
-                double total = rs.getInt("total");
+                int total = rs.getInt("total");
                 if (index >= 0 && index < 12) {
                     dataBulan.put(bulanArr[index], total);
                 }
@@ -448,7 +446,7 @@ public class Expense extends javax.swing.JFrame {
         
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         for (String bulan : bulanArr) {
-            double nilai = dataBulan.getOrDefault(bulan, 0.0);
+            int nilai = dataBulan.getOrDefault(bulan, 0);
             dataset.setValue(nilai, "Pengeluaran", bulan);
         }
 
@@ -498,8 +496,8 @@ public class Expense extends javax.swing.JFrame {
             ResultSet rs = Database.executeQuery(query);
 
             if (rs.next()) {
-                double totalExpense = rs.getDouble(1);
-                total.setText("Rp. " + String.format("%,.0f", totalExpense));
+                int totalExpense = rs.getInt(1);
+                total.setText("Rp. " + String.format("%,d", totalExpense));
             }
             rs.close();
         } catch (Exception e) {
@@ -507,9 +505,9 @@ public class Expense extends javax.swing.JFrame {
         }
     }
     
-    private boolean isEnoughBalance(double newExpenseAmount) {
-        double totalIncome = 0;
-        double totalExpense = 0;
+    private boolean isEnoughBalance(int newExpenseAmount) {
+        int totalIncome = 0;
+        int totalExpense = 0;
 
         try {
             String query = "SELECT " +
@@ -519,8 +517,8 @@ public class Expense extends javax.swing.JFrame {
             ResultSet rs = Database.executeQuery(query);
 
             if (rs.next()) {
-                totalIncome = rs.getDouble("total_income");
-                totalExpense = rs.getDouble("total_expense");
+                totalIncome = rs.getInt("total_income");
+                totalExpense = rs.getInt("total_expense");
             }
 
             rs.close();
@@ -528,7 +526,7 @@ public class Expense extends javax.swing.JFrame {
             e.printStackTrace();
         }
 
-        double balance = totalIncome - totalExpense;
+        int balance = totalIncome - totalExpense;
         return newExpenseAmount <= balance;
     }
     

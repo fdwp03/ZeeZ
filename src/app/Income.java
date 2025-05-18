@@ -431,7 +431,7 @@ public class Income extends javax.swing.JFrame {
         };
 
         // Map untuk menyimpan hasil dari database
-        Map<String, Double> dataBulan = new HashMap<>();
+        Map<String, Integer> dataBulan = new HashMap<>();
 
         // Contoh data dummy, kamu bisa ganti dengan data dari database
         String query = "SELECT MONTH(date) AS bulan, SUM(amount) AS total FROM transactions WHERE type='income' GROUP BY MONTH(date)";
@@ -439,7 +439,7 @@ public class Income extends javax.swing.JFrame {
         try {
             while (rs.next()) {
                 int index = rs.getInt("bulan") - 1; // 0-based index
-                double total = rs.getInt("total");
+                int total = rs.getInt("total");
                 if (index >= 0 && index < 12) {
                     dataBulan.put(bulanArr[index], total);
                 }
@@ -451,7 +451,7 @@ public class Income extends javax.swing.JFrame {
         
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         for (String bulan : bulanArr) {
-            double nilai = dataBulan.getOrDefault(bulan, 0.0);
+            int nilai = dataBulan.getOrDefault(bulan, 0);
             dataset.setValue(nilai, "Pengeluaran", bulan);
         }
 
@@ -501,8 +501,8 @@ public class Income extends javax.swing.JFrame {
             ResultSet rs = Database.executeQuery(query);
 
             if (rs.next()) {
-                double totalIncome = rs.getDouble(1);
-                total.setText("Rp. " + String.format("%,.0f", totalIncome));
+                int totalIncome = rs.getInt(1);
+                total.setText("Rp. " + String.format("%,d", totalIncome));
             }
             rs.close();
         } catch (Exception e) {
