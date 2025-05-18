@@ -8,7 +8,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.table.DefaultTableModel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
  *
@@ -23,6 +30,7 @@ public class Income extends javax.swing.JFrame {
         initComponents();
         loadTableData();
         loadTotal();
+        loadChart();
     }
 
     /**
@@ -47,7 +55,7 @@ public class Income extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jPanel3 = new javax.swing.JPanel();
+        chartJPanel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         date = new com.toedter.calendar.JDateChooser();
         jLabel4 = new javax.swing.JLabel();
@@ -198,14 +206,14 @@ public class Income extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout chartJPanelLayout = new javax.swing.GroupLayout(chartJPanel);
+        chartJPanel.setLayout(chartJPanelLayout);
+        chartJPanelLayout.setHorizontalGroup(
+            chartJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 590, Short.MAX_VALUE)
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        chartJPanelLayout.setVerticalGroup(
+            chartJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 110, Short.MAX_VALUE)
         );
 
@@ -287,7 +295,7 @@ public class Income extends javax.swing.JFrame {
                                     .addComponent(jLabel2)
                                     .addGap(26, 26, 26)
                                     .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(chartJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -332,7 +340,7 @@ public class Income extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(chartJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addGap(2, 2, 2)
@@ -418,6 +426,57 @@ public class Income extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
+    public void loadChart() {
+        // Daftar bulan dalam urutan
+        String[] bulanArr = {
+            "Jan", "Feb", "March", "April", "May", "June", "July", "August", "Sept", "Oct", "Nov", "Dec"
+        };
+
+        // Map untuk menyimpan hasil dari database
+        Map<String, Double> dataBulan = new HashMap<>();
+
+        // Contoh data dummy, kamu bisa ganti dengan data dari database
+        String query = "SELECT MONTH(date) AS bulan, SUM(amount) AS total FROM transactions WHERE type='income' GROUP BY MONTH(date)";
+        ResultSet rs = Database.executeQuery(query);
+        try {
+            while (rs.next()) {
+                int index = rs.getInt("bulan") - 1; // 0-based index
+                double total = rs.getInt("total");
+                if (index >= 0 && index < 12) {
+                    dataBulan.put(bulanArr[index], total);
+                }
+            }
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        for (String bulan : bulanArr) {
+            double nilai = dataBulan.getOrDefault(bulan, 0.0);
+            dataset.setValue(nilai, "Pengeluaran", bulan);
+        }
+
+        // Membuat grafik garis
+        JFreeChart lineChart = ChartFactory.createLineChart(
+                "",
+                "Month",
+                "Amount (Rp)",
+                dataset,
+                PlotOrientation.VERTICAL,
+                false,
+                true,
+                false
+        );
+
+        ChartPanel chartPanel = new ChartPanel(lineChart);
+        chartPanel.setPreferredSize(chartJPanel.getSize());
+        chartJPanel.setLayout(new java.awt.BorderLayout());
+        chartJPanel.removeAll();
+        chartJPanel.add(chartPanel, java.awt.BorderLayout.CENTER);
+        chartJPanel.validate();
+    }
+    
     private void loadTableData() {
         String query = "SELECT date, category, amount, note FROM transactions WHERE account_id = '" + Session.id + "' AND type = 'income' AND MONTH(date) = MONTH(CURRENT_DATE()) AND YEAR(date) = YEAR(CURRENT_DATE())";
         ResultSet rs = Database.executeQuery(query);
@@ -489,6 +548,7 @@ public class Income extends javax.swing.JFrame {
             ps.executeUpdate();
             loadTableData();
             loadTotal();
+            loadChart();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -569,6 +629,7 @@ public class Income extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField amount;
     private javax.swing.JComboBox<String> category;
+    private javax.swing.JPanel chartJPanel;
     private com.toedter.calendar.JDateChooser date;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -587,7 +648,6 @@ public class Income extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
