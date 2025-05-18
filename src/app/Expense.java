@@ -415,7 +415,7 @@ public class Expense extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void loadTableData() {
-        String query = "SELECT date, category, amount, note  FROM transactions WHERE account_id = '" + Session.id + "' AND type = 'expense'";
+        String query = "SELECT date, category, amount, note FROM transactions WHERE account_id = '" + Session.id + "' AND type = 'expense' AND MONTH(date) = MONTH(CURRENT_DATE()) AND YEAR(date) = YEAR(CURRENT_DATE())";
         ResultSet rs = Database.executeQuery(query);
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
@@ -436,7 +436,7 @@ public class Expense extends javax.swing.JFrame {
     
     public void loadTotal() {
         try {
-            String query = "SELECT SUM(amount) FROM transactions WHERE type = 'expense'";
+            String query = "SELECT SUM(amount) FROM transactions WHERE account_id = '" + Session.id + "' AND type = 'expense' AND MONTH(date) = MONTH(CURRENT_DATE()) AND YEAR(date) = YEAR(CURRENT_DATE())";
             ResultSet rs = Database.executeQuery(query);
 
             if (rs.next()) {
