@@ -20,7 +20,7 @@ public class MonthlyRules extends javax.swing.JFrame {
      */
     public MonthlyRules() {
         initComponents();
-        tampilkanLimit();
+        loadLimit();
     }
 
     /**
@@ -54,7 +54,7 @@ public class MonthlyRules extends javax.swing.JFrame {
         spendLabel = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
+        saveLabel = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -192,8 +192,8 @@ public class MonthlyRules extends javax.swing.JFrame {
             .addGap(0, 181, Short.MAX_VALUE)
         );
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel10.setText("< amount >");
+        saveLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        saveLabel.setText("< amount >");
 
         jLabel11.setText("%");
         jLabel11.setAlignmentX(0.5F);
@@ -253,7 +253,7 @@ public class MonthlyRules extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel9)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jLabel10)))))))
+                                        .addComponent(saveLabel)))))))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -266,10 +266,11 @@ public class MonthlyRules extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(presentase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel3)
+                                .addComponent(presentase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -291,7 +292,7 @@ public class MonthlyRules extends javax.swing.JFrame {
                 .addGap(4, 4, 4)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(saveLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(710, 710, 710))
@@ -368,32 +369,27 @@ public class MonthlyRules extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    public void tampilkanLimit() {
-        int userId = Session.id;
+    public void loadLimit() {
         try {
-            // Query total income
-            String qIncome = "SELECT SUM(amount) FROM transactions WHERE account_id = ? AND type = 'income'";
-            ResultSet rsIncome = Database.executeQuery(qIncome, userId);
-
+            String qIncome = "SELECT SUM(amount) FROM transactions WHERE account_id = '" + Session.id + "' AND type = 'income'";
+            ResultSet rsIncome = Database.executeQuery(qIncome);
             double totalIncome = 0;
             if (rsIncome.next()) {
                 totalIncome = rsIncome.getInt(1);
             }
 
-            // Query persentase dari tabel monthly_limit
-            String qPersen = "SELECT percentage_limit FROM monthly_limit WHERE account_id = ?";
-            ResultSet rsPersen = Database.executeQuery(qPersen, userId);
-
+            String qPersen = "SELECT percentage_limit FROM monthly_limit WHERE account_id = '" + Session.id + "'";
+            ResultSet rsPersen = Database.executeQuery(qPersen);
             double percentage = 0;
             if (rsPersen.next()) {
                 percentage = rsPersen.getInt("percentage_limit");
             }
 
-            // Hitung hasil limit
             double hasilLimit = (percentage / 100) * totalIncome;
+            double hasilSave = ((100-percentage)/100) * totalIncome;
 
-            // Tampilkan ke JLabel
             spendLabel.setText(String.format("Rp %.2f", hasilLimit));
+            saveLabel.setText(String.format("Rp %.2f", hasilSave));
 
             rsIncome.close();
             rsPersen.close();
@@ -415,23 +411,24 @@ public class MonthlyRules extends javax.swing.JFrame {
         int month = LocalDate.now().getMonthValue();
         int year = LocalDate.now().getYear();
 
-        String checkQuery = "SELECT * FROM monthly_limits WHERE account_id = ? AND month = ? AND year = ?";
+        String checkQuery = "SELECT * FROM monthly_limit WHERE account_id = ? AND month = ? AND year = ?";
         ResultSet rs = Database.executeQuery(checkQuery, accountId, month, year);
 
         try {
             if (rs.next()) {
                 // Sudah ada, maka update
-                String query = "UPDATE monthly_limits SET percentage_limit = ? WHERE account_id = ? AND month = ? AND year = ?";
+                String query = "UPDATE monthly_limit SET percentage_limit = ? WHERE account_id = ? AND month = ? AND year = ?";
                 int result = Database.executeUpdate(query, percentage, accountId, month, year);
 
                 if (result > 0) {
+                    loadLimit();
                     JOptionPane.showMessageDialog(null, "Limit berhasil diubah.");
                 } else {
                     JOptionPane.showMessageDialog(null, "Gagal mengubah limit.");
                 }
             } else {
                 // Belum ada, maka insert
-                String query = "INSERT INTO monthly_limits (account_id, percentage_limit, month, year) VALUES (?, ?, ?, ?)";
+                String query = "INSERT INTO monthly_limit (account_id, percentage_limit, month, year) VALUES (?, ?, ?, ?)";
                 int result = Database.executeUpdate(query, accountId, percentage, month, year);
 
                 if (result > 0) {
@@ -529,7 +526,6 @@ public class MonthlyRules extends javax.swing.JFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
@@ -546,6 +542,7 @@ public class MonthlyRules extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JComboBox<String> presentase;
+    private javax.swing.JLabel saveLabel;
     private javax.swing.JLabel spendLabel;
     // End of variables declaration//GEN-END:variables
 }

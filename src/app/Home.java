@@ -421,8 +421,8 @@ public class Home extends javax.swing.JFrame {
 
     
     private void loadTableData() {
-        String sql = "SELECT date, category, amount, note  FROM transactions WHERE account_id = '" + Session.id + "'";
-        ResultSet rs = Database.executeQuery(sql);
+        String query = "SELECT date, category, amount, note  FROM transactions WHERE account_id = '" + Session.id + "'";
+        ResultSet rs = Database.executeQuery(query);
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
         try {
