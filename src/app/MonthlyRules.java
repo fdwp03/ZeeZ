@@ -4,6 +4,11 @@
  */
 package app;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ASUS
@@ -15,6 +20,7 @@ public class MonthlyRules extends javax.swing.JFrame {
      */
     public MonthlyRules() {
         initComponents();
+        tampilkanLimit();
     }
 
     /**
@@ -38,17 +44,19 @@ public class MonthlyRules extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jButton6 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        presentase = new javax.swing.JComboBox<>();
         jButton8 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButton9 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
+        spendLabel = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
@@ -125,7 +133,7 @@ public class MonthlyRules extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel7.setText("Add Presentase");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "50%", "60%", "70%", "80%", "90%" }));
+        presentase.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "50", "60", "70", "80", "90" }));
 
         jButton8.setBackground(new java.awt.Color(0, 204, 0));
         jButton8.setForeground(new java.awt.Color(255, 255, 255));
@@ -167,8 +175,8 @@ public class MonthlyRules extends javax.swing.JFrame {
             .addGap(0, 13, Short.MAX_VALUE)
         );
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel6.setText("< amount >");
+        spendLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        spendLabel.setText("< amount >");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel9.setText("2. The money you can save is");
@@ -186,6 +194,12 @@ public class MonthlyRules extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel10.setText("< amount >");
+
+        jLabel11.setText("%");
+        jLabel11.setAlignmentX(0.5F);
+
+        jLabel12.setText("%");
+        jLabel12.setAlignmentX(0.5F);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -211,13 +225,21 @@ public class MonthlyRules extends javax.swing.JFrame {
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                                 .addComponent(jButton8)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jButton9))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jButton9)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(presentase, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jLabel11)
+                                                .addGap(23, 23, 23)))))
+                                .addGap(137, 137, 137)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel12)))
+                                .addGap(8, 8, 8)
                                 .addComponent(jButton6))
                             .addComponent(jLabel8)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -227,12 +249,12 @@ public class MonthlyRules extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel5)
                                         .addGap(9, 9, 9)
-                                        .addComponent(jLabel6))
+                                        .addComponent(spendLabel))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel9)
                                         .addGap(18, 18, 18)
                                         .addComponent(jLabel10)))))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -246,12 +268,14 @@ public class MonthlyRules extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(presentase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton6))))
+                            .addComponent(jButton6)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -263,14 +287,14 @@ public class MonthlyRules extends javax.swing.JFrame {
                 .addGap(3, 3, 3)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(spendLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(4, 4, 4)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(710, Short.MAX_VALUE))
+                .addGap(710, 710, 710))
         );
 
         jScrollPane2.setViewportView(jPanel1);
@@ -344,7 +368,41 @@ public class MonthlyRules extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    public void tampilkanLimit() {
+        int userId = Session.id;
+        try {
+            // Query total income
+            String qIncome = "SELECT SUM(amount) FROM transactions WHERE account_id = ? AND type = 'income'";
+            ResultSet rsIncome = Database.executeQuery(qIncome, userId);
 
+            double totalIncome = 0;
+            if (rsIncome.next()) {
+                totalIncome = rsIncome.getInt(1);
+            }
+
+            // Query persentase dari tabel monthly_limit
+            String qPersen = "SELECT percentage_limit FROM monthly_limit WHERE account_id = ?";
+            ResultSet rsPersen = Database.executeQuery(qPersen, userId);
+
+            double percentage = 0;
+            if (rsPersen.next()) {
+                percentage = rsPersen.getInt("percentage_limit");
+            }
+
+            // Hitung hasil limit
+            double hasilLimit = (percentage / 100) * totalIncome;
+
+            // Tampilkan ke JLabel
+            spendLabel.setText(String.format("Rp %.2f", hasilLimit));
+
+            rsIncome.close();
+            rsPersen.close();
+        } catch (SQLException e) {
+            System.err.println("Gagal menghitung limit: " + e.getMessage());
+        }
+    }
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         new Home().setVisible(true);
@@ -353,6 +411,39 @@ public class MonthlyRules extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
+        int accountId = Session.id;
+        int percentage = Integer.parseInt(presentase.getSelectedItem().toString());
+        int month = LocalDate.now().getMonthValue();
+        int year = LocalDate.now().getYear();
+
+        String checkQuery = "SELECT * FROM monthly_limits WHERE account_id = ? AND month = ? AND year = ?";
+        ResultSet rs = Database.executeQuery(checkQuery, accountId, month, year);
+
+        try {
+            if (rs.next()) {
+                // Sudah ada, maka update
+                String query = "UPDATE monthly_limits SET percentage_limit = ? WHERE account_id = ? AND month = ? AND year = ?";
+                int result = Database.executeUpdate(query, percentage, accountId, month, year);
+
+                if (result > 0) {
+                    JOptionPane.showMessageDialog(null, "Limit berhasil diubah.");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Gagal mengubah limit.");
+                }
+            } else {
+                // Belum ada, maka insert
+                String query = "INSERT INTO monthly_limits (account_id, percentage_limit, month, year) VALUES (?, ?, ?, ?)";
+                int result = Database.executeUpdate(query, accountId, percentage, month, year);
+
+                if (result > 0) {
+                    JOptionPane.showMessageDialog(null, "Limit berhasil ditambahkan.");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Gagal menambahkan limit.");
+                }
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Terjadi kesalahan: " + e.getMessage());
+        }
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
@@ -438,14 +529,14 @@ public class MonthlyRules extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -455,5 +546,7 @@ public class MonthlyRules extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JComboBox<String> presentase;
+    private javax.swing.JLabel spendLabel;
     // End of variables declaration//GEN-END:variables
 }

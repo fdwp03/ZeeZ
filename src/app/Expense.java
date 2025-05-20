@@ -570,10 +570,10 @@ public class Expense extends javax.swing.JFrame {
             String amountStr = amount.getText();
             String noteStr = note.getText();
 
-            String sql = "INSERT INTO transactions (account_id, type, date, category, amount, note) " +
+            String query = "INSERT INTO transactions (account_id, type, date, category, amount, note) " +
                          "VALUES (?, 'expense', ?, ?, ?, ?)";
             try {
-                PreparedStatement ps = Database.con.prepareStatement(sql);
+                PreparedStatement ps = Database.con.prepareStatement(query);
                 ps.setInt(1, Session.id);
                 ps.setDate(2, new java.sql.Date(dt.getTime()));
                 ps.setString(3, ctgry);

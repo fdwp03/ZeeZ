@@ -33,20 +33,33 @@ public class Database{
         }
     }
     
-public static ResultSet executeQuery(String query, Object... params) {
-    ResultSet resultSet = null;
-    try {
-        PreparedStatement ps = con.prepareStatement(query);
-        // Set parameters secara dinamis
-        for (int i = 0; i < params.length; i++) {
-            ps.setObject(i + 1, params[i]);
+    public static ResultSet executeQuery(String query, Object... params) {
+        ResultSet resultSet = null;
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            // Set parameters secara dinamis
+            for (int i = 0; i < params.length; i++) {
+                ps.setObject(i + 1, params[i]);
+            }
+            resultSet = ps.executeQuery();
+        } catch (SQLException e) {
+            System.err.println("Query gagal: " + e.getMessage());
         }
-        resultSet = ps.executeQuery();
-    } catch (SQLException e) {
-        System.err.println("Query gagal: " + e.getMessage());
+        return resultSet;
     }
-    return resultSet;
-}
-
     
+    public static int executeUpdate(String query, Object... params) {
+        int affectedRows = 0;
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            for (int i = 0; i < params.length; i++) {
+                ps.setObject(i + 1, params[i]);
+            }
+            affectedRows = ps.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("Update gagal: " + e.getMessage());
+        }
+        return affectedRows;
+    }
+
 }
