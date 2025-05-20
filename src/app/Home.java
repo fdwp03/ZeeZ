@@ -4,11 +4,13 @@
  */
 package app;
 
+import java.awt.Color;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 import org.jfree.chart.ChartFactory;
@@ -32,6 +34,7 @@ public class Home extends javax.swing.JFrame {
         loadTableData();
         loadTotal();
         loadChart();
+        loadLimitBar();
     }
 
     /**
@@ -55,8 +58,8 @@ public class Home extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jProgressBar1 = new javax.swing.JProgressBar();
-        jLabel4 = new javax.swing.JLabel();
+        limitBar = new javax.swing.JProgressBar();
+        limitLabel = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
@@ -135,12 +138,12 @@ public class Home extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Monthly Limit");
 
-        jProgressBar1.setBackground(new java.awt.Color(204, 204, 204));
-        jProgressBar1.setForeground(new java.awt.Color(204, 0, 0));
-        jProgressBar1.setValue(10);
+        limitBar.setBackground(new java.awt.Color(204, 204, 204));
+        limitBar.setForeground(new java.awt.Color(204, 0, 0));
+        limitBar.setValue(10);
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setText("10/100");
+        limitLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        limitLabel.setText("10/100");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -150,9 +153,9 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(limitBar, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel4)
+                .addComponent(limitLabel)
                 .addGap(28, 28, 28))
         );
         jPanel3Layout.setVerticalGroup(
@@ -161,9 +164,9 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(limitLabel, javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel3))
-                    .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(limitBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -342,6 +345,8 @@ public class Home extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
+    
+    
     public void loadChart() {
         // Daftar 12 bulan
         String[] bulanArr = {
@@ -419,7 +424,6 @@ public class Home extends javax.swing.JFrame {
         }
     }
 
-    
     private void loadTableData() {
         String query = "SELECT date, category, amount, note  FROM transactions WHERE account_id = '" + Session.id + "'";
         ResultSet rs = Database.executeQuery(query);
@@ -443,8 +447,8 @@ public class Home extends javax.swing.JFrame {
     public void loadTotal() {
         try {
             String query = "SELECT " +
-                           "(SELECT IFNULL(SUM(amount), 0) FROM transactions WHERE type = 'income') AS total_income, " +
-                           "(SELECT IFNULL(SUM(amount), 0) FROM transactions WHERE type = 'expense') AS total_expense";
+                           "(SELECT IFNULL(SUM(amount), 0) FROM transactions WHERE account_id = '"+ Session.id +"' AND type = 'income') AS total_income, " +
+                           "(SELECT IFNULL(SUM(amount), 0) FROM transactions WHERE account_id = '"+ Session.id +"' AND type = 'expense') AS total_expense";
             ResultSet rs = Database.executeQuery(query);
 
             if (rs.next()) {
@@ -459,6 +463,63 @@ public class Home extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
+    
+    private void loadLimitBar() {
+        try {
+            int accId = Session.id;
+            LocalDate now = LocalDate.now();
+            int month = now.getMonthValue();
+            int year = now.getYear();
+
+            // Ambil total pengeluaran bulan ini
+            String expenseQuery = "SELECT IFNULL(SUM(amount), 0) AS total FROM transactions WHERE account_id = ? AND type = 'expense' AND MONTH(date) = ? AND YEAR(date) = ?";
+            ResultSet rs = Database.executeQuery(expenseQuery, accId, month, year);
+            int totalExpense = 0;
+            if (rs.next()) {
+                totalExpense = rs.getInt("total");
+            }
+            rs.close();
+
+            // Ambil persentase limit
+            String limitQuery = "SELECT percentage_limit FROM monthly_limit WHERE account_id = ? AND month = ? AND year = ?";
+            rs = Database.executeQuery(limitQuery, accId, month, year);
+            int percentageLimit = 100;
+            if (rs.next()) {
+                percentageLimit = rs.getInt("percentage_limit");
+            }
+            rs.close();
+
+            // Ambil total income
+            String incomeQuery = "SELECT IFNULL(SUM(amount), 0) AS total FROM transactions WHERE account_id = ? AND type = 'income' AND MONTH(date) = ? AND YEAR(date) = ?";
+            rs = Database.executeQuery(incomeQuery, accId, month, year);
+            int totalIncome = 0;
+            if (rs.next()) {
+                totalIncome = rs.getInt("total");
+            }
+            rs.close();
+
+            // Hitung batas pengeluaran maksimal
+            int maxExpense = totalIncome * percentageLimit / 100;
+
+            // Update progress bar
+            limitBar.setMaximum(maxExpense);
+            limitBar.setValue(totalExpense);
+            int percent = (maxExpense == 0) ? 0 : (totalExpense * 100 / maxExpense);
+            limitLabel.setText(percent + " / 100");
+
+            // Ubah warna bar (opsional)
+            if (totalExpense >= maxExpense) {
+                limitBar.setForeground(Color.RED);
+            } else {
+                limitBar.setForeground(Color.GREEN);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -531,17 +592,17 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
+    private javax.swing.JProgressBar limitBar;
+    private javax.swing.JLabel limitLabel;
     private javax.swing.JLabel total;
     private javax.swing.JLabel user_label;
     // End of variables declaration//GEN-END:variables

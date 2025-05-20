@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import javax.swing.table.DefaultTableModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -244,6 +245,11 @@ public class Expense extends javax.swing.JFrame {
         });
 
         newCategory.setText("New Category");
+        newCategory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newCategoryActionPerformed(evt);
+            }
+        });
 
         newButton.setBackground(new java.awt.Color(52, 73, 94));
         newButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -512,27 +518,58 @@ public class Expense extends javax.swing.JFrame {
     private boolean isEnoughBalance(int newExpenseAmount) {
         int totalIncome = 0;
         int totalExpense = 0;
+        int percentageLimit = 100; // default jika tidak ditemukan
 
         try {
-            String query = "SELECT " +
-                           "(SELECT IFNULL(SUM(amount), 0) FROM transactions WHERE type = 'income') AS total_income, " +
-                           "(SELECT IFNULL(SUM(amount), 0) FROM transactions WHERE type = 'expense') AS total_expense";
+            // Ambil total income dan total expense
+            String query = "SELECT "
+                    + "(SELECT IFNULL(SUM(amount), 0) FROM transactions WHERE account_id = ? AND type = 'income' AND MONTH(date) = ? AND YEAR(date) = ?) AS total_income, "
+                    + "(SELECT IFNULL(SUM(amount), 0) FROM transactions WHERE account_id = ? AND type = 'expense' AND MONTH(date) = ? AND YEAR(date) = ?) AS total_expense";
 
-            ResultSet rs = Database.executeQuery(query);
+            int month = LocalDate.now().getMonthValue();
+            int year = LocalDate.now().getYear();
+            int accId = Session.id;
 
+            PreparedStatement ps = Database.con.prepareStatement(query);
+            ps.setInt(1, accId);
+            ps.setInt(2, month);
+            ps.setInt(3, year);
+            ps.setInt(4, accId);
+            ps.setInt(5, month);
+            ps.setInt(6, year);
+
+            ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 totalIncome = rs.getInt("total_income");
                 totalExpense = rs.getInt("total_expense");
             }
+            rs.close();
+
+            // Ambil limit persentase dari tabel monthly_limit
+            String limitQuery = "SELECT percentage_limit FROM monthly_limit WHERE account_id = ? AND month = ? AND year = ?";
+            ps = Database.con.prepareStatement(limitQuery);
+            ps.setInt(1, accId);
+            ps.setInt(2, month);
+            ps.setInt(3, year);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                percentageLimit = rs.getInt("percentage_limit");
+            }
 
             rs.close();
+            ps.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        int balance = totalIncome - totalExpense;
-        return newExpenseAmount <= balance;
+        // Hitung batas maksimal pengeluaran berdasarkan persentase
+        int maxExpenseAllowed = totalIncome * percentageLimit / 100;
+
+        // Pastikan total pengeluaran baru tidak melebihi limit
+        return (totalExpense + newExpenseAmount) <= maxExpenseAllowed;
     }
+
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -560,7 +597,7 @@ public class Expense extends javax.swing.JFrame {
 
             if (!isEnoughBalance(amountInt)) {
                 JOptionPane.showMessageDialog(null,
-                    "Jumlah pengeluaran melebihi saldo/balance yang tersedia!",
+                    "Jumlah pengeluaran melebihi saldo/limit yang tersedia!",
                     "Saldo Tidak Cukup",
                     JOptionPane.WARNING_MESSAGE);
                 return;
@@ -633,6 +670,10 @@ public class Expense extends javax.swing.JFrame {
     private void amountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_amountActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_amountActionPerformed
+
+    private void newCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newCategoryActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_newCategoryActionPerformed
 
     /**
      * @param args the command line arguments
