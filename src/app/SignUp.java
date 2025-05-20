@@ -4,9 +4,7 @@
  */
 package app;
 import org.mindrot.jbcrypt.BCrypt;
-import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
 
 
@@ -192,31 +190,24 @@ public class SignUp extends javax.swing.JFrame {
         }
 
         try {
-            // Hubungkan ke database melalui class Database
-            if (Database.con == null){
-                Database.connect();}
-            
-            Connection con = Database.con;
+            // Pastikan koneksi sudah siap
+            if (Database.con == null) {
+                Database.connect();
+            }
 
             // Cek apakah username sudah digunakan
             String checkQuery = "SELECT * FROM account WHERE username = ?";
-            PreparedStatement checkStmt = con.prepareStatement(checkQuery);
-            checkStmt.setString(1, username);
-            ResultSet rs = checkStmt.executeQuery();
+            ResultSet rs = Database.executeQuery(checkQuery, username);
 
-            if (rs.next()) {
+            if (rs != null && rs.next()) {
                 JOptionPane.showMessageDialog(this, "Username sudah digunakan. Silakan pilih username lain.", "Peringatan", JOptionPane.WARNING_MESSAGE);
             } else {
+                // Hash password
+                String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+
                 // Insert data baru
                 String insertQuery = "INSERT INTO account (full_name, username, password) VALUES (?, ?, ?)";
-                PreparedStatement insertStmt = con.prepareStatement(insertQuery);
-                insertStmt.setString(1, fullName);
-                insertStmt.setString(2, username);
-                String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
-                insertStmt.setString(3, hashedPassword);
-
-
-                int rowsInserted = insertStmt.executeUpdate();
+                int rowsInserted = Database.executeUpdate(insertQuery, fullName, username, hashedPassword);
 
                 if (rowsInserted > 0) {
                     JOptionPane.showMessageDialog(this, "Akun berhasil dibuat!", "Sukses", JOptionPane.INFORMATION_MESSAGE);

@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package app;
-import java.sql.PreparedStatement;
 import javax.swing.table.DefaultTableModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -521,55 +520,41 @@ public class Expense extends javax.swing.JFrame {
         int percentageLimit = 100; // default jika tidak ditemukan
 
         try {
-            // Ambil total income dan total expense
-            String query = "SELECT "
-                    + "(SELECT IFNULL(SUM(amount), 0) FROM transactions WHERE account_id = ? AND type = 'income' AND MONTH(date) = ? AND YEAR(date) = ?) AS total_income, "
-                    + "(SELECT IFNULL(SUM(amount), 0) FROM transactions WHERE account_id = ? AND type = 'expense' AND MONTH(date) = ? AND YEAR(date) = ?) AS total_expense";
-
             int month = LocalDate.now().getMonthValue();
             int year = LocalDate.now().getYear();
             int accId = Session.id;
 
-            PreparedStatement ps = Database.con.prepareStatement(query);
-            ps.setInt(1, accId);
-            ps.setInt(2, month);
-            ps.setInt(3, year);
-            ps.setInt(4, accId);
-            ps.setInt(5, month);
-            ps.setInt(6, year);
+            // Ambil total income dan expense
+            String query = "SELECT "
+                    + "(SELECT IFNULL(SUM(amount), 0) FROM transactions WHERE account_id = ? AND type = 'income' AND MONTH(date) = ? AND YEAR(date) = ?) AS total_income, "
+                    + "(SELECT IFNULL(SUM(amount), 0) FROM transactions WHERE account_id = ? AND type = 'expense' AND MONTH(date) = ? AND YEAR(date) = ?) AS total_expense";
 
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
+            ResultSet rs = Database.executeQuery(query, accId, month, year, accId, month, year);
+            if (rs != null && rs.next()) {
                 totalIncome = rs.getInt("total_income");
                 totalExpense = rs.getInt("total_expense");
             }
-            rs.close();
+            if (rs != null) rs.close();
 
-            // Ambil limit persentase dari tabel monthly_limit
+            // Ambil limit persentase
             String limitQuery = "SELECT percentage_limit FROM monthly_limit WHERE account_id = ? AND month = ? AND year = ?";
-            ps = Database.con.prepareStatement(limitQuery);
-            ps.setInt(1, accId);
-            ps.setInt(2, month);
-            ps.setInt(3, year);
-            rs = ps.executeQuery();
+            rs = Database.executeQuery(limitQuery, accId, month, year);
 
-            if (rs.next()) {
+            if (rs != null && rs.next()) {
                 percentageLimit = rs.getInt("percentage_limit");
             }
+            if (rs != null) rs.close();
 
-            rs.close();
-            ps.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        // Hitung batas maksimal pengeluaran berdasarkan persentase
+        // Hitung batas maksimal pengeluaran
         int maxExpenseAllowed = totalIncome * percentageLimit / 100;
 
-        // Pastikan total pengeluaran baru tidak melebihi limit
+        // Cek apakah pengeluaran baru melampaui batas
         return (totalExpense + newExpenseAmount) <= maxExpenseAllowed;
     }
-
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -591,7 +576,6 @@ public class Expense extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
-        
         try {
             int amountInt = Integer.parseInt(amount.getText());
 
@@ -610,30 +594,31 @@ public class Expense extends javax.swing.JFrame {
 
             String query = "INSERT INTO transactions (account_id, type, date, category, amount, note) " +
                          "VALUES (?, 'expense', ?, ?, ?, ?)";
-            try {
-                PreparedStatement ps = Database.con.prepareStatement(query);
-                ps.setInt(1, Session.id);
-                ps.setDate(2, new java.sql.Date(dt.getTime()));
-                ps.setString(3, ctgry);
-                ps.setInt(4, Integer.parseInt(amountStr));
-                ps.setString(5, noteStr);
 
-                ps.executeUpdate();
+            // Eksekusi query insert dengan helper Database
+            int rowsInserted = Database.executeUpdate(
+                query,
+                Session.id,
+                new java.sql.Date(dt.getTime()),
+                ctgry,
+                Integer.parseInt(amountStr),
+                noteStr
+            );
+
+            if (rowsInserted > 0) {
                 loadTableData();
                 loadTotal();
                 loadChart();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+            }
 
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(null,
                 "Masukkan angka yang valid untuk amount!",
                 "Input Salah",
                 JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        
-
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed

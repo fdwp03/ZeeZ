@@ -6,10 +6,10 @@ package app;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.PreparedStatement;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -529,25 +529,45 @@ public class Income extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
-        Date dt = date.getDate();
-        String ctgry = (String) category.getSelectedItem();
-        String amountStr = amount.getText();
-        String noteStr = note.getText();
-
-        String query = "INSERT INTO transactions (account_id, type, date, category, amount, note) " +
-                     "VALUES (?, 'income', ?, ?, ?, ?)";
         try {
-            PreparedStatement ps = Database.con.prepareStatement(query);
-            ps.setInt(1, Session.id);
-            ps.setDate(2, new java.sql.Date(dt.getTime()));
-            ps.setString(3, ctgry);
-            ps.setInt(4, Integer.parseInt(amountStr));
-            ps.setString(5, noteStr);
-            
-            ps.executeUpdate();
-            loadTableData();
-            loadTotal();
-            loadChart();
+            Date dt = date.getDate();
+            String ctgry = (String) category.getSelectedItem();
+            String amountStr = amount.getText();
+            String noteStr = note.getText();
+
+            if (dt == null || ctgry == null || amountStr.isEmpty()) {
+                JOptionPane.showMessageDialog(null,
+                    "Semua field harus diisi dengan benar!",
+                    "Input Tidak Lengkap",
+                    JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            int amountInt = Integer.parseInt(amountStr); // bisa lempar NumberFormatException
+
+            String query = "INSERT INTO transactions (account_id, type, date, category, amount, note) " +
+                         "VALUES (?, 'income', ?, ?, ?, ?)";
+
+            int rowsInserted = Database.executeUpdate(
+                query,
+                Session.id,
+                new java.sql.Date(dt.getTime()),
+                ctgry,
+                amountInt,
+                noteStr
+            );
+
+            if (rowsInserted > 0) {
+                loadTableData();
+                loadTotal();
+                loadChart();
+            }
+
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null,
+                "Masukkan angka yang valid untuk amount!",
+                "Input Salah",
+                JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {
             e.printStackTrace();
         }
