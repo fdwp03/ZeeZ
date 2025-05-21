@@ -414,11 +414,7 @@ public class MonthlyRules extends javax.swing.JFrame {
         int accountId = Session.id;
         int percentage = Integer.parseInt(persentase.getSelectedItem().toString());
         int month = LocalDate.now().getMonthValue();
-        int year = LocalDate.now().getYear();
-        
-        System.out.println(month);
-        System.out.println(year);
-        
+        int year = LocalDate.now().getYear();        
 
         String checkQuery = "SELECT * FROM monthly_limit WHERE account_id = ? AND month = ? AND year = ?";
         String updateQuery = "UPDATE monthly_limit SET percentage_limit = ? WHERE account_id = ? AND month = ? AND year = ?";

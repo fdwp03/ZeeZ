@@ -4,6 +4,7 @@
  */
 package app;
 
+import java.awt.BorderLayout;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
@@ -435,7 +436,7 @@ public class Income extends javax.swing.JFrame {
         Map<String, Integer> dataBulan = new HashMap<>();
 
         // Contoh data dummy, kamu bisa ganti dengan data dari database
-        String query = "SELECT MONTH(date) AS bulan, SUM(amount) AS total FROM transactions WHERE type='income' GROUP BY MONTH(date)";
+        String query = "SELECT MONTH(date) AS bulan, SUM(amount) AS total FROM transactions WHERE account_id = " + Session.id + " AND type='income' GROUP BY MONTH(date)";
         ResultSet rs = Database.executeQuery(query);
         try {
             while (rs.next()) {
@@ -469,11 +470,13 @@ public class Income extends javax.swing.JFrame {
         );
 
         ChartPanel chartPanel = new ChartPanel(lineChart);
-        chartPanel.setPreferredSize(chartJPanel.getSize());
-        chartJPanel.setLayout(new java.awt.BorderLayout());
         chartJPanel.removeAll();
-        chartJPanel.add(chartPanel, java.awt.BorderLayout.CENTER);
-        chartJPanel.validate();
+        chartJPanel.setLayout(new BorderLayout()); // WAJIB
+        chartPanel.setPreferredSize(chartJPanel.getSize());
+        chartJPanel.add(chartPanel, BorderLayout.CENTER);
+        chartJPanel.revalidate();
+        chartJPanel.repaint();
+
     }
     
     private void loadTableData() {

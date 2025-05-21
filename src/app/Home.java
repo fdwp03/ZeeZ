@@ -4,6 +4,7 @@
  */
 package app;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
 import java.sql.ResultSet;
@@ -253,8 +254,8 @@ public class Home extends javax.swing.JFrame {
                                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(chartJPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(chartJPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE))))
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(48, Short.MAX_VALUE))
         );
@@ -359,7 +360,7 @@ public class Home extends javax.swing.JFrame {
         try {
             // Query untuk expense
             String queryExpense = "SELECT MONTHNAME(date) AS bulan, SUM(amount) AS total " +
-                                  "FROM transactions WHERE type='expense' GROUP BY MONTH(date)";
+                                  "FROM transactions WHERE account_id = " + Session.id + " AND type='expense' GROUP BY MONTH(date)";
             ResultSet rs1 = Database.executeQuery(queryExpense);
             while (rs1.next()) {
                 String bulan = rs1.getString("bulan");
@@ -369,7 +370,7 @@ public class Home extends javax.swing.JFrame {
 
             // Query untuk income
             String queryIncome = "SELECT MONTHNAME(date) AS bulan, SUM(amount) AS total " +
-                                 "FROM transactions WHERE type='income' GROUP BY MONTH(date)";
+                                 "FROM transactions WHERE account_id = " + Session.id + " AND type='income' GROUP BY MONTH(date)";
             ResultSet rs2 = Database.executeQuery(queryIncome);
             while (rs2.next()) {
                 String bulan = rs2.getString("bulan");
@@ -403,10 +404,12 @@ public class Home extends javax.swing.JFrame {
             false
         );
         ChartPanel chartPanel = new ChartPanel(lineChart);
+        chartJPanel.removeAll();
         chartPanel.setPreferredSize(chartJPanel.getSize());
-        chartJPanel.removeAll(); // panel tempat chart ditampilkan
-        chartJPanel.add(chartPanel);
-        chartJPanel.validate();
+        chartJPanel.setLayout(new BorderLayout()); // WAJIB
+        chartJPanel.add(chartPanel, BorderLayout.CENTER);
+        chartJPanel.revalidate();
+        chartJPanel.repaint();
     }
     
     private void loadFullName() {
