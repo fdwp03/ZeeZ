@@ -171,17 +171,17 @@ public class Home extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Date", "Category", "Amount", "Note"
+                "Date", "Type", "Category", "Amount", "Note"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -255,7 +255,7 @@ public class Home extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(chartJPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE))))
+                                .addComponent(chartJPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(48, Short.MAX_VALUE))
         );
@@ -426,7 +426,7 @@ public class Home extends javax.swing.JFrame {
     }
 
     private void loadTableData() {
-        String query = "SELECT date, category, amount, note  FROM transactions WHERE account_id = '" + Session.id + "'";
+        String query = "SELECT date, type, category, amount, note  FROM transactions WHERE account_id = '" + Session.id + "'";
         ResultSet rs = Database.executeQuery(query);
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
@@ -434,6 +434,7 @@ public class Home extends javax.swing.JFrame {
             while (rs.next()) {
                 Object[] row = {
                     rs.getDate("date"),
+                    rs.getString("type"),
                     rs.getString("category"),
                     rs.getInt("amount"),
                     rs.getString("note")
