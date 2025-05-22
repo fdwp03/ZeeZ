@@ -45,6 +45,7 @@ public class SignUp extends javax.swing.JFrame {
         pass = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         signUpBtn.setBackground(new java.awt.Color(52, 73, 94));
         signUpBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -226,7 +227,9 @@ public class SignUp extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        new Login().setVisible(true);
+        Login loginFrame = new Login();
+        loginFrame.setLocationRelativeTo(null);
+        loginFrame.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 

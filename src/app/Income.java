@@ -73,6 +73,7 @@ public class Income extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel2.setBackground(new java.awt.Color(52, 73, 94));
 
@@ -454,7 +455,7 @@ public class Income extends javax.swing.JFrame {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         for (String bulan : bulanArr) {
             int nilai = dataBulan.getOrDefault(bulan, 0);
-            dataset.setValue(nilai, "Pengeluaran", bulan);
+            dataset.setValue(nilai, "Income", bulan);
         }
 
         // Membuat grafik garis
@@ -516,7 +517,9 @@ public class Income extends javax.swing.JFrame {
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        new MonthlyRules().setVisible(true);
+        MonthlyRules rulesFrame = new MonthlyRules();
+        rulesFrame.setLocationRelativeTo(null);
+        rulesFrame.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -526,7 +529,9 @@ public class Income extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        new Home().setVisible(true);
+        Home homeFrame = new Home();
+        homeFrame.setLocationRelativeTo(null);
+        homeFrame.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -586,13 +591,17 @@ public class Income extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        new Expense().setVisible(true);
+        Expense expenseFrame = new Expense();
+        expenseFrame.setLocationRelativeTo(null);
+        expenseFrame.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        new Login().setVisible(true);
+        Login loginFrame = new Login();
+        loginFrame.setLocationRelativeTo(null);
+        loginFrame.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 

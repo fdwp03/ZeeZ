@@ -57,6 +57,7 @@ public class Login extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(52, 73, 94));
         jPanel1.setFont(new java.awt.Font("Segoe Script", 1, 24)); // NOI18N
@@ -185,30 +186,30 @@ public class Login extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(new JFrame(), "Password is require", "Error",
                         JOptionPane.ERROR_MESSAGE);
             }else {
-            username = uname.getText();
-            password = pass.getText();
-            
-            query = "SELECT * FROM account WHERE username= '"+uname.getText()+"'";
-       
-            ResultSet rs = Database.executeQuery(query);
-            while(rs.next()){
-                passDb = rs.getString("password");
-                fname = rs.getString("full_name");
-                int id = rs.getInt("id");
-                Session.id = id;
-                notFound = 1;
-            }
-            if(notFound == 1 && BCrypt.checkpw(password, passDb)){
-                Home HomeFrame = new Home();
-                HomeFrame.setVisible(true);
-                HomeFrame.pack();
-                HomeFrame.setLocationRelativeTo(null); 
-                this.dispose();
-            }else{
-               JOptionPane.showMessageDialog(new JFrame(), "Incorrect username or password", "Error",
-                        JOptionPane.ERROR_MESSAGE);
-            }
-            pass.setText("");
+                username = uname.getText();
+                password = pass.getText();
+
+                query = "SELECT * FROM account WHERE username= '"+uname.getText()+"'";
+
+                ResultSet rs = Database.executeQuery(query);
+                while(rs.next()){
+                    passDb = rs.getString("password");
+                    fname = rs.getString("full_name");
+                    int id = rs.getInt("id");
+                    Session.id = id;
+                    notFound = 1;
+                }
+                if(notFound == 1 && BCrypt.checkpw(password, passDb)){
+                    Home HomeFrame = new Home();
+                    HomeFrame.setVisible(true);
+                    HomeFrame.pack();
+                    HomeFrame.setLocationRelativeTo(null); 
+                    this.dispose();
+                }else{
+                   JOptionPane.showMessageDialog(new JFrame(), "Incorrect username or password", "Error",
+                            JOptionPane.ERROR_MESSAGE);
+                }
+                pass.setText("");
             
             }
         }catch(Exception e){
@@ -218,7 +219,9 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        new SignUp().setVisible(true);
+        SignUp signUpFrame = new SignUp();
+        signUpFrame.setLocationRelativeTo(null);
+        signUpFrame.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
