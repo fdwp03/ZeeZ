@@ -67,7 +67,7 @@ public class Home extends javax.swing.JFrame {
         total = new javax.swing.JLabel();
         chartJPanel = new javax.swing.JPanel();
         jButton7 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        searchField = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -200,7 +200,7 @@ public class Home extends javax.swing.JFrame {
         user_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         user_label.setText("user");
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/pp.jpg"))); // NOI18N
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/pp.jpg"))); // NOI18N
         jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         jButton6.setVerticalAlignment(javax.swing.SwingConstants.TOP);
@@ -258,10 +258,10 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        searchField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        searchField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                searchFieldActionPerformed(evt);
             }
         });
 
@@ -277,7 +277,7 @@ public class Home extends javax.swing.JFrame {
                         .addGap(6, 6, 6)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton7))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -313,7 +313,7 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton7))
                 .addGap(6, 6, 6)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -461,10 +461,24 @@ public class Home extends javax.swing.JFrame {
     }
 
     private void loadTableData() {
-        String query = "SELECT date, type, category, amount, note  FROM transactions WHERE account_id = '" + Session.id + "'";
+        String searchText = searchField.getText().trim(); // Ambil teks pencarian
+
+        String query = "SELECT date, type, category, amount, note FROM transactions WHERE account_id = '" + Session.id + "'";
+
+        // Tambahkan kondisi pencarian jika searchText tidak kosong
+        if (!searchText.isEmpty()) {
+            query += " AND ("
+                    + "date LIKE '%" + searchText + "%' OR "
+                    + "type LIKE '%" + searchText + "%' OR "
+                    + "category LIKE '%" + searchText + "%' OR "
+                    + "amount LIKE '%" + searchText + "%' OR "
+                    + "note LIKE '%" + searchText + "%')";
+        }
+
         ResultSet rs = Database.executeQuery(query);
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        model.setRowCount(0);
+        model.setRowCount(0); // Kosongkan tabel sebelum mengisi ulang
+
         try {
             while (rs.next()) {
                 Object[] row = {
@@ -594,12 +608,14 @@ public class Home extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void searchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_searchFieldActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
+        loadTableData();
+        
     }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
@@ -658,9 +674,9 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JProgressBar limitBar;
     private javax.swing.JLabel limitLabel;
+    private javax.swing.JTextField searchField;
     private javax.swing.JLabel total;
     private javax.swing.JLabel user_label;
     // End of variables declaration//GEN-END:variables

@@ -70,7 +70,7 @@ public class Expense extends javax.swing.JFrame {
         note = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         total = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        searchField = new javax.swing.JTextField();
         jButton6 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
 
@@ -275,6 +275,12 @@ public class Expense extends javax.swing.JFrame {
         total.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         total.setText("Rp. 0");
 
+        searchField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchFieldActionPerformed(evt);
+            }
+        });
+
         jButton6.setBackground(new java.awt.Color(51, 204, 0));
         jButton6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
@@ -332,7 +338,7 @@ public class Expense extends javax.swing.JFrame {
                                         .addGap(29, 29, 29)
                                         .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jButton6))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -379,7 +385,7 @@ public class Expense extends javax.swing.JFrame {
                     .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 778, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -502,7 +508,17 @@ public class Expense extends javax.swing.JFrame {
     }
 
     private void loadTableData() {
+        String searchText = searchField.getText().trim();
         String query = "SELECT date, category, amount, note FROM transactions WHERE account_id = '" + Session.id + "' AND type = 'expense' AND MONTH(date) = MONTH(CURRENT_DATE()) AND YEAR(date) = YEAR(CURRENT_DATE())";
+        if (!searchText.isEmpty()) {
+            query += " AND ("
+                    + "date LIKE '%" + searchText + "%' OR "
+                    + "type LIKE '%" + searchText + "%' OR "
+                    + "category LIKE '%" + searchText + "%' OR "
+                    + "amount LIKE '%" + searchText + "%' OR "
+                    + "note LIKE '%" + searchText + "%')";
+        }
+        
         ResultSet rs = Database.executeQuery(query);
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
@@ -690,7 +706,12 @@ public class Expense extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+        loadTableData();
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void searchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -760,10 +781,10 @@ public class Expense extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JButton newButton;
     private javax.swing.JTextField newCategory;
     private javax.swing.JTextField note;
+    private javax.swing.JTextField searchField;
     private javax.swing.JLabel total;
     // End of variables declaration//GEN-END:variables
 }
