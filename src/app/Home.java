@@ -200,7 +200,7 @@ public class Home extends javax.swing.JFrame {
         user_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         user_label.setText("user");
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/pp.jpg"))); // NOI18N
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/pp.png"))); // NOI18N
         jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         jButton6.setVerticalAlignment(javax.swing.SwingConstants.TOP);
@@ -342,7 +342,7 @@ public class Home extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)))
+                        .addGap(27, 27, 27)))
                 .addComponent(jScrollPane2)
                 .addContainerGap())
         );
