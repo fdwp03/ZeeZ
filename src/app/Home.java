@@ -475,7 +475,7 @@ public class Home extends javax.swing.JFrame {
         }
     }
 
-    public void loadTableData() {
+    private void loadTableData() {
         String searchText = searchField.getText().trim(); // Ambil teks pencarian
 
         String query = "SELECT id, date, type, category, amount, note FROM transactions WHERE account_id = '" + Session.id + "'";

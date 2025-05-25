@@ -283,6 +283,12 @@ public class Expense extends javax.swing.JFrame {
         total.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         total.setText("Rp. 0");
 
+        searchField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchFieldActionPerformed(evt);
+            }
+        });
+
         jButton6.setBackground(new java.awt.Color(51, 204, 0));
         jButton6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
@@ -713,6 +719,10 @@ public class Expense extends javax.swing.JFrame {
         // TODO add your handling code here:
         loadTableData();
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void searchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchFieldActionPerformed
 
     /**
      * @param args the command line arguments
