@@ -64,7 +64,7 @@ public class Home extends javax.swing.JFrame implements TableUpdate{
         jTable1 = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         user_label = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
+        profileButton = new javax.swing.JButton();
         total = new javax.swing.JLabel();
         chartJPanel = new javax.swing.JPanel();
         jButton7 = new javax.swing.JButton();
@@ -82,6 +82,11 @@ public class Home extends javax.swing.JFrame implements TableUpdate{
         jButton1.setText("Dashboard");
         jButton1.setBorder(null);
         jButton1.setBorderPainted(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(52, 73, 94));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -206,14 +211,14 @@ public class Home extends javax.swing.JFrame implements TableUpdate{
         user_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         user_label.setText("user");
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/pp.png"))); // NOI18N
-        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jButton6.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jButton6.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        profileButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/pp.png"))); // NOI18N
+        profileButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        profileButton.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        profileButton.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        profileButton.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        profileButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                profileButtonActionPerformed(evt);
             }
         });
 
@@ -227,14 +232,14 @@ public class Home extends javax.swing.JFrame implements TableUpdate{
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(profileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(63, 63, 63))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(profileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(user_label, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(12, Short.MAX_VALUE))
@@ -614,9 +619,13 @@ public class Home extends javax.swing.JFrame implements TableUpdate{
         this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void profileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+        Profile profileFrame = new Profile();
+        profileFrame.setLocationRelativeTo(null);
+        profileFrame.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_profileButtonActionPerformed
 
     private void searchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFieldActionPerformed
         // TODO add your handling code here:
@@ -650,6 +659,10 @@ public class Home extends javax.swing.JFrame implements TableUpdate{
             dialog.setVisible(true);
         }
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -694,7 +707,6 @@ public class Home extends javax.swing.JFrame implements TableUpdate{
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -709,6 +721,7 @@ public class Home extends javax.swing.JFrame implements TableUpdate{
     private javax.swing.JTable jTable1;
     private javax.swing.JProgressBar limitBar;
     private javax.swing.JLabel limitLabel;
+    private javax.swing.JButton profileButton;
     private javax.swing.JTextField searchField;
     private javax.swing.JLabel total;
     private javax.swing.JLabel user_label;
