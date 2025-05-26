@@ -22,7 +22,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
  *
  * @author ASUS
  */
-public class Income extends javax.swing.JFrame {
+public class Income extends javax.swing.JFrame implements TableUpdate{
 
     /**
      * Creates new form Home
@@ -208,6 +208,11 @@ public class Income extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(jTable1);
@@ -461,6 +466,7 @@ public class Income extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
+    @Override
     public void loadChart() {
         // Daftar bulan dalam urutan
         String[] bulanArr = {
@@ -514,6 +520,7 @@ public class Income extends javax.swing.JFrame {
 
     }
     
+    @Override
     public void loadTableData() {
         String searchText = searchField.getText().trim(); // Ambil teks pencarian
 
@@ -548,6 +555,7 @@ public class Income extends javax.swing.JFrame {
         }
     }
     
+    @Override
     public void loadTotal() {
         try {
             String query = "SELECT SUM(amount) FROM transactions WHERE account_id = '" + Session.id + "' AND type = 'income' AND MONTH(date) = MONTH(CURRENT_DATE()) AND YEAR(date) = YEAR(CURRENT_DATE())";
@@ -677,6 +685,29 @@ public class Income extends javax.swing.JFrame {
         // TODO add your handling code here:
         loadTableData();
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        int row = jTable1.getSelectedRow();
+        if (row != -1) {
+            String id = jTable1.getValueAt(row, 0).toString();
+            Date date = (Date) jTable1.getValueAt(row, 1);
+            String category = jTable1.getValueAt(row, 2).toString();
+            String amount = jTable1.getValueAt(row, 3).toString();
+            String note = jTable1.getValueAt(row, 4).toString();
+
+            EditPanel edit = new EditPanel(Income.this); // karena Income implements TableUpdate
+            edit.setData(id, date, "income", category, amount, note);
+
+            javax.swing.JDialog dialog = new javax.swing.JDialog();
+            dialog.setUndecorated(true);
+            dialog.setModal(true);
+            dialog.setContentPane(edit);
+            dialog.pack();
+            dialog.setLocationRelativeTo(this);
+            dialog.setVisible(true);
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments

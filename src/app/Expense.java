@@ -22,7 +22,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
  *
  * @author ASUS
  */
-public class Expense extends javax.swing.JFrame {
+public class Expense extends javax.swing.JFrame implements TableUpdate {
 
     /**
      * Creates new form Home
@@ -201,6 +201,11 @@ public class Expense extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout chartJPanelLayout = new javax.swing.GroupLayout(chartJPanel);
@@ -282,12 +287,6 @@ public class Expense extends javax.swing.JFrame {
 
         total.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         total.setText("Rp. 0");
-
-        searchField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchFieldActionPerformed(evt);
-            }
-        });
 
         jButton6.setBackground(new java.awt.Color(51, 204, 0));
         jButton6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -462,6 +461,7 @@ public class Expense extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    @Override
     public void loadChart() {
         // Daftar bulan dalam urutan
         String[] bulanArr = {
@@ -514,6 +514,7 @@ public class Expense extends javax.swing.JFrame {
         chartJPanel.repaint();
     }
 
+    @Override
     public void loadTableData() {
         String searchText = searchField.getText().trim(); // Ambil teks pencarian
 
@@ -548,6 +549,7 @@ public class Expense extends javax.swing.JFrame {
         }
     }
     
+    @Override
     public void loadTotal() {
         try {
             String query = "SELECT SUM(amount) FROM transactions WHERE account_id = '" + Session.id + "' AND type = 'expense' AND MONTH(date) = MONTH(CURRENT_DATE()) AND YEAR(date) = YEAR(CURRENT_DATE())";
@@ -723,6 +725,29 @@ public class Expense extends javax.swing.JFrame {
     private void searchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_searchFieldActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        int row = jTable1.getSelectedRow();
+        if (row != -1) {
+            String id = jTable1.getValueAt(row, 0).toString();
+            Date date = (Date) jTable1.getValueAt(row, 1);
+            String category = jTable1.getValueAt(row, 2).toString();
+            String amount = jTable1.getValueAt(row, 3).toString();
+            String note = jTable1.getValueAt(row, 4).toString();
+
+            EditPanel edit = new EditPanel(Expense.this); // karena Expense implements TableUpdate
+            edit.setData(id, date, "expense", category, amount, note);
+
+            javax.swing.JDialog dialog = new javax.swing.JDialog();
+            dialog.setUndecorated(true);
+            dialog.setModal(true);
+            dialog.setContentPane(edit);
+            dialog.pack();
+            dialog.setLocationRelativeTo(this);
+            dialog.setVisible(true);
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments

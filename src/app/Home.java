@@ -10,6 +10,7 @@ import javax.swing.table.DefaultTableModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import org.jfree.chart.ChartFactory;
@@ -22,7 +23,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
  *
  * @author ASUS
  */
-public class Home extends javax.swing.JFrame {
+public class Home extends javax.swing.JFrame implements TableUpdate{
 
     /**
      * Creates new form Home
@@ -68,7 +69,6 @@ public class Home extends javax.swing.JFrame {
         chartJPanel = new javax.swing.JPanel();
         jButton7 = new javax.swing.JButton();
         searchField = new javax.swing.JTextField();
-        jButton8 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -192,6 +192,11 @@ public class Home extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(jTable1);
 
         jPanel4.setBackground(new java.awt.Color(52, 73, 94));
@@ -266,16 +271,6 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        jButton8.setBackground(new java.awt.Color(52, 73, 94));
-        jButton8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(255, 255, 255));
-        jButton8.setText("Edit");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -290,9 +285,7 @@ public class Home extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton8))
+                                .addComponent(jButton7))
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE)
                             .addComponent(chartJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -328,8 +321,7 @@ public class Home extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7)
-                    .addComponent(jButton8))
+                    .addComponent(jButton7))
                 .addGap(6, 6, 6)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(578, Short.MAX_VALUE))
@@ -396,6 +388,7 @@ public class Home extends javax.swing.JFrame {
     
     
     
+    @Override
     public void loadChart() {
         // Daftar 12 bulan
         String[] bulanArr = {
@@ -475,7 +468,8 @@ public class Home extends javax.swing.JFrame {
         }
     }
 
-    private void loadTableData() {
+    @Override
+    public void loadTableData() {
         String searchText = searchField.getText().trim(); // Ambil teks pencarian
 
         String query = "SELECT id, date, type, category, amount, note FROM transactions WHERE account_id = '" + Session.id + "'";
@@ -530,8 +524,8 @@ public class Home extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-    
-    private void loadLimitBar() {
+
+    public void loadLimitBar() {
         try {
             int accId = Session.id;
             LocalDate now = LocalDate.now();
@@ -633,9 +627,29 @@ public class Home extends javax.swing.JFrame {
         loadTableData();
     }//GEN-LAST:event_jButton7ActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+        int row = jTable1.getSelectedRow();
+        if (row != -1) {
+            String id = jTable1.getValueAt(row, 0).toString();
+            Date date = (Date) jTable1.getValueAt(row, 1);
+            String type = jTable1.getValueAt(row, 2).toString();
+            String category = jTable1.getValueAt(row, 3).toString();
+            String amount = jTable1.getValueAt(row, 4).toString();
+            String note = jTable1.getValueAt(row, 5).toString();
+
+            EditPanel edit = new EditPanel(Home.this); // karena Home implements TableUpdate
+            edit.setData(id, date, type, category, amount, note);
+
+            javax.swing.JDialog dialog = new javax.swing.JDialog();
+            dialog.setUndecorated(true);
+            dialog.setModal(true);
+            dialog.setContentPane(edit);
+            dialog.pack();
+            dialog.setLocationRelativeTo(this);
+            dialog.setVisible(true);
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -682,7 +696,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
