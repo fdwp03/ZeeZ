@@ -55,6 +55,7 @@ public class EditPanel extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         typeField = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
+        deleteButton = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(52, 73, 94));
 
@@ -128,6 +129,16 @@ public class EditPanel extends javax.swing.JPanel {
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel10.setText("Type");
 
+        deleteButton.setBackground(new java.awt.Color(255, 0, 51));
+        deleteButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        deleteButton.setForeground(new java.awt.Color(255, 255, 255));
+        deleteButton.setText("Delete");
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -164,8 +175,9 @@ public class EditPanel extends javax.swing.JPanel {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(categoryField)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
                         .addComponent(changeButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(deleteButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cancelButton)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -203,7 +215,8 @@ public class EditPanel extends javax.swing.JPanel {
                 .addGap(10, 10, 10)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(changeButton)
-                    .addComponent(cancelButton))
+                    .addComponent(cancelButton)
+                    .addComponent(deleteButton))
                 .addContainerGap())
         );
 
@@ -269,6 +282,33 @@ public class EditPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_changeButtonActionPerformed
 
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        // TODO add your handling code here:
+        int confirm = JOptionPane.showConfirmDialog(this, "Apakah Anda yakin ingin menghapus data ini?", "Konfirmasi Hapus", JOptionPane.YES_NO_OPTION);
+        if (confirm == JOptionPane.YES_OPTION) {
+            try {
+                String query = "DELETE FROM transactions WHERE id = ?";
+                int deleted = Database.executeUpdate(query, idField.getText());
+                if (deleted > 0) {
+                    JOptionPane.showMessageDialog(this, "Data berhasil dihapus.");
+                    SwingUtilities.getWindowAncestor(this).dispose();
+
+                    update.loadTableData();
+                    update.loadTotal();
+                    update.loadChart();
+
+                    if (update instanceof Home) {
+                        ((Home) update).loadLimitBar();
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Gagal menghapus data.");
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Error deleting: " + e.getMessage());
+            }
+        }
+    }//GEN-LAST:event_deleteButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField amountField;
@@ -276,6 +316,7 @@ public class EditPanel extends javax.swing.JPanel {
     private javax.swing.JTextField categoryField;
     private javax.swing.JButton changeButton;
     private com.toedter.calendar.JDateChooser dateField;
+    private javax.swing.JButton deleteButton;
     private javax.swing.JTextField idField;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel4;
