@@ -679,7 +679,7 @@ public class Home extends javax.swing.JFrame implements TableUpdate{
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        About aboutFrame = new About();
+        Info aboutFrame = new Info();
         aboutFrame.setLocationRelativeTo(null);
         aboutFrame.setVisible(true);
         this.dispose();
