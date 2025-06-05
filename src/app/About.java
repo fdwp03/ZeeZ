@@ -141,11 +141,11 @@ public class About extends javax.swing.JFrame {
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setText("Full Stack");
+        jLabel16.setText("Programer");
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel17.setText("Ngelawan dospem");
+        jLabel17.setText("Programer");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);

@@ -371,7 +371,7 @@
                       <Font name="Segoe UI" size="14" style="2"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="Full Stack"/>
+                    <Property name="text" type="java.lang.String" value="Programer"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel17">
@@ -380,7 +380,7 @@
                       <Font name="Segoe UI" size="14" style="2"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="Ngelawan dospem"/>
+                    <Property name="text" type="java.lang.String" value="Programer"/>
                   </Properties>
                 </Component>
               </SubComponents>
