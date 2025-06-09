@@ -159,7 +159,6 @@ public class Profile extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         jLabel10.setText("~Anonymous ");
 
-        pass.setText("defaultpass");
         pass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passActionPerformed(evt);
