@@ -2,7 +2,7 @@
 
 ---
 ## Deskripsi Singkat
-"ZeeZ" adalah aplikasi pencatatan keuangan harian yang dirancang untuk membantu pengguna mengelola pemasukan dan pengeluaran secara efektif, sederhana, dan terstruktur. Aplikasi ini bertujuan untuk meningkatkan literasi finansial masyarakat dengan memberikan kemudahan dalam pelacakan transaksi harian, analisis kebiasaan pengeluaran, serta perencanaan anggaran bulanan. ZeeZ hadir sebagai solusi digital modern bagi siapa saja yang ingin hidup lebih hemat dan terorganisir.\
+"ZeeZ" adalah aplikasi pencatatan keuangan harian yang dirancang untuk membantu pengguna mengelola pemasukan dan pengeluaran secara efektif, sederhana, dan terstruktur. Aplikasi ini bertujuan untuk meningkatkan literasi finansial masyarakat dengan memberikan kemudahan dalam pelacakan transaksi harian, analisis kebiasaan pengeluaran, serta perencanaan anggaran bulanan. ZeeZ hadir sebagai solusi digital modern bagi siapa saja yang ingin hidup lebih hemat dan terorganisir.
 
 ---
 ## Langkah Instalasi:
@@ -19,9 +19,9 @@
       ```
       http://localhost/phpmyadmin
       ```
-   3. Klik tombol **New** untuk membuat database baru (misal: `zeez_db`)
+   3. Klik tombol **New** untuk membuat database baru `zeez`
    4. Setelah database dibuat, klik tab **Import**
-   5. Pilih file `zeez.sql` dari folder project (biasanya ada di `/database/zeez.sql`)
+   5. Pilih file `zeez.sql` dari folder project (terdapat di `/database/zeez.sql`)
    6. Klik **Go** untuk mengimpor — database berhasil dibuat jika tidak ada error
 3. **Akses Aplikasi:**
    1. Buka **NetBeans**
