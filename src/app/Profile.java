@@ -53,6 +53,7 @@ public class Profile extends javax.swing.JFrame {
         pass = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel2.setBackground(new java.awt.Color(52, 73, 94));
 
