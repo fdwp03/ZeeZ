@@ -180,47 +180,58 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        String username, password, query, fname = null, passDb = null;
-        int notFound = 0;
-        try {
-            Database.connect();
-            if("".equals(uname.getText())){
-                JOptionPane.showMessageDialog(new JFrame(), "Username Address is require", "Error",
-                        JOptionPane.ERROR_MESSAGE);
-            }else if("".equals(pass.getText())){
-                JOptionPane.showMessageDialog(new JFrame(), "Password is require", "Error",
-                        JOptionPane.ERROR_MESSAGE);
-            }else {
-                username = uname.getText();
-                password = pass.getText();
+    // Mengambil nilai dari input username dan password
+    String username, password, query, fname = null, passDb = null;
+    int notFound = 0;
+    try {
+        // Membuka koneksi ke database
+        Database.connect();
 
-                query = "SELECT * FROM account WHERE username= '"+uname.getText()+"'";
+        // Validasi input kosong
+        if("".equals(uname.getText())){
+            JOptionPane.showMessageDialog(new JFrame(), "Username Address is require", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }else if("".equals(pass.getText())){
+            JOptionPane.showMessageDialog(new JFrame(), "Password is require", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }else {
+            username = uname.getText();
+            password = pass.getText();
 
-                ResultSet rs = Database.executeQuery(query);
-                while(rs.next()){
-                    passDb = rs.getString("password");
-                    fname = rs.getString("full_name");
-                    int id = rs.getInt("id");
-                    Session.id = id;
-                    notFound = 1;
-                }
-                if(notFound == 1 && BCrypt.checkpw(password, passDb)){
-                    Home HomeFrame = new Home();
-                    HomeFrame.setVisible(true);
-                    HomeFrame.pack();
-                    HomeFrame.setLocationRelativeTo(null); 
-                    this.dispose();
-                }else{
-                   JOptionPane.showMessageDialog(new JFrame(), "Incorrect username or password", "Error",
-                            JOptionPane.ERROR_MESSAGE);
-                }
-                pass.setText("");
-            
+            // Query untuk mencari username di tabel account
+            query = "SELECT * FROM account WHERE username= '"+uname.getText()+"'";
+
+            // Menjalankan query dan menyimpan hasilnya
+            ResultSet rs = Database.executeQuery(query);
+            while(rs.next()){
+                passDb = rs.getString("password");      // Ambil password terenkripsi dari database
+                fname = rs.getString("full_name");      // Ambil nama lengkap
+                int id = rs.getInt("id");               // Ambil ID user
+                Session.id = id;                        // Simpan ID ke session global
+                notFound = 1;                           // Tandai bahwa user ditemukan
             }
-        }catch(Exception e){
-            System.out.println("Error!" + e.getMessage()); 
+
+            // Jika user ditemukan dan password cocok (verifikasi hash dengan BCrypt)
+            if(notFound == 1 && BCrypt.checkpw(password, passDb)){
+                // Buka tampilan Home setelah login berhasil
+                Home HomeFrame = new Home();
+                HomeFrame.setVisible(true);
+                HomeFrame.pack();
+                HomeFrame.setLocationRelativeTo(null); 
+                this.dispose(); // Tutup jendela login
+            }else{
+               // Tampilkan pesan kesalahan jika login gagal
+               JOptionPane.showMessageDialog(new JFrame(), "Incorrect username or password", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+
+            // Kosongkan field password
+            pass.setText("");
         }
+    }catch(Exception e){
+        // Tampilkan error di console jika ada exception
+        System.out.println("Error!" + e.getMessage()); 
+    }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

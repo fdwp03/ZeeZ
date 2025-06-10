@@ -8,6 +8,7 @@ package app;
  *
  * @author ASUS X515E
  */
+//Untuk menyimpan id pengguna yang sedang login
 public class Session {
     public static int id;
 }

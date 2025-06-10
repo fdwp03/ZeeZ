@@ -312,47 +312,54 @@ public class Profile extends javax.swing.JFrame {
     }//GEN-LAST:event_passActionPerformed
 
     private void changeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeButtonActionPerformed
-        // TODO add your handling code here:                                           
+        // Ambil input dari form
         String fullName = fname.getText().trim();
         String username = uname.getText().trim();
         String password = pass.getText();
-        int id = Session.id;
+        int id = Session.id; // Ambil ID user yang sedang login dari sesi
 
+        // Validasi input kosong
         if (fullName.isEmpty() || username.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Full Name dan Username wajib diisi!", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
         try {
-            // Cek username sudah dipakai oleh user lain atau tidak
+            // Cek apakah username sudah digunakan oleh user lain (selain yang sedang login)
             String checkQuery = "SELECT * FROM account WHERE username = ? AND id != ?";
-            ResultSet rs = Database.executeQuery(checkQuery, username, id); // currentUserId: id user login
+            ResultSet rs = Database.executeQuery(checkQuery, username, id);
 
             if (rs != null && rs.next()) {
+                // Jika username ditemukan dipakai user lain
                 JOptionPane.showMessageDialog(this, "Username sudah digunakan oleh pengguna lain.", "Peringatan", JOptionPane.WARNING_MESSAGE);
                 return;
             }
 
-            // Ambil data lama
+            // Ambil data user lama dari database untuk membandingkan
             String oldQuery = "SELECT full_name, username FROM account WHERE id = ?";
             ResultSet rsOld = Database.executeQuery(oldQuery, id);
             if (rsOld != null && rsOld.next()) {
                 String oldFullName = rsOld.getString("full_name");
                 String oldUsername = rsOld.getString("username");
 
+                // Cek apakah password diubah (asumsi: "defaultpass" artinya tidak diubah)
                 boolean isPasswordChanged = !password.equals("defaultpass") && !password.isEmpty();
+
+                // Cek apakah ada data yang berubah
                 boolean isDataChanged = !fullName.equals(oldFullName) || !username.equals(oldUsername) || isPasswordChanged;
 
                 if (!isDataChanged) {
+                    // Tidak ada perubahan data, tampilkan info
                     JOptionPane.showMessageDialog(this, "Tidak ada perubahan data untuk diperbarui.", "Info", JOptionPane.INFORMATION_MESSAGE);
                     return;
                 }
 
-                // Siapkan query update
+                // Persiapkan query update tergantung apakah password ikut diubah atau tidak
                 String updateQuery;
                 int rowsUpdated;
+
                 if (isPasswordChanged) {
-                    // Validasi kekuatan password baru
+                    // Validasi kekuatan password baru jika diubah
                     if (!isPasswordStrong(password)) {
                         JOptionPane.showMessageDialog(this, 
                             "Password baru harus memiliki minimal 8 karakter dan mengandung huruf besar, huruf kecil, angka, dan karakter khusus.",
@@ -361,22 +368,28 @@ public class Profile extends javax.swing.JFrame {
                         return;
                     }
 
+                    // Enkripsi password baru menggunakan BCrypt
                     String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+
+                    // Query update jika password ikut diubah
                     updateQuery = "UPDATE account SET full_name = ?, username = ?, password = ? WHERE id = ?";
                     rowsUpdated = Database.executeUpdate(updateQuery, fullName, username, hashedPassword, id);
                 } else {
+                    // Query update jika hanya nama/username yang berubah
                     updateQuery = "UPDATE account SET full_name = ?, username = ? WHERE id = ?";
                     rowsUpdated = Database.executeUpdate(updateQuery, fullName, username, id);
                 }
 
                 if (rowsUpdated > 0) {
+                    // Jika update berhasil, tampilkan notifikasi dan reset field password ke default
                     JOptionPane.showMessageDialog(this, "Profil berhasil diperbarui!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
-                    pass.setText("defaultpass"); // atur kembali jadi default
+                    pass.setText("defaultpass"); // Set ulang agar user tahu password tidak perlu diubah lagi
                 } else {
                     JOptionPane.showMessageDialog(this, "Gagal memperbarui profil.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         } catch (Exception e) {
+            // Tangani kesalahan tidak terduga
             JOptionPane.showMessageDialog(this, "Terjadi kesalahan: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         }

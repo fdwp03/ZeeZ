@@ -656,48 +656,55 @@ public class Expense extends javax.swing.JFrame implements TableUpdate {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
+        // Aksi saat tombol "Tambah Pengeluaran" ditekan
         try {
+            // Parsing input jumlah ke integer
             int amountInt = Integer.parseInt(amount.getText());
 
+            // Cek apakah saldo/limit mencukupi untuk pengeluaran ini
             if (!isEnoughBalance(amountInt)) {
                 JOptionPane.showMessageDialog(null,
                     "Jumlah pengeluaran melebihi saldo/limit yang tersedia!",
                     "Saldo Tidak Cukup",
                     JOptionPane.WARNING_MESSAGE);
-                return;
+                return; // Hentikan proses jika saldo tidak mencukupi
             }
 
-            Date dt = date.getDate();
-            String ctgry = (String) category.getSelectedItem();
-            String amountStr = amount.getText();
-            String noteStr = note.getText();
+            // Ambil data dari input form
+            Date dt = date.getDate();                          // Tanggal transaksi
+            String ctgry = (String) category.getSelectedItem(); // Kategori pengeluaran
+            String amountStr = amount.getText();               // Nilai jumlah sebagai string
+            String noteStr = note.getText();                   // Catatan transaksi
 
+            // Query SQL untuk menyimpan pengeluaran
             String query = "INSERT INTO transactions (account_id, type, date, category, amount, note) " +
                          "VALUES (?, 'expense', ?, ?, ?, ?)";
 
-            // Eksekusi query insert dengan helper Database
+            // Eksekusi query dengan helper Database
             int rowsInserted = Database.executeUpdate(
                 query,
-                Session.id,
-                new java.sql.Date(dt.getTime()),
+                Session.id,                                // ID pengguna dari sesi login
+                new java.sql.Date(dt.getTime()),           // Konversi java.util.Date ke java.sql.Date
                 ctgry,
-                Integer.parseInt(amountStr),
+                Integer.parseInt(amountStr),               // Parsing ulang ke integer
                 noteStr
             );
 
+            // Jika penyimpanan berhasil, perbarui data pada tabel, total, dan grafik
             if (rowsInserted > 0) {
-                loadTableData();
-                loadTotal();
-                loadChart();
+                loadTableData(); // Perbarui tabel transaksi
+                loadTotal();     // Hitung ulang total pengeluaran/pemasukan
+                loadChart();     // Perbarui grafik visualisasi
             }
 
         } catch (NumberFormatException ex) {
+            // Tangani jika input jumlah bukan angka yang valid
             JOptionPane.showMessageDialog(null,
                 "Masukkan angka yang valid untuk amount!",
                 "Input Salah",
                 JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {
+            // Tangani error umum lainnya
             e.printStackTrace();
         }
     }//GEN-LAST:event_jButton8ActionPerformed
@@ -751,25 +758,29 @@ public class Expense extends javax.swing.JFrame implements TableUpdate {
     }//GEN-LAST:event_searchFieldActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        // TODO add your handling code here:
+        // Ambil baris yang diklik oleh pengguna
         int row = jTable1.getSelectedRow();
-        if (row != -1) {
-            String id = jTable1.getValueAt(row, 0).toString();
-            Date date = (Date) jTable1.getValueAt(row, 1);
-            String category = jTable1.getValueAt(row, 2).toString();
-            String amount = jTable1.getValueAt(row, 3).toString();
-            String note = jTable1.getValueAt(row, 4).toString();
 
-            EditPanel edit = new EditPanel(Expense.this); // karena Expense implements TableUpdate
+        if (row != -1) {
+            // Ambil data dari setiap kolom dalam baris tersebut
+            String id = jTable1.getValueAt(row, 0).toString();         // ID transaksi
+            Date date = (Date) jTable1.getValueAt(row, 1);             // Tanggal transaksi
+            String category = jTable1.getValueAt(row, 2).toString();   // Kategori (seharusnya 'type' lalu 'category' jika urutan dari SELECT benar)
+            String amount = jTable1.getValueAt(row, 3).toString();     // Jumlah uang
+            String note = jTable1.getValueAt(row, 4).toString();       // Catatan
+
+            // Buat panel edit dan isi dengan data dari baris yang dipilih
+            EditPanel edit = new EditPanel(Expense.this); // Expense mengimplementasikan interface TableUpdate
             edit.setData(id, date, "expense", category, amount, note);
 
+            // Tampilkan panel edit di dalam dialog khusus tanpa border
             javax.swing.JDialog dialog = new javax.swing.JDialog();
-            dialog.setUndecorated(true);
-            dialog.setModal(true);
-            dialog.setContentPane(edit);
-            dialog.pack();
-            dialog.setLocationRelativeTo(this);
-            dialog.setVisible(true);
+            dialog.setUndecorated(true);       // Hilangkan border/judul dialog
+            dialog.setModal(true);             // Buat dialog menjadi modal (tidak bisa klik di luar dialog sampai ditutup)
+            dialog.setContentPane(edit);       // Isi dialog dengan panel edit
+            dialog.pack();                     // Sesuaikan ukuran dialog dengan isi
+            dialog.setLocationRelativeTo(this); // Pusatkan dialog relatif terhadap jendela ini
+            dialog.setVisible(true);           // Tampilkan dialog
         }
     }//GEN-LAST:event_jTable1MouseClicked
 

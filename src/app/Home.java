@@ -492,20 +492,20 @@ public class Home extends javax.swing.JFrame implements TableUpdate{
 
     @Override
     public void loadTableData() {
-        String searchText = searchField.getText().trim(); // Ambil teks pencarian
+        String searchText = searchField.getText().trim(); // Ambil teks dari kolom pencarian
 
-        // Ambil bulan dan tahun saat ini
+        // Ambil tanggal saat ini
         LocalDate currentDate = LocalDate.now();
-        int currentMonth = currentDate.getMonthValue();
-        int currentYear = currentDate.getYear();
+        int currentMonth = currentDate.getMonthValue(); // Ambil bulan
+        int currentYear = currentDate.getYear();        // Ambil tahun
 
-        // Buat query dasar dengan filter bulan & tahun
+        // Query dasar: ambil data transaksi milik akun saat ini yang terjadi pada bulan dan tahun sekarang
         String query = "SELECT id, date, type, category, amount, note FROM transactions "
                      + "WHERE account_id = '" + Session.id + "' "
                      + "AND MONTH(date) = " + currentMonth + " "
                      + "AND YEAR(date) = " + currentYear;
 
-        // Tambahkan kondisi pencarian jika searchText tidak kosong
+        // Jika pengguna mengisi kolom pencarian, tambahkan filter pencarian ke query
         if (!searchText.isEmpty()) {
             query += " AND ("
                     + "date LIKE '%" + searchText + "%' OR "
@@ -515,11 +515,13 @@ public class Home extends javax.swing.JFrame implements TableUpdate{
                     + "note LIKE '%" + searchText + "%')";
         }
 
+        // Eksekusi query dan tampilkan hasil ke tabel
         ResultSet rs = Database.executeQuery(query);
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        model.setRowCount(0); // Kosongkan tabel sebelum mengisi ulang
+        model.setRowCount(0); // Kosongkan isi tabel sebelum diisi data baru
 
         try {
+            // Ambil data dari result set satu per satu dan masukkan ke tabel
             while (rs.next()) {
                 Object[] row = {
                     rs.getInt("id"),
@@ -531,8 +533,9 @@ public class Home extends javax.swing.JFrame implements TableUpdate{
                 };
                 model.addRow(row);
             }
-            rs.close();
+            rs.close(); // Tutup result set setelah digunakan
         } catch (SQLException e) {
+            // Tangani error jika terjadi saat pengambilan data
             e.printStackTrace();
         }
     }

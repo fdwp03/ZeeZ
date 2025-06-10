@@ -180,75 +180,88 @@ public class SignUp extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void signUpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpBtnActionPerformed
-        // TODO add your handling code here:
-            String fullName = fname.getText();
-            String username = uname.getText();
-            String password = pass.getText();
+        // Ambil input dari field
+        String fullName = fname.getText();
+        String username = uname.getText();
+        String password = pass.getText();
 
-            if (fullName.isEmpty() || username.isEmpty() || password.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Semua field wajib diisi!", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
-            // Validasi kekuatan password
-            if (!isPasswordStrong(password)) {
-                JOptionPane.showMessageDialog(this, 
-                    "Password harus memiliki minimal 8 karakter dan mengandung huruf besar, huruf kecil, angka, dan karakter khusus.", 
-                    "Password Lemah", 
-                    JOptionPane.WARNING_MESSAGE);
-                return;
-            }
-
-            try {
-                if (Database.con == null) {
-                    Database.connect();
-                }
-
-                String checkQuery = "SELECT * FROM account WHERE username = ?";
-                ResultSet rs = Database.executeQuery(checkQuery, username);
-
-                if (rs != null && rs.next()) {
-                    JOptionPane.showMessageDialog(this, "Username sudah digunakan. Silakan pilih username lain.", "Peringatan", JOptionPane.WARNING_MESSAGE);
-                } else {
-                    String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
-
-                    String insertQuery = "INSERT INTO account (full_name, username, password) VALUES (?, ?, ?)";
-                    int rowsInserted = Database.executeUpdate(insertQuery, fullName, username, hashedPassword);
-
-                    if (rowsInserted > 0) {
-                        JOptionPane.showMessageDialog(this, "Akun berhasil dibuat!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
-                        fname.setText("");
-                        uname.setText("");
-                        pass.setText("");
-                    } else {
-                        JOptionPane.showMessageDialog(this, "Gagal membuat akun.", "Error", JOptionPane.ERROR_MESSAGE);
-                    }
-                }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, "Terjadi kesalahan: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-                e.printStackTrace();
-            }
+        // Validasi: Semua field harus diisi
+        if (fullName.isEmpty() || username.isEmpty() || password.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Semua field wajib diisi!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
         }
 
-        // Fungsi untuk mengecek kekuatan password
-        private boolean isPasswordStrong(String password) {
-            if (password.length() < 8) return false;
+        // Validasi kekuatan password sebelum diproses
+        if (!isPasswordStrong(password)) {
+            JOptionPane.showMessageDialog(this, 
+                "Password harus memiliki minimal 8 karakter dan mengandung huruf besar, huruf kecil, angka, dan karakter khusus.", 
+                "Password Lemah", 
+                JOptionPane.WARNING_MESSAGE);
+            return;
+        }
 
-            boolean hasUpper = false;
-            boolean hasLower = false;
-            boolean hasDigit = false;
-            boolean hasSpecial = false;
-
-            for (char c : password.toCharArray()) {
-                if (Character.isUpperCase(c)) hasUpper = true;
-                else if (Character.isLowerCase(c)) hasLower = true;
-                else if (Character.isDigit(c)) hasDigit = true;
-                else if ("!@#$%^&*()_+-=[]{}|;':\",.<>?/".contains(String.valueOf(c))) hasSpecial = true;
+        try {
+            // Pastikan koneksi database aktif
+            if (Database.con == null) {
+                Database.connect();
             }
 
-            return hasUpper && hasLower && hasDigit && hasSpecial;
+            // Cek apakah username sudah ada di database
+            String checkQuery = "SELECT * FROM account WHERE username = ?";
+            ResultSet rs = Database.executeQuery(checkQuery, username);
+
+            if (rs != null && rs.next()) {
+                // Username sudah digunakan
+                JOptionPane.showMessageDialog(this, "Username sudah digunakan. Silakan pilih username lain.", "Peringatan", JOptionPane.WARNING_MESSAGE);
+            } else {
+                // Hash password menggunakan BCrypt sebelum disimpan ke database
+                String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+
+                // Simpan data pengguna ke tabel account
+                String insertQuery = "INSERT INTO account (full_name, username, password) VALUES (?, ?, ?)";
+                int rowsInserted = Database.executeUpdate(insertQuery, fullName, username, hashedPassword);
+
+                if (rowsInserted > 0) {
+                    // Akun berhasil dibuat
+                    JOptionPane.showMessageDialog(this, "Akun berhasil dibuat!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+
+                    // Reset field input
+                    fname.setText("");
+                    uname.setText("");
+                    pass.setText("");
+                } else {
+                    // Gagal menyimpan data
+                    JOptionPane.showMessageDialog(this, "Gagal membuat akun.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        } catch (Exception e) {
+            // Penanganan error saat proses signup
+            JOptionPane.showMessageDialog(this, "Terjadi kesalahan: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_signUpBtnActionPerformed
 
+    // Fungsi untuk mengecek kekuatan password
+    private boolean isPasswordStrong(String password) {
+        if (password.length() < 8) return false;
+
+        boolean hasUpper = false;  // Huruf besar
+        boolean hasLower = false;  // Huruf kecil
+        boolean hasDigit = false;  // Angka
+        boolean hasSpecial = false;  // Karakter khusus
+
+        // Periksa masing-masing karakter dalam password
+        for (char c : password.toCharArray()) {
+            if (Character.isUpperCase(c)) hasUpper = true;
+            else if (Character.isLowerCase(c)) hasLower = true;
+            else if (Character.isDigit(c)) hasDigit = true;
+            else if ("!@#$%^&*()_+-=[]{}|;':\",.<>?/".contains(String.valueOf(c))) hasSpecial = true;
+        }
+
+        // Return true jika semua syarat dipenuhi
+        return hasUpper && hasLower && hasDigit && hasSpecial;
+    }
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         Login loginFrame = new Login();
