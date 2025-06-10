@@ -63,7 +63,6 @@ Berikut adalah panduan singkat untuk menggunakan aplikasi **ZeeZ**:
 8. Statistik Pengeluaran Bulanan
    - Menampilkan grafik pengeluaran per bulan.
    - Berguna untuk menganalisis kebiasaan belanja dan pengeluaran.
----
 ### 💡 Tips Tambahan
 - Selalu **simpan perubahan** saat mengedit transaksi atau pengaturan.
 - Gunakan aplikasi ini secara rutin untuk menjaga catatan tetap akurat.
