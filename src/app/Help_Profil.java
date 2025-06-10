@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package app.help;
+package app;
 
 /**
  *
  * @author ASUS
  */
-public class uprof extends javax.swing.JPanel {
+public class Help_Profil extends javax.swing.JPanel {
 
     /**
      * Creates new form dash1
      */
-    public uprof() {
+    public Help_Profil() {
         initComponents();
     }
 
