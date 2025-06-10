@@ -19,9 +19,9 @@
       ```
       http://localhost/phpmyadmin
       ```
-   3. Klik tombol **New** untuk membuat database baru (misal: `zeez_db`)
+   3. Klik tombol **New** untuk membuat database baru `zeez`
    4. Setelah database dibuat, klik tab **Import**
-   5. Pilih file `zeez.sql` dari folder project (biasanya ada di `/database/zeez.sql`)
+   5. Pilih file `zeez.sql` dari folder project (terdapat di `/database/zeez.sql`)
    6. Klik **Go** untuk mengimpor — database berhasil dibuat jika tidak ada error
 3. **Akses Aplikasi:**
    1. Buka **NetBeans**
