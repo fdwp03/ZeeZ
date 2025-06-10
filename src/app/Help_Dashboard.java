@@ -4,6 +4,8 @@
  */
 package app;
 
+import javax.swing.SwingUtilities;
+
 /**
  *
  * @author ASUS
@@ -226,6 +228,11 @@ public class Help_Dashboard extends javax.swing.JPanel {
         jButton175.setForeground(new java.awt.Color(255, 255, 255));
         jButton175.setText("Month Rules");
         jButton175.setBorder(null);
+        jButton175.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton175ActionPerformed(evt);
+            }
+        });
 
         jButton176.setBackground(new java.awt.Color(52, 73, 94));
         jButton176.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -254,6 +261,11 @@ public class Help_Dashboard extends javax.swing.JPanel {
         jButton178.setForeground(new java.awt.Color(255, 255, 255));
         jButton178.setText("Edit Table\n");
         jButton178.setBorder(null);
+        jButton178.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton178ActionPerformed(evt);
+            }
+        });
 
         jButton179.setBackground(new java.awt.Color(52, 73, 94));
         jButton179.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -360,19 +372,104 @@ public class Help_Dashboard extends javax.swing.JPanel {
 
     private void jButton176jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton176jButton6ActionPerformed
         // TODO add your handling code here:
+        // Tutup dialog saat ini
+        java.awt.Window window = SwingUtilities.getWindowAncestor(this);
+        if (window instanceof javax.swing.JDialog) {
+            window.dispose(); // menutup dialog saat ini
+        }
+
+        // Buat panel baru
+        Help_IncomeExpense nextPanel = new Help_IncomeExpense();
+
+        // Buat dialog baru
+        javax.swing.JDialog dialog = new javax.swing.JDialog();
+        dialog.setModal(true);
+        dialog.setContentPane(nextPanel);
+        dialog.pack();
+        dialog.setLocationRelativeTo(null);
+        dialog.setVisible(true);
     }//GEN-LAST:event_jButton176jButton6ActionPerformed
 
     private void jButton177jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton177jButton9ActionPerformed
         // TODO add your handling code here:
+        java.awt.Window window = SwingUtilities.getWindowAncestor(this);
+        if (window instanceof javax.swing.JDialog) {
+            window.dispose(); // menutup dialog saat ini
+        }
+
+        // Buat panel baru
+        Help_Profil nextPanel = new Help_Profil();
+
+        // Buat dialog baru
+        javax.swing.JDialog dialog = new javax.swing.JDialog();
+        dialog.setModal(true);
+        dialog.setContentPane(nextPanel);
+        dialog.pack();
+        dialog.setLocationRelativeTo(null);
+        dialog.setVisible(true);
     }//GEN-LAST:event_jButton177jButton9ActionPerformed
 
     private void jButton179ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton179ActionPerformed
         // TODO add your handling code here:
+        java.awt.Window window = SwingUtilities.getWindowAncestor(this);
+        if (window instanceof javax.swing.JDialog) {
+            window.dispose(); // menutup dialog saat ini
+        }
+
+        // Buat panel baru
+        Help_About nextPanel = new Help_About();
+
+        // Buat dialog baru
+        javax.swing.JDialog dialog = new javax.swing.JDialog();
+        dialog.setModal(true);
+        dialog.setContentPane(nextPanel);
+        dialog.pack();
+        dialog.setLocationRelativeTo(null);
+        dialog.setVisible(true);
     }//GEN-LAST:event_jButton179ActionPerformed
 
     private void jButton180jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton180jButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton180jButton4ActionPerformed
+
+    private void jButton175ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton175ActionPerformed
+        // TODO add your handling code here:
+        java.awt.Window window = SwingUtilities.getWindowAncestor(this);
+        if (window instanceof javax.swing.JDialog) {
+            window.dispose(); // menutup dialog saat ini
+        }
+
+        // Buat panel baru
+        Help_Monthlyrules nextPanel = new Help_Monthlyrules();
+
+        // Buat dialog baru
+        javax.swing.JDialog dialog = new javax.swing.JDialog();
+        dialog.setModal(true);
+        dialog.setContentPane(nextPanel);
+        dialog.pack();
+        dialog.setLocationRelativeTo(null);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_jButton175ActionPerformed
+
+    private void jButton178ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton178ActionPerformed
+        // TODO add your handling code here:
+        // Tutup dialog saat ini
+        java.awt.Window window = SwingUtilities.getWindowAncestor(this);
+        if (window instanceof javax.swing.JDialog) {
+            window.dispose(); // menutup dialog saat ini
+        }
+
+        // Buat panel baru
+        Help_EditPanel nextPanel = new Help_EditPanel();
+
+        // Buat dialog baru
+        javax.swing.JDialog dialog = new javax.swing.JDialog();
+        dialog.setModal(true);
+        dialog.setContentPane(nextPanel);
+        dialog.pack();
+        dialog.setLocationRelativeTo(null);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_jButton178ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
