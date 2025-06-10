@@ -1,8 +1,10 @@
 # "ZeeZ : Inovasi Digital dalam Mencatat dan Mengelola Keuangan Harian" 
 
+---
 ## Deskripsi Singkat
 "ZeeZ" adalah aplikasi pencatatan keuangan harian yang dirancang untuk membantu pengguna mengelola pemasukan dan pengeluaran secara efektif, sederhana, dan terstruktur. Aplikasi ini bertujuan untuk meningkatkan literasi finansial masyarakat dengan memberikan kemudahan dalam pelacakan transaksi harian, analisis kebiasaan pengeluaran, serta perencanaan anggaran bulanan. ZeeZ hadir sebagai solusi digital modern bagi siapa saja yang ingin hidup lebih hemat dan terorganisir.\
 
+---
 ## Langkah Instalasi:
 1. **Clone project melalui NetBeans:**
    - Buka NetBeans > pilih menu `Team` > `Git` > `Clone...`
@@ -26,6 +28,7 @@
    2. Buka project ZeeZ dari hasil clone
    3. Klik kanan pada file `login` (atau file utama lainnya), lalu pilih **Run**
 
+---
 ## Petunjuk Penggunaan
 Berikut adalah panduan singkat untuk menggunakan aplikasi **ZeeZ**:
 1. Halaman Login
