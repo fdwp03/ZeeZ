@@ -586,8 +586,8 @@ public class MonthlyRules extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-        Help_About aboutPanel = new Help_About();
+ // TODO add your handling code here:
+        Help_Dashboard aboutPanel = new Help_Dashboard();
         javax.swing.JDialog dialog = new javax.swing.JDialog();
         dialog.setModal(true);
         dialog.setContentPane(aboutPanel);

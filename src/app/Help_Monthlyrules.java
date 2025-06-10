@@ -10,7 +10,7 @@ import javax.swing.SwingUtilities;
  *
  * @author ASUS
  */
-public class Help_Monthlyrules extends javax.swing.JFrame {
+public class Help_Monthlyrules extends javax.swing.JPanel {
 
     /**
      * Creates new form dash1
@@ -52,7 +52,7 @@ public class Help_Monthlyrules extends javax.swing.JFrame {
         jButton177 = new javax.swing.JButton();
         jButton178 = new javax.swing.JButton();
         jButton179 = new javax.swing.JButton();
-        jButton180 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel1.setText("Month Rules");
@@ -191,6 +191,11 @@ public class Help_Monthlyrules extends javax.swing.JFrame {
         jButton175.setForeground(new java.awt.Color(255, 255, 255));
         jButton175.setText("Month Rules");
         jButton175.setBorder(null);
+        jButton175.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton175ActionPerformed(evt);
+            }
+        });
 
         jButton176.setBackground(new java.awt.Color(52, 73, 94));
         jButton176.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -236,47 +241,42 @@ public class Help_Monthlyrules extends javax.swing.JFrame {
             }
         });
 
-        jButton180.setBackground(new java.awt.Color(52, 73, 94));
-        jButton180.setFont(new java.awt.Font("Swis721 Hv BT", 3, 24)); // NOI18N
-        jButton180.setForeground(new java.awt.Color(255, 255, 255));
-        jButton180.setText("HELP");
-        jButton180.setBorder(null);
-        jButton180.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton180.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton180jButton4ActionPerformed(evt);
-            }
-        });
+        jLabel6.setFont(new java.awt.Font("Swis721 Hv BT", 3, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("HELP");
 
         javax.swing.GroupLayout jPanel31Layout = new javax.swing.GroupLayout(jPanel31);
         jPanel31.setLayout(jPanel31Layout);
         jPanel31Layout.setHorizontalGroup(
             jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel31Layout.createSequentialGroup()
-                .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton179, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton178, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton177, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel31Layout.createSequentialGroup()
-                            .addGap(16, 16, 16)
-                            .addComponent(jButton180, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel31Layout.createSequentialGroup()
-                            .addGap(10, 10, 10)
-                            .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jButton176, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton174, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton175, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel31Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton178, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton177, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel31Layout.createSequentialGroup()
+                                .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jButton176, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton174, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton175, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jButton179, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel31Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(10, Short.MAX_VALUE))
         );
         jPanel31Layout.setVerticalGroup(
             jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel31Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(jButton180, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(jButton174, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(15, 15, 15)
                 .addComponent(jButton175, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
                 .addComponent(jButton176, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -295,8 +295,9 @@ public class Help_Monthlyrules extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(91, 91, 91))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -307,11 +308,13 @@ public class Help_Monthlyrules extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 630, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -320,7 +323,7 @@ public class Help_Monthlyrules extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton174jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton174jButton4ActionPerformed
-        // TODO add your handling code here:
+       // TODO add your handling code here:
         java.awt.Window window = SwingUtilities.getWindowAncestor(this);
         if (window instanceof javax.swing.JDialog) {
             window.dispose(); // menutup dialog saat ini
@@ -396,9 +399,9 @@ public class Help_Monthlyrules extends javax.swing.JFrame {
         dialog.setVisible(true);
     }//GEN-LAST:event_jButton179ActionPerformed
 
-    private void jButton180jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton180jButton4ActionPerformed
+    private void jButton175ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton175ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton180jButton4ActionPerformed
+    }//GEN-LAST:event_jButton175ActionPerformed
 
     private void jButton178ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton178ActionPerformed
         // TODO add your handling code here:
@@ -428,7 +431,6 @@ public class Help_Monthlyrules extends javax.swing.JFrame {
     private javax.swing.JButton jButton177;
     private javax.swing.JButton jButton178;
     private javax.swing.JButton jButton179;
-    private javax.swing.JButton jButton180;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
@@ -443,6 +445,7 @@ public class Help_Monthlyrules extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel31;

@@ -693,7 +693,7 @@ public class Home extends javax.swing.JFrame implements TableUpdate{
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        Help_About aboutPanel = new Help_About();
+        Help_Dashboard aboutPanel = new Help_Dashboard();
         javax.swing.JDialog dialog = new javax.swing.JDialog();
         dialog.setModal(true);
         dialog.setContentPane(aboutPanel);

@@ -48,7 +48,7 @@ public class Help_Profil extends javax.swing.JPanel {
         jButton163 = new javax.swing.JButton();
         jButton164 = new javax.swing.JButton();
         jButton166 = new javax.swing.JButton();
-        jButton165 = new javax.swing.JButton();
+        jLabel33 = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel1.setText("User Profile");
@@ -205,17 +205,10 @@ public class Help_Profil extends javax.swing.JPanel {
             }
         });
 
-        jButton165.setBackground(new java.awt.Color(52, 73, 94));
-        jButton165.setFont(new java.awt.Font("Swis721 Hv BT", 3, 24)); // NOI18N
-        jButton165.setForeground(new java.awt.Color(255, 255, 255));
-        jButton165.setText("HELP");
-        jButton165.setBorder(null);
-        jButton165.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton165.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton165jButton4ActionPerformed(evt);
-            }
-        });
+        jLabel33.setFont(new java.awt.Font("Swis721 Hv BT", 3, 24)); // NOI18N
+        jLabel33.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel33.setText("HELP");
 
         javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
         jPanel29.setLayout(jPanel29Layout);
@@ -224,30 +217,29 @@ public class Help_Profil extends javax.swing.JPanel {
             .addGroup(jPanel29Layout.createSequentialGroup()
                 .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel29Layout.createSequentialGroup()
-                        .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel29Layout.createSequentialGroup()
-                                .addGap(16, 16, 16)
-                                .addComponent(jButton165, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel29Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton160, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton162, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton161, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(0, 4, Short.MAX_VALUE))
-                    .addGroup(jPanel29Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton163, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton164, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton166, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jButton166, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel29Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton160, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton162, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton161, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 4, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanel29Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel29Layout.setVerticalGroup(
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel29Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(jButton165, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(jButton160, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
@@ -292,10 +284,6 @@ public class Help_Profil extends javax.swing.JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton165jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton165jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton165jButton4ActionPerformed
 
     private void jButton166ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton166ActionPerformed
         // TODO add your handling code here:
@@ -405,7 +393,6 @@ public class Help_Profil extends javax.swing.JPanel {
     private javax.swing.JButton jButton162;
     private javax.swing.JButton jButton163;
     private javax.swing.JButton jButton164;
-    private javax.swing.JButton jButton165;
     private javax.swing.JButton jButton166;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -415,6 +402,7 @@ public class Help_Profil extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;

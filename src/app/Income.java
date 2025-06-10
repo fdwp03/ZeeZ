@@ -740,8 +740,8 @@ public class Income extends javax.swing.JFrame implements TableUpdate{
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        // TODO add your handling code here:
-        Help_About aboutPanel = new Help_About();
+    // TODO add your handling code here:
+        Help_Dashboard aboutPanel = new Help_Dashboard();
         javax.swing.JDialog dialog = new javax.swing.JDialog();
         dialog.setModal(true);
         dialog.setContentPane(aboutPanel);

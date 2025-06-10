@@ -63,7 +63,7 @@ public class Help_About extends javax.swing.JPanel {
         jButton163 = new javax.swing.JButton();
         jButton164 = new javax.swing.JButton();
         jButton166 = new javax.swing.JButton();
-        jButton165 = new javax.swing.JButton();
+        jLabel37 = new javax.swing.JLabel();
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -337,28 +337,18 @@ public class Help_About extends javax.swing.JPanel {
             }
         });
 
-        jButton165.setBackground(new java.awt.Color(52, 73, 94));
-        jButton165.setFont(new java.awt.Font("Swis721 Hv BT", 3, 24)); // NOI18N
-        jButton165.setForeground(new java.awt.Color(255, 255, 255));
-        jButton165.setText("HELP");
-        jButton165.setBorder(null);
-        jButton165.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton165.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton165jButton4ActionPerformed(evt);
-            }
-        });
+        jLabel37.setFont(new java.awt.Font("Swis721 Hv BT", 3, 24)); // NOI18N
+        jLabel37.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel37.setText("HELP");
 
         javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
         jPanel29.setLayout(jPanel29Layout);
         jPanel29Layout.setHorizontalGroup(
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel29Layout.createSequentialGroup()
-                .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel29Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(jButton165, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel29Layout.createSequentialGroup()
+                .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel29Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton166, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -366,14 +356,17 @@ public class Help_About extends javax.swing.JPanel {
                             .addComponent(jButton163, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton162, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton160, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton161, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jButton161, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel29Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(10, Short.MAX_VALUE))
         );
         jPanel29Layout.setVerticalGroup(
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel29Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(jButton165, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(jButton160, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
@@ -483,10 +476,6 @@ public class Help_About extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton166ActionPerformed
 
-    private void jButton165jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton165jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton165jButton4ActionPerformed
-
     private void jButton161ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton161ActionPerformed
         // TODO add your handling code here:
         // Tutup dialog saat ini
@@ -534,7 +523,6 @@ public class Help_About extends javax.swing.JPanel {
     private javax.swing.JButton jButton162;
     private javax.swing.JButton jButton163;
     private javax.swing.JButton jButton164;
-    private javax.swing.JButton jButton165;
     private javax.swing.JButton jButton166;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
@@ -557,6 +545,7 @@ public class Help_About extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

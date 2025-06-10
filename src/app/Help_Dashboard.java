@@ -57,7 +57,7 @@ public class Help_Dashboard extends javax.swing.JPanel {
         jButton177 = new javax.swing.JButton();
         jButton178 = new javax.swing.JButton();
         jButton179 = new javax.swing.JButton();
-        jButton180 = new javax.swing.JButton();
+        jLabel20 = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel1.setText("Dashboard");
@@ -278,17 +278,10 @@ public class Help_Dashboard extends javax.swing.JPanel {
             }
         });
 
-        jButton180.setBackground(new java.awt.Color(52, 73, 94));
-        jButton180.setFont(new java.awt.Font("Swis721 Hv BT", 3, 24)); // NOI18N
-        jButton180.setForeground(new java.awt.Color(255, 255, 255));
-        jButton180.setText("HELP");
-        jButton180.setBorder(null);
-        jButton180.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton180.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton180jButton4ActionPerformed(evt);
-            }
-        });
+        jLabel20.setFont(new java.awt.Font("Swis721 Hv BT", 3, 24)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel20.setText("HELP");
 
         javax.swing.GroupLayout jPanel31Layout = new javax.swing.GroupLayout(jPanel31);
         jPanel31.setLayout(jPanel31Layout);
@@ -296,9 +289,6 @@ public class Help_Dashboard extends javax.swing.JPanel {
             jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel31Layout.createSequentialGroup()
                 .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel31Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(jButton180, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel31Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -310,17 +300,20 @@ public class Help_Dashboard extends javax.swing.JPanel {
                                     .addComponent(jButton174, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jButton175, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jButton179, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jButton179, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel31Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(10, Short.MAX_VALUE))
         );
         jPanel31Layout.setVerticalGroup(
             jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel31Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(jButton180, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(jButton174, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(15, 15, 15)
                 .addComponent(jButton175, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
                 .addComponent(jButton176, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -428,10 +421,6 @@ public class Help_Dashboard extends javax.swing.JPanel {
         dialog.setVisible(true);
     }//GEN-LAST:event_jButton179ActionPerformed
 
-    private void jButton180jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton180jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton180jButton4ActionPerformed
-
     private void jButton175ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton175ActionPerformed
         // TODO add your handling code here:
         java.awt.Window window = SwingUtilities.getWindowAncestor(this);
@@ -479,7 +468,6 @@ public class Help_Dashboard extends javax.swing.JPanel {
     private javax.swing.JButton jButton177;
     private javax.swing.JButton jButton178;
     private javax.swing.JButton jButton179;
-    private javax.swing.JButton jButton180;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -492,6 +480,7 @@ public class Help_Dashboard extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
