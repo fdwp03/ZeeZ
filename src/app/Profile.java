@@ -277,6 +277,24 @@ public class Profile extends javax.swing.JFrame {
         }
     }
     
+    private boolean isPasswordStrong(String password) {
+        if (password.length() < 8) return false;
+
+        boolean hasUpper = false;
+        boolean hasLower = false;
+        boolean hasDigit = false;
+        boolean hasSpecial = false;
+
+        for (char c : password.toCharArray()) {
+            if (Character.isUpperCase(c)) hasUpper = true;
+            else if (Character.isLowerCase(c)) hasLower = true;
+            else if (Character.isDigit(c)) hasDigit = true;
+            else if ("!@#$%^&*()_+-=[]{}|;':\",.<>?/".contains(String.valueOf(c))) hasSpecial = true;
+        }
+
+        return hasUpper && hasLower && hasDigit && hasSpecial;
+    }
+    
     private void unameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_unameActionPerformed
@@ -314,7 +332,7 @@ public class Profile extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Username sudah digunakan oleh pengguna lain.", "Peringatan", JOptionPane.WARNING_MESSAGE);
                 return;
             }
-            
+
             // Ambil data lama
             String oldQuery = "SELECT full_name, username FROM account WHERE id = ?";
             ResultSet rsOld = Database.executeQuery(oldQuery, id);
@@ -329,11 +347,20 @@ public class Profile extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Tidak ada perubahan data untuk diperbarui.", "Info", JOptionPane.INFORMATION_MESSAGE);
                     return;
                 }
-            
+
                 // Siapkan query update
                 String updateQuery;
                 int rowsUpdated;
                 if (isPasswordChanged) {
+                    // Validasi kekuatan password baru
+                    if (!isPasswordStrong(password)) {
+                        JOptionPane.showMessageDialog(this, 
+                            "Password baru harus memiliki minimal 8 karakter dan mengandung huruf besar, huruf kecil, angka, dan karakter khusus.",
+                            "Password Lemah", 
+                            JOptionPane.WARNING_MESSAGE);
+                        return;
+                    }
+
                     String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
                     updateQuery = "UPDATE account SET full_name = ?, username = ?, password = ? WHERE id = ?";
                     rowsUpdated = Database.executeUpdate(updateQuery, fullName, username, hashedPassword, id);
@@ -341,12 +368,12 @@ public class Profile extends javax.swing.JFrame {
                     updateQuery = "UPDATE account SET full_name = ?, username = ? WHERE id = ?";
                     rowsUpdated = Database.executeUpdate(updateQuery, fullName, username, id);
                 }
-            
+
                 if (rowsUpdated > 0) {
-                    JOptionPane.showMessageDialog(this, "Profile berhasil diperbarui!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Profil berhasil diperbarui!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
                     pass.setText("defaultpass"); // atur kembali jadi default
                 } else {
-                    JOptionPane.showMessageDialog(this, "Gagal memperbarui profile.", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Gagal memperbarui profil.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         } catch (Exception e) {
