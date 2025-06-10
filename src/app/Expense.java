@@ -529,7 +529,15 @@ public class Expense extends javax.swing.JFrame implements TableUpdate {
     public void loadTableData() {
         String searchText = searchField.getText().trim(); // Ambil teks pencarian
 
-        String query = "SELECT id, date, category, amount, note FROM transactions WHERE account_id = '" + Session.id + "' AND type = 'expense'";
+        // Ambil bulan dan tahun saat ini
+        LocalDate currentDate = LocalDate.now();
+        int currentMonth = currentDate.getMonthValue();
+        int currentYear = currentDate.getYear();
+        
+        String query = "SELECT id, date, type, category, amount, note FROM transactions "
+                             + "WHERE account_id = '" + Session.id + "' AND type = 'expense'"
+                             + "AND MONTH(date) = " + currentMonth + " "
+                             + "AND YEAR(date) = " + currentYear;
 
         // Tambahkan kondisi pencarian jika searchText tidak kosong
         if (!searchText.isEmpty()) {
@@ -555,6 +563,7 @@ public class Expense extends javax.swing.JFrame implements TableUpdate {
                 };
                 model.addRow(row);
             }
+            rs.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

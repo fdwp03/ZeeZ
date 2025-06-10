@@ -7,6 +7,7 @@ package app;
 import java.awt.BorderLayout;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -491,7 +492,6 @@ public class Income extends javax.swing.JFrame implements TableUpdate{
         // Map untuk menyimpan hasil dari database
         Map<String, Integer> dataBulan = new HashMap<>();
 
-        // Contoh data dummy, kamu bisa ganti dengan data dari database
         String query = "SELECT MONTH(date) AS bulan, SUM(amount) AS total FROM transactions WHERE account_id = " + Session.id + " AND type='income' GROUP BY MONTH(date)";
         ResultSet rs = Database.executeQuery(query);
         try {
@@ -539,7 +539,15 @@ public class Income extends javax.swing.JFrame implements TableUpdate{
     public void loadTableData() {
         String searchText = searchField.getText().trim(); // Ambil teks pencarian
 
-        String query = "SELECT id, date, category, amount, note FROM transactions WHERE account_id = '" + Session.id + "' AND type = 'income'";
+        // Ambil bulan dan tahun saat ini
+        LocalDate currentDate = LocalDate.now();
+        int currentMonth = currentDate.getMonthValue();
+        int currentYear = currentDate.getYear();
+        
+        String query = "SELECT id, date, type, category, amount, note FROM transactions "
+                             + "WHERE account_id = '" + Session.id + "' AND type = 'income'"
+                             + "AND MONTH(date) = " + currentMonth + " "
+                             + "AND YEAR(date) = " + currentYear;
 
         // Tambahkan kondisi pencarian jika searchText tidak kosong
         if (!searchText.isEmpty()) {
@@ -565,6 +573,7 @@ public class Income extends javax.swing.JFrame implements TableUpdate{
                 };
                 model.addRow(row);
             }
+            rs.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
