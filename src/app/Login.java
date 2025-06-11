@@ -206,7 +206,7 @@ public class Login extends javax.swing.JFrame {
             while(rs.next()){
                 passDb = rs.getString("password");      // Ambil password terenkripsi dari database
                 fname = rs.getString("full_name");      // Ambil nama lengkap
-                int id = rs.getInt("id");               // Ambil ID user
+                String id = rs.getString("id");               // Ambil ID user
                 Session.id = id;                        // Simpan ID ke session global
                 notFound = 1;                           // Tandai bahwa user ditemukan
             }

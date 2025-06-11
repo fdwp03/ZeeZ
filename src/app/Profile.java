@@ -299,7 +299,7 @@ public class Profile extends javax.swing.JFrame {
             String status = fname3.getText();
             String alamat = falamat.getText();
             String pekerjaan = fname4.getText();
-            int idpengguna = Session.id;
+            String idpengguna = Session.id;
 
             // Cek apakah NIK sudah ada
             String checkQuery = "SELECT * FROM biodata WHERE id = ?";

@@ -563,7 +563,7 @@ public class Home extends javax.swing.JFrame implements TableUpdate{
 
     public void loadLimitBar() {
         try {
-            int accId = Session.id;
+            String accId = Session.id;
             LocalDate now = LocalDate.now();
             int month = now.getMonthValue();
             int year = now.getYear();

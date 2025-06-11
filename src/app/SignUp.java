@@ -5,6 +5,7 @@
 package app;
 import org.mindrot.jbcrypt.BCrypt;
 import java.sql.ResultSet;
+import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
 
@@ -191,7 +192,7 @@ public class SignUp extends javax.swing.JFrame {
             return;
         }
 
-        // Validasi kekuatan password sebelum diproses
+        // Validasi kekuatan password
         if (!isPasswordStrong(password)) {
             JOptionPane.showMessageDialog(this, 
                 "Password harus memiliki minimal 8 karakter dan mengandung huruf besar, huruf kecil, angka, dan karakter khusus.", 
@@ -206,36 +207,49 @@ public class SignUp extends javax.swing.JFrame {
                 Database.connect();
             }
 
-            // Cek apakah username sudah ada di database
+            // Cek apakah username sudah ada
             String checkQuery = "SELECT * FROM account WHERE username = ?";
             ResultSet rs = Database.executeQuery(checkQuery, username);
 
             if (rs != null && rs.next()) {
-                // Username sudah digunakan
                 JOptionPane.showMessageDialog(this, "Username sudah digunakan. Silakan pilih username lain.", "Peringatan", JOptionPane.WARNING_MESSAGE);
             } else {
-                // Hash password menggunakan BCrypt sebelum disimpan ke database
+                // Hash password
                 String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
 
-                // Simpan data pengguna ke tabel account
-                String insertQuery = "INSERT INTO account (full_name, username, password) VALUES (?, ?, ?)";
-                int rowsInserted = Database.executeUpdate(insertQuery, fullName, username, hashedPassword);
+                // --- Generate ID otomatis ---
+                LocalDate currentDate = LocalDate.now();
+                String tahun = String.valueOf(currentDate.getYear());
+                String bulan = String.format("%02d", currentDate.getMonthValue());
+
+                String prefixId = "2605" + tahun + bulan;
+
+                String countQuery = "SELECT COUNT(*) AS total FROM account WHERE id LIKE ?";
+                ResultSet countResult = Database.executeQuery(countQuery, prefixId + "%");
+
+                int nextNumber = 1;
+                if (countResult != null && countResult.next()) {
+                    nextNumber = countResult.getInt("total") + 1;
+                }
+
+                String idGenerated = prefixId + String.format("%04d", nextNumber);
+
+                // Insert data ke database
+                String insertQuery = "INSERT INTO account (id, full_name, username, password) VALUES (?, ?, ?, ?)";
+                int rowsInserted = Database.executeUpdate(insertQuery, idGenerated, fullName, username, hashedPassword);
 
                 if (rowsInserted > 0) {
-                    // Akun berhasil dibuat
                     JOptionPane.showMessageDialog(this, "Akun berhasil dibuat!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
 
-                    // Reset field input
+                    // Reset input
                     fname.setText("");
                     uname.setText("");
                     pass.setText("");
                 } else {
-                    // Gagal menyimpan data
                     JOptionPane.showMessageDialog(this, "Gagal membuat akun.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         } catch (Exception e) {
-            // Penanganan error saat proses signup
             JOptionPane.showMessageDialog(this, "Terjadi kesalahan: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         }

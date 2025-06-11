@@ -10,5 +10,5 @@ package app;
  */
 //Untuk menyimpan id pengguna yang sedang login
 public class Session {
-    public static int id;
+    public static String id;
 }

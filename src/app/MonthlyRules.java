@@ -424,7 +424,7 @@ public class MonthlyRules extends javax.swing.JFrame {
     
     private void loadCalculation() {
         try {
-            int accId = Session.id;
+            String accId = Session.id;
             LocalDate now = LocalDate.now();
             int month = now.getMonthValue();
             int year = now.getYear();
@@ -458,7 +458,7 @@ public class MonthlyRules extends javax.swing.JFrame {
     
     private void loadOverview() {
         try {
-            int accId = Session.id;
+            String accId = Session.id;
             LocalDate now = LocalDate.now();
             int month = now.getMonthValue();
             int year = now.getYear();
@@ -508,7 +508,7 @@ public class MonthlyRules extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        int accountId = Session.id;
+        String accountId = Session.id;
         int percentage = Integer.parseInt(persentase.getSelectedItem().toString());
         int month = LocalDate.now().getMonthValue();
         int year = LocalDate.now().getYear();        

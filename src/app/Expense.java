@@ -8,6 +8,7 @@ import javax.swing.table.DefaultTableModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -597,7 +598,7 @@ public class Expense extends javax.swing.JFrame implements TableUpdate {
         try {
             int month = LocalDate.now().getMonthValue();
             int year = LocalDate.now().getYear();
-            int accId = Session.id;
+            String accId = Session.id;
 
             // Ambil total income dan expense
             String query = "SELECT "
@@ -656,7 +657,6 @@ public class Expense extends javax.swing.JFrame implements TableUpdate {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // Aksi saat tombol "Tambah Pengeluaran" ditekan
         try {
             // Parsing input jumlah ke integer
             int amountInt = Integer.parseInt(amount.getText());
@@ -676,17 +676,41 @@ public class Expense extends javax.swing.JFrame implements TableUpdate {
             String amountStr = amount.getText();               // Nilai jumlah sebagai string
             String noteStr = note.getText();                   // Catatan transaksi
 
-            // Query SQL untuk menyimpan pengeluaran
-            String query = "INSERT INTO transactions (account_id, type, date, category, amount, note) " +
-                         "VALUES (?, 'expense', ?, ?, ?, ?)";
+            if (dt == null || ctgry == null || amountStr.isEmpty()) {
+                JOptionPane.showMessageDialog(null,
+                    "Semua field harus diisi dengan benar!",
+                    "Input Tidak Lengkap",
+                    JOptionPane.WARNING_MESSAGE);
+                return;
+            }
 
-            // Eksekusi query dengan helper Database
+            // Format ID transaksi: yyyyMM + 0001, 0002, dst.
+            LocalDate localDate = dt.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            String yearMonth = String.format("%04d%02d", localDate.getYear(), localDate.getMonthValue());
+
+            String prefixId = yearMonth;
+            String countQuery = "SELECT COUNT(*) AS total FROM transactions WHERE id LIKE ?";
+            ResultSet rs = Database.executeQuery(countQuery, prefixId + "%");
+
+            int nextNumber = 1;
+            if (rs != null && rs.next()) {
+                nextNumber = rs.getInt("total") + 1;
+            }
+
+            String idGenerated = prefixId + String.format("%04d", nextNumber); // contoh: 2025060002
+
+            // Query SQL untuk menyimpan pengeluaran
+            String query = "INSERT INTO transactions (id, account_id, type, date, category, amount, note) " +
+                           "VALUES (?, ?, 'expense', ?, ?, ?, ?)";
+
+            // Eksekusi query
             int rowsInserted = Database.executeUpdate(
                 query,
-                Session.id,                                // ID pengguna dari sesi login
-                new java.sql.Date(dt.getTime()),           // Konversi java.util.Date ke java.sql.Date
+                idGenerated,
+                Session.id,
+                new java.sql.Date(dt.getTime()),
                 ctgry,
-                Integer.parseInt(amountStr),               // Parsing ulang ke integer
+                amountInt,
                 noteStr
             );
 
@@ -698,13 +722,11 @@ public class Expense extends javax.swing.JFrame implements TableUpdate {
             }
 
         } catch (NumberFormatException ex) {
-            // Tangani jika input jumlah bukan angka yang valid
             JOptionPane.showMessageDialog(null,
                 "Masukkan angka yang valid untuk amount!",
                 "Input Salah",
                 JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {
-            // Tangani error umum lainnya
             e.printStackTrace();
         }
     }//GEN-LAST:event_jButton8ActionPerformed

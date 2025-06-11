@@ -8,6 +8,7 @@ import java.awt.BorderLayout;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -622,7 +623,6 @@ public class Income extends javax.swing.JFrame implements TableUpdate{
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
         try {
             Date dt = date.getDate();
             String ctgry = (String) category.getSelectedItem();
@@ -637,13 +637,31 @@ public class Income extends javax.swing.JFrame implements TableUpdate{
                 return;
             }
 
-            int amountInt = Integer.parseInt(amountStr); // bisa lempar NumberFormatException
+            int amountInt = Integer.parseInt(amountStr); // validasi angka
 
-            String query = "INSERT INTO transactions (account_id, type, date, category, amount, note) " +
-                         "VALUES (?, 'income', ?, ?, ?, ?)";
+            // Format tanggal transaksi
+            LocalDate localDate = dt.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            String yearMonth = String.format("%04d%02d", localDate.getYear(), localDate.getMonthValue());
+
+            // Hitung jumlah transaksi pada bulan dan tahun yang sama
+            String prefixId = yearMonth;
+            String countQuery = "SELECT COUNT(*) AS total FROM transactions WHERE id LIKE ?";
+            ResultSet rs = Database.executeQuery(countQuery, prefixId + "%");
+
+            int nextNumber = 1;
+            if (rs != null && rs.next()) {
+                nextNumber = rs.getInt("total") + 1;
+            }
+
+            String idGenerated = prefixId + String.format("%04d", nextNumber); // contoh: 2025060001
+
+            // Query insert termasuk id
+            String query = "INSERT INTO transactions (id, account_id, type, date, category, amount, note) " +
+                           "VALUES (?, ?, 'income', ?, ?, ?, ?)";
 
             int rowsInserted = Database.executeUpdate(
                 query,
+                idGenerated,
                 Session.id,
                 new java.sql.Date(dt.getTime()),
                 ctgry,
