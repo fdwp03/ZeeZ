@@ -489,6 +489,7 @@ public class MonthlyRules extends javax.swing.JFrame {
             
             int totalLimit = totalIncome*percentageLimit/100;
             int remainingLimit = totalLimit-totalExpense;
+            
             income.setText("Rp. " + String.format("%,d",totalIncome));
             percentLimit.setText(percentageLimit + "%");
             limit.setText("Rp. " + String.format("%,d",totalLimit));

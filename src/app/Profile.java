@@ -40,17 +40,17 @@ public class Profile extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         fname = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        uname = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         changeButton = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        pass = new javax.swing.JPasswordField();
+        fnik = new javax.swing.JTextField();
+        falamat = new javax.swing.JTextField();
+        fstatus = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        fpekerjaan = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        fumur = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -99,19 +99,13 @@ public class Profile extends javax.swing.JFrame {
         jLabel2.setBorder(new javax.swing.border.MatteBorder(null));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel4.setText("Full Name");
+        jLabel4.setText("Name");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel8.setText("Username");
-
-        uname.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                unameActionPerformed(evt);
-            }
-        });
+        jLabel8.setText("NIK");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel5.setText("Password");
+        jLabel5.setText("Alamat");
 
         changeButton.setBackground(new java.awt.Color(51, 204, 0));
         changeButton.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
@@ -133,38 +127,14 @@ public class Profile extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ikonpp.png"))); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel11.setText("Status");
 
-        jPanel3.setBackground(new java.awt.Color(52, 73, 94));
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel12.setText("Pekerjaan");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 16, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 210, Short.MAX_VALUE)
-        );
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel6.setText("*Qoutes");
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
-        jLabel7.setText("Keep it first and spend it later");
-
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
-        jLabel9.setText("don’t switch it");
-
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
-        jLabel10.setText("~Anonymous ");
-
-        pass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passActionPerformed(evt);
-            }
-        });
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel13.setText("Umur");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -176,74 +146,67 @@ public class Profile extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fnik, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(falamat, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fname, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(changeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(250, 250, 250))
-                            .addComponent(fname, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(uname, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pass))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel10))
-                        .addGap(25, 25, 25))))
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fpekerjaan, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fumur, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(131, 131, 131))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel7)
-                        .addGap(0, 0, 0)
-                        .addComponent(jLabel9)
-                        .addGap(0, 0, 0)
-                        .addComponent(jLabel10)
-                        .addGap(83, 83, 83))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addGap(6, 6, 6)
-                                        .addComponent(fname, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(19, 19, 19)
-                                        .addComponent(jLabel8)
-                                        .addGap(0, 0, 0)
-                                        .addComponent(uname, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(20, 20, 20)
-                                        .addComponent(jLabel5))
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(pass, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(33, 33, 33)))
+                                .addComponent(fname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel13)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(fumur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(fnik, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(falamat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(fstatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(56, 56, 56))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(fpekerjaan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(changeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -262,21 +225,45 @@ public class Profile extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void loadProfile() {
-        String query = "SELECT full_name, username, password FROM account WHERE id = '" + Session.id + "'";
+        String query = "SELECT nama, nik, alamat, umur, status, pekerjaan FROM biodata WHERE id = '" + Session.id + "'";
         ResultSet rs = Database.executeQuery(query);
         try {
             if (rs.next()) {
-                String fullname = rs.getString("full_name");
-                String username = rs.getString("username");
-                fname.setText(fullname);
-                uname.setText(username);
-                pass.setText("defaultpass");
+                String name = rs.getString("nama");
+                String nik = rs.getString("nik");
+                String alamat = rs.getString("alamat");
+                String umur = rs.getString("umur");
+                String status = rs.getString("status");
+                String pekerjaan = rs.getString("pekerjaan");                
+                fname.setText(name);
+                fnik.setText(nik);
+                falamat.setText(alamat);
+                fumur.setText(umur);
+                fstatus.setText(status);
+                fpekerjaan.setText(pekerjaan);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+        
+//    private void loadProfile() {
+//        String query = "SELECT full_name, username, password FROM biodata WHERE id = '" + Session.id + "'";
+//        ResultSet rs = Database.executeQuery(query);
+//        try {
+//            if (rs.next()) {
+//                String fullname = rs.getString("nama");
+//                String username = rs.getString("username");
+//                fname.setText(fullname);
+//                uname.setText(username);
+//                pass.setText("defaultpass");
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//    }
     
     private boolean isPasswordStrong(String password) {
         if (password.length() < 8) return false;
@@ -296,10 +283,6 @@ public class Profile extends javax.swing.JFrame {
         return hasUpper && hasLower && hasDigit && hasSpecial;
     }
     
-    private void unameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_unameActionPerformed
-
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
         Home homeFrame = new Home();
@@ -308,91 +291,42 @@ public class Profile extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_backButtonActionPerformed
 
-    private void passActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passActionPerformed
-
     private void changeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeButtonActionPerformed
-        // Ambil input dari form
-        String fullName = fname.getText().trim();
-        String username = uname.getText().trim();
-        String password = pass.getText();
-        int id = Session.id; // Ambil ID user yang sedang login dari sesi
-
-        // Validasi input kosong
-        if (fullName.isEmpty() || username.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Full Name dan Username wajib diisi!", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
         try {
-            // Cek apakah username sudah digunakan oleh user lain (selain yang sedang login)
-            String checkQuery = "SELECT * FROM account WHERE username = ? AND id != ?";
-            ResultSet rs = Database.executeQuery(checkQuery, username, id);
+            String nik = fnik.getText();
+            String nama = fname.getText();
+            String umur = fumur.getText();
+            String status = fstatus.getText();
+            String alamat = falamat.getText();
+            String pekerjaan = fpekerjaan.getText();
+            int idpengguna = Session.id;
+
+            // Cek apakah NIK sudah ada
+            String checkQuery = "SELECT * FROM biodata WHERE id = ?";
+            ResultSet rs = Database.executeQuery(checkQuery, idpengguna);
 
             if (rs != null && rs.next()) {
-                // Jika username ditemukan dipakai user lain
-                JOptionPane.showMessageDialog(this, "Username sudah digunakan oleh pengguna lain.", "Peringatan", JOptionPane.WARNING_MESSAGE);
-                return;
+                // Data ada, lakukan update
+                String updateQuery = "UPDATE biodata SET nama=?, umur=?, status=?, alamat=?, pekerjaan=? WHERE nik=?";
+                int updated = Database.executeUpdate(updateQuery, nama, umur, status, alamat, pekerjaan, nik);
+                if (updated > 0) {
+                    JOptionPane.showMessageDialog(this, "Data berhasil diperbarui!");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Gagal memperbarui data.");
+                }
+            } else {
+                // Data tidak ada, lakukan insert
+                String insertQuery = "INSERT INTO biodata (id, nik, nama, umur, status, alamat, pekerjaan) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                int inserted = Database.executeUpdate(insertQuery, idpengguna, nik, nama, umur, status, alamat, pekerjaan);
+                if (inserted > 0) {
+                    JOptionPane.showMessageDialog(this, "Data berhasil ditambahkan!");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Gagal menambahkan data.");
+                }
             }
 
-            // Ambil data user lama dari database untuk membandingkan
-            String oldQuery = "SELECT full_name, username FROM account WHERE id = ?";
-            ResultSet rsOld = Database.executeQuery(oldQuery, id);
-            if (rsOld != null && rsOld.next()) {
-                String oldFullName = rsOld.getString("full_name");
-                String oldUsername = rsOld.getString("username");
-
-                // Cek apakah password diubah (asumsi: "defaultpass" artinya tidak diubah)
-                boolean isPasswordChanged = !password.equals("defaultpass") && !password.isEmpty();
-
-                // Cek apakah ada data yang berubah
-                boolean isDataChanged = !fullName.equals(oldFullName) || !username.equals(oldUsername) || isPasswordChanged;
-
-                if (!isDataChanged) {
-                    // Tidak ada perubahan data, tampilkan info
-                    JOptionPane.showMessageDialog(this, "Tidak ada perubahan data untuk diperbarui.", "Info", JOptionPane.INFORMATION_MESSAGE);
-                    return;
-                }
-
-                // Persiapkan query update tergantung apakah password ikut diubah atau tidak
-                String updateQuery;
-                int rowsUpdated;
-
-                if (isPasswordChanged) {
-                    // Validasi kekuatan password baru jika diubah
-                    if (!isPasswordStrong(password)) {
-                        JOptionPane.showMessageDialog(this, 
-                            "Password baru harus memiliki minimal 8 karakter dan mengandung huruf besar, huruf kecil, angka, dan karakter khusus.",
-                            "Password Lemah", 
-                            JOptionPane.WARNING_MESSAGE);
-                        return;
-                    }
-
-                    // Enkripsi password baru menggunakan BCrypt
-                    String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
-
-                    // Query update jika password ikut diubah
-                    updateQuery = "UPDATE account SET full_name = ?, username = ?, password = ? WHERE id = ?";
-                    rowsUpdated = Database.executeUpdate(updateQuery, fullName, username, hashedPassword, id);
-                } else {
-                    // Query update jika hanya nama/username yang berubah
-                    updateQuery = "UPDATE account SET full_name = ?, username = ? WHERE id = ?";
-                    rowsUpdated = Database.executeUpdate(updateQuery, fullName, username, id);
-                }
-
-                if (rowsUpdated > 0) {
-                    // Jika update berhasil, tampilkan notifikasi dan reset field password ke default
-                    JOptionPane.showMessageDialog(this, "Profil berhasil diperbarui!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
-                    pass.setText("defaultpass"); // Set ulang agar user tahu password tidak perlu diubah lagi
-                } else {
-                    JOptionPane.showMessageDialog(this, "Gagal memperbarui profil.", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-            }
         } catch (Exception e) {
-            // Tangani kesalahan tidak terduga
-            JOptionPane.showMessageDialog(this, "Terjadi kesalahan: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Terjadi kesalahan: " + e.getMessage());
         }
     }//GEN-LAST:event_changeButtonActionPerformed
 
@@ -440,22 +374,22 @@ public class Profile extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
     private javax.swing.JButton changeButton;
+    private javax.swing.JTextField falamat;
     private javax.swing.JTextField fname;
+    private javax.swing.JTextField fnik;
+    private javax.swing.JTextField fpekerjaan;
+    private javax.swing.JTextField fstatus;
+    private javax.swing.JTextField fumur;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPasswordField pass;
-    private javax.swing.JTextField uname;
     // End of variables declaration//GEN-END:variables
 }
