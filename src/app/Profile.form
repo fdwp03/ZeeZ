@@ -43,7 +43,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="jPanel2" max="32767" attributes="0"/>
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" pref="165" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
@@ -57,17 +57,19 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="changeButton" min="-2" pref="84" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jButton3" min="-2" pref="84" max="-2" attributes="0"/>
+                          <Component id="jButton3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="fname3" min="-2" pref="240" max="-2" attributes="0"/>
-                      <Component id="jLabel11" min="-2" pref="75" max="-2" attributes="0"/>
-                      <Component id="fname4" alignment="0" min="-2" pref="240" max="-2" attributes="0"/>
-                      <Component id="jLabel12" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
-                      <Component id="fumur" alignment="0" min="-2" pref="240" max="-2" attributes="0"/>
-                      <Component id="jLabel13" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jLabel11" min="-2" pref="75" max="-2" attributes="0"/>
+                          <Component id="fumur" alignment="0" pref="240" max="32767" attributes="0"/>
+                          <Component id="jLabel13" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
+                          <Component id="jLabel12" alignment="0" min="-2" pref="85" max="-2" attributes="0"/>
+                          <Component id="fstatus" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Component id="fpekerjaan" min="-2" pref="240" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
               </Group>
@@ -94,36 +96,33 @@
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="fnik" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="falamat" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="fname3" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="56" pref="56" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="fname4" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="fnik" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="fstatus" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="falamat" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="fpekerjaan" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="changeButton" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
                       <Component id="jButton3" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="113" max="32767" attributes="0"/>
+                  <EmptySpace pref="110" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -175,7 +174,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Back"/>
+                <Property name="text" type="java.lang.String" value="Kembali"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backButtonActionPerformed"/>
@@ -244,7 +243,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Change"/>
+            <Property name="text" type="java.lang.String" value="Ubah"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="changeButtonActionPerformed"/>
@@ -261,7 +260,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Reset"/>
+            <Property name="text" type="java.lang.String" value="Kosongkan"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
@@ -270,8 +269,9 @@
         <Component class="javax.swing.JTextField" name="fnik">
         </Component>
         <Component class="javax.swing.JTextField" name="falamat">
-        </Component>
-        <Component class="javax.swing.JTextField" name="fname3">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="falamatActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel11">
           <Properties>
@@ -289,8 +289,6 @@
             <Property name="text" type="java.lang.String" value="Pekerjaan"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="fname4">
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabel13">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -300,6 +298,24 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="fumur">
+        </Component>
+        <Component class="javax.swing.JComboBox" name="fstatus">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="2">
+                <StringItem index="0" value="Belum Kawin"/>
+                <StringItem index="1" value="Kawin"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JTextField" name="fpekerjaan">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fpekerjaanActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

@@ -84,7 +84,7 @@ public class Expense extends javax.swing.JFrame implements TableUpdate {
         jButton1.setBackground(new java.awt.Color(52, 73, 94));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Dashboard");
+        jButton1.setText("Beranda");
         jButton1.setBorder(null);
         jButton1.setBorderPainted(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -96,7 +96,7 @@ public class Expense extends javax.swing.JFrame implements TableUpdate {
         jButton2.setBackground(new java.awt.Color(52, 73, 94));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Month' Rules");
+        jButton2.setText("Aturan Bulanan");
         jButton2.setBorder(null);
         jButton2.setBorderPainted(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -108,7 +108,7 @@ public class Expense extends javax.swing.JFrame implements TableUpdate {
         jButton3.setBackground(new java.awt.Color(52, 73, 94));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Month' Income");
+        jButton3.setText("Pemasukan Bulanan");
         jButton3.setBorder(null);
         jButton3.setBorderPainted(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -120,7 +120,7 @@ public class Expense extends javax.swing.JFrame implements TableUpdate {
         jButton4.setBackground(new java.awt.Color(52, 73, 94));
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Month' Expenses");
+        jButton4.setText("Pengeluaran Bulanan");
         jButton4.setBorder(null);
         jButton4.setBorderPainted(false);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -143,10 +143,10 @@ public class Expense extends javax.swing.JFrame implements TableUpdate {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("Month' Expense");
+        jLabel1.setText("Pengeluaran Bulanan");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel2.setText("Total Expense");
+        jLabel2.setText("Total Pengeluaran");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -192,7 +192,7 @@ public class Expense extends javax.swing.JFrame implements TableUpdate {
                 {null, null, null, null, null}
             },
             new String [] {
-                "ID", "Date", "Category", "Amount", "Note"
+                "ID", "Tanggal", "Kategori", "Jumlah", "Catatan"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -222,13 +222,13 @@ public class Expense extends javax.swing.JFrame implements TableUpdate {
         );
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel3.setText("Amount");
+        jLabel3.setText("Jumlah");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setText("Add Expense");
+        jLabel4.setText("Tambahkan Pengeluaran");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel5.setText("Date");
+        jLabel5.setText("Tanggal");
 
         amount.setToolTipText("");
         amount.addActionListener(new java.awt.event.ActionListener() {
@@ -238,14 +238,14 @@ public class Expense extends javax.swing.JFrame implements TableUpdate {
         });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel6.setText("Category");
+        jLabel6.setText("Kategori");
 
-        category.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Food", "Social Life", "Pets", "Transport", "Culture", "Household", "Aparel", "Beauty", "Health", "Education", "Gift", "Taxs", "Others" }));
+        category.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Makanan", "Kehidupan Sosial", "Peliharaan", "Transportasi", "Properti", "Pakaian", "Kecantikan", "Kesehatan", "Pendidikan", "Hadiah", "Pajak" }));
 
         jButton8.setBackground(new java.awt.Color(51, 204, 0));
         jButton8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton8.setForeground(new java.awt.Color(255, 255, 255));
-        jButton8.setText("Add");
+        jButton8.setText("Tambahkan");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
@@ -255,14 +255,14 @@ public class Expense extends javax.swing.JFrame implements TableUpdate {
         jButton9.setBackground(new java.awt.Color(255, 0, 0));
         jButton9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton9.setForeground(new java.awt.Color(255, 255, 255));
-        jButton9.setText("Reset");
+        jButton9.setText("Kosongkan");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
             }
         });
 
-        newCategory.setText("New Category");
+        newCategory.setText("Kategori Baru");
         newCategory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newCategoryActionPerformed(evt);
@@ -271,7 +271,7 @@ public class Expense extends javax.swing.JFrame implements TableUpdate {
 
         newButton.setBackground(new java.awt.Color(52, 73, 94));
         newButton.setForeground(new java.awt.Color(255, 255, 255));
-        newButton.setText("New");
+        newButton.setText("Tambah");
         newButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newButtonActionPerformed(evt);
@@ -293,7 +293,7 @@ public class Expense extends javax.swing.JFrame implements TableUpdate {
         jButton6.setBackground(new java.awt.Color(51, 204, 0));
         jButton6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setText("Search");
+        jButton6.setText("Cari\n");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -311,9 +311,6 @@ public class Expense extends javax.swing.JFrame implements TableUpdate {
                         .addComponent(chartJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(21, 21, 21)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -333,27 +330,31 @@ public class Expense extends javax.swing.JFrame implements TableUpdate {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(note, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGap(18, 18, 18)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addComponent(jLabel5)
                                                 .addGap(18, 18, 18)
                                                 .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(newCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(0, 0, 0)
-                                        .addComponent(newButton))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(newCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(newButton))))
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel2)
-                                        .addGap(29, 29, 29)
+                                        .addGap(15, 15, 15)
                                         .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jButton6))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(34, 34, 34)
-                                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(jButton8)
+                                        .addGap(20, 20, 20)
+                                        .addComponent(jButton9))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addComponent(jLabel1)))
                         .addGap(0, 6, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -366,9 +367,9 @@ public class Expense extends javax.swing.JFrame implements TableUpdate {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(10, 10, 10)
                 .addComponent(chartJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
+                .addGap(10, 10, 10)
                 .addComponent(jLabel4)
                 .addGap(2, 2, 2)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -388,11 +389,11 @@ public class Expense extends javax.swing.JFrame implements TableUpdate {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(note, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
+                .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton6))
@@ -409,7 +410,7 @@ public class Expense extends javax.swing.JFrame implements TableUpdate {
         jButton7.setBackground(new java.awt.Color(52, 73, 94));
         jButton7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton7.setForeground(new java.awt.Color(255, 255, 255));
-        jButton7.setText("Help");
+        jButton7.setText("Bantuan");
         jButton7.setBorder(null);
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

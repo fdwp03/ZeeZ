@@ -32,7 +32,6 @@ public class Help_IncomeExpense extends javax.swing.JPanel {
         jScrollPane3 = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -48,6 +47,12 @@ public class Help_IncomeExpense extends javax.swing.JPanel {
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
         jPanel31 = new javax.swing.JPanel();
         jButton174 = new javax.swing.JButton();
         jButton175 = new javax.swing.JButton();
@@ -58,54 +63,70 @@ public class Help_IncomeExpense extends javax.swing.JPanel {
         jLabel32 = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        jLabel1.setText("Income & Expense");
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/page3.png"))); // NOI18N
+        jLabel1.setText("Pengeluaran & Pemasukan");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setText("Features");
+        jLabel3.setText("Fitur");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setText("1. Total Amount ");
+        jLabel4.setText("1. Total Jumlah");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel5.setText("Shows the total income or total expenses recorded for the month.");
+        jLabel5.setText("Menampilkan total pemasukan atau total pengeluaran yang ");
 
         jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel20.setText("2. Chart View");
+        jLabel20.setText("2. Tampilan Grafik");
 
         jLabel21.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel21.setText("A line graph that visualizes income or expense trends month by month.");
+        jLabel21.setText("Grafik garis yang nunjukin tren pemasukan atau pengeluaran ");
 
         jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel22.setText("3. Amount Input");
+        jLabel22.setText("3. Input Jumlah Uang");
 
         jLabel23.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel23.setText("Field to enter the amount of money received (in Income) or spent (in Expenses).");
+        jLabel23.setText("Kolom buat masukin jumlah uang yang diterima (kalau Income)");
 
         jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel24.setText("4. Category Selector");
+        jLabel24.setText("4. Pemilih Kategori");
 
         jLabel25.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel25.setText("Choose a category (e.g., Salary, Bonus, Food, Transport) to classify the entry.");
+        jLabel25.setText("Pilih kategori transaksi, misalnya Gaji, Bonus, Makanan, ");
 
         jLabel26.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel26.setText("5. Note Field");
+        jLabel26.setText("5. Kolom Catatan ");
 
         jLabel27.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel27.setText("Add a brief description or note related to the income or expense.");
+        jLabel27.setText("Bisa nambahin deskripsi singkat atau catatan soal pemasukan");
 
         jLabel28.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel28.setText("6. Date Picker");
+        jLabel28.setText("6. Pemilih Tanggal");
 
         jLabel29.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel29.setText("Select the date when the transaction occurred.");
+        jLabel29.setText("Pilih tanggal kapan transaksi itu terjadi.");
 
         jLabel30.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel30.setText("7. Add New Category");
+        jLabel30.setText("7. Tambah Kategori Baru");
 
         jLabel31.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel31.setText("Create a custom category if it’s not available in the dropdown list.");
+        jLabel31.setText("Kalau kategori yang kamu mau nggak ada di daftar, bisa bikin ");
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel6.setText("dicatat selama sebulan.");
+
+        jLabel33.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel33.setText(" atau yang dikeluarkan (kalau Expense).");
+
+        jLabel34.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel34.setText("tiap bulan.");
+
+        jLabel35.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel35.setText("kategori baru sendiri.");
+
+        jLabel36.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel36.setText("Transportasi, dll.");
+
+        jLabel37.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel37.setText("atau pengeluaran.");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -113,64 +134,77 @@ public class Help_IncomeExpense extends javax.swing.JPanel {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel21))
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addGap(10, 10, 10)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(0, 0, Short.MAX_VALUE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel21))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel22)
+                            .addComponent(jLabel30)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
                             .addComponent(jLabel23)
                             .addComponent(jLabel25)
                             .addComponent(jLabel27)
                             .addComponent(jLabel29)
-                            .addComponent(jLabel31))))
-                .addGap(80, 80, 80))
+                            .addComponent(jLabel31)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel33)
+                            .addComponent(jLabel35)
+                            .addComponent(jLabel36)
+                            .addComponent(jLabel37)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel34)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(304, 304, 304)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel5)
                 .addGap(0, 0, 0)
+                .addComponent(jLabel6)
+                .addGap(0, 0, 0)
                 .addComponent(jLabel20)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel21)
+                .addGap(0, 0, 0)
+                .addComponent(jLabel34)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel22)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel23)
                 .addGap(0, 0, 0)
+                .addComponent(jLabel33)
+                .addGap(0, 0, 0)
                 .addComponent(jLabel24)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel25)
                 .addGap(0, 0, 0)
+                .addComponent(jLabel36)
+                .addGap(0, 0, 0)
                 .addComponent(jLabel26)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel27)
+                .addGap(0, 0, 0)
+                .addComponent(jLabel37)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel28)
                 .addGap(0, 0, 0)
@@ -179,6 +213,8 @@ public class Help_IncomeExpense extends javax.swing.JPanel {
                 .addComponent(jLabel30)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel31)
+                .addGap(0, 0, 0)
+                .addComponent(jLabel35)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -189,7 +225,7 @@ public class Help_IncomeExpense extends javax.swing.JPanel {
         jButton174.setBackground(new java.awt.Color(52, 73, 94));
         jButton174.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton174.setForeground(new java.awt.Color(255, 255, 255));
-        jButton174.setText("Dashboard");
+        jButton174.setText("Beranda");
         jButton174.setBorder(null);
         jButton174.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton174.addActionListener(new java.awt.event.ActionListener() {
@@ -201,7 +237,7 @@ public class Help_IncomeExpense extends javax.swing.JPanel {
         jButton175.setBackground(new java.awt.Color(52, 73, 94));
         jButton175.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton175.setForeground(new java.awt.Color(255, 255, 255));
-        jButton175.setText("Month Rules");
+        jButton175.setText("Aturan Bulanan");
         jButton175.setBorder(null);
         jButton175.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -212,7 +248,7 @@ public class Help_IncomeExpense extends javax.swing.JPanel {
         jButton176.setBackground(new java.awt.Color(52, 73, 94));
         jButton176.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton176.setForeground(new java.awt.Color(255, 255, 255));
-        jButton176.setText("Income & Expense");
+        jButton176.setText("Transaksi");
         jButton176.setBorder(null);
         jButton176.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -223,7 +259,7 @@ public class Help_IncomeExpense extends javax.swing.JPanel {
         jButton177.setBackground(new java.awt.Color(52, 73, 94));
         jButton177.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton177.setForeground(new java.awt.Color(255, 255, 255));
-        jButton177.setText("Profile");
+        jButton177.setText("Biodata");
         jButton177.setBorder(null);
         jButton177.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -234,7 +270,7 @@ public class Help_IncomeExpense extends javax.swing.JPanel {
         jButton178.setBackground(new java.awt.Color(52, 73, 94));
         jButton178.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton178.setForeground(new java.awt.Color(255, 255, 255));
-        jButton178.setText("Edit Table\n");
+        jButton178.setText("Edit Tabel");
         jButton178.setBorder(null);
         jButton178.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -256,31 +292,22 @@ public class Help_IncomeExpense extends javax.swing.JPanel {
         jLabel32.setFont(new java.awt.Font("Swis721 Hv BT", 3, 24)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(255, 255, 255));
         jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel32.setText("HELP");
+        jLabel32.setText("Bantuan");
 
         javax.swing.GroupLayout jPanel31Layout = new javax.swing.GroupLayout(jPanel31);
         jPanel31.setLayout(jPanel31Layout);
         jPanel31Layout.setHorizontalGroup(
             jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel31Layout.createSequentialGroup()
-                .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel31Layout.createSequentialGroup()
-                            .addGap(10, 10, 10)
-                            .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jButton177, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton176, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton174, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton175, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel31Layout.createSequentialGroup()
-                            .addGap(10, 10, 10)
-                            .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jButton178, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton179, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(jPanel31Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jButton178, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton177, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton176, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton175, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton174, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel32, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                    .addComponent(jButton179, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(10, Short.MAX_VALUE))
         );
         jPanel31Layout.setVerticalGroup(
@@ -317,7 +344,7 @@ public class Help_IncomeExpense extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel31, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 360, Short.MAX_VALUE)
+                    .addComponent(jPanel31, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -445,7 +472,6 @@ public class Help_IncomeExpense extends javax.swing.JPanel {
     private javax.swing.JButton jButton178;
     private javax.swing.JButton jButton179;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -460,8 +486,14 @@ public class Help_IncomeExpense extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel31;

@@ -107,7 +107,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Month&apos; Rules"/>
+            <Property name="text" type="java.lang.String" value="Aturan Bulanan"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
@@ -128,7 +128,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Month&apos; Income"/>
+            <Property name="text" type="java.lang.String" value="Pemasukan Bulanan"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
@@ -149,7 +149,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Month&apos; Expenses"/>
+            <Property name="text" type="java.lang.String" value="Pengeluaran Bulanan"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
@@ -239,18 +239,26 @@
                                               <Group type="102" attributes="0">
                                                   <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                                                          <Component id="spendLabel" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                                          <Group type="102" alignment="0" attributes="0">
-                                                              <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
-                                                              <EmptySpace max="32767" attributes="0"/>
-                                                              <Component id="remaining" min="-2" max="-2" attributes="0"/>
-                                                          </Group>
+                                                      <Group type="103" groupAlignment="1" attributes="0">
                                                           <Group type="102" attributes="0">
+                                                              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                                                              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                                  <Component id="saveLabel" min="-2" max="-2" attributes="0"/>
+                                                                  <Component id="spendLabel" min="-2" max="-2" attributes="0"/>
+                                                                  <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                                                                      <Component id="remaining" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                                      <Component id="limit" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                                      <Component id="income" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                                  </Group>
+                                                              </Group>
+                                                              <EmptySpace min="-2" pref="183" max="-2" attributes="0"/>
+                                                          </Group>
+                                                          <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                          <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                          <Group type="102" alignment="1" attributes="0">
                                                               <Group type="103" groupAlignment="0" attributes="0">
                                                                   <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
                                                                   <Group type="102" alignment="0" attributes="0">
@@ -259,27 +267,18 @@
                                                                       <Component id="percentLimit" min="-2" max="-2" attributes="0"/>
                                                                   </Group>
                                                               </Group>
-                                                              <EmptySpace max="32767" attributes="0"/>
-                                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                                  <Component id="limit" alignment="1" min="-2" max="-2" attributes="0"/>
-                                                                  <Component id="income" alignment="1" min="-2" max="-2" attributes="0"/>
-                                                              </Group>
-                                                          </Group>
-                                                          <Group type="102" attributes="0">
-                                                              <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                              <Component id="saveLabel" min="-2" max="-2" attributes="0"/>
+                                                              <EmptySpace min="15" pref="15" max="-2" attributes="0"/>
                                                           </Group>
                                                       </Group>
                                                   </Group>
                                               </Group>
                                           </Group>
-                                          <EmptySpace min="-2" pref="297" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="367" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="9" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -355,7 +354,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Add Montly Limits"/>
+                    <Property name="text" type="java.lang.String" value="Tambah Limit Bulanan"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="newPercentage">
@@ -371,7 +370,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Add"/>
+                    <Property name="text" type="java.lang.String" value="Tambah"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
@@ -382,7 +381,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="12" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Add Presentase"/>
+                    <Property name="text" type="java.lang.String" value="Tambah Presentase"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="persentase">
@@ -409,7 +408,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Add Limit"/>
+                    <Property name="text" type="java.lang.String" value="Tambahkan Limit"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton8ActionPerformed"/>
@@ -420,7 +419,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="24" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Month&apos; Rules"/>
+                    <Property name="text" type="java.lang.String" value="Aturan Bulanan"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel8">
@@ -428,7 +427,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Limit Calculation"/>
+                    <Property name="text" type="java.lang.String" value="Kalkulasi Limit"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel5">
@@ -436,7 +435,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="1. The money you can spend is"/>
+                    <Property name="text" type="java.lang.String" value="1. Uang yang bisa kamu gunakan :"/>
                   </Properties>
                 </Component>
                 <Container class="javax.swing.JPanel" name="jPanel3">
@@ -472,7 +471,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="2. The money you can save is"/>
+                    <Property name="text" type="java.lang.String" value="2. Uang yang bisa kamu simpan : "/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="saveLabel">
@@ -500,7 +499,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Limit Overview"/>
+                    <Property name="text" type="java.lang.String" value="Ringkasan Limit"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel6">
@@ -508,7 +507,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Total Income"/>
+                    <Property name="text" type="java.lang.String" value="Total Pemasukan"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel11">
@@ -524,7 +523,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Remaining Limit"/>
+                    <Property name="text" type="java.lang.String" value="Sisa Limit bulanan"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="percentLimit">
@@ -574,7 +573,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Dashboard"/>
+            <Property name="text" type="java.lang.String" value="Beranda"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
@@ -602,7 +601,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Help"/>
+            <Property name="text" type="java.lang.String" value="Bantuan"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>

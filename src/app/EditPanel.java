@@ -62,7 +62,7 @@ public class EditPanel extends javax.swing.JPanel {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Edit Data table");
+        jLabel6.setText("Edit Data tabel");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -82,12 +82,12 @@ public class EditPanel extends javax.swing.JPanel {
         );
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setText("Date");
+        jLabel4.setText("Tanggal");
 
         changeButton.setBackground(new java.awt.Color(51, 204, 0));
         changeButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         changeButton.setForeground(new java.awt.Color(255, 255, 255));
-        changeButton.setText("Change");
+        changeButton.setText("Ubah");
         changeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 changeButtonActionPerformed(evt);
@@ -95,13 +95,13 @@ public class EditPanel extends javax.swing.JPanel {
         });
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel5.setText("Category");
+        jLabel5.setText("Kategori");
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel7.setText("Amount");
+        jLabel7.setText("Jumlah");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel8.setText("Note");
+        jLabel8.setText("Catatan");
 
         amountField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,7 +118,7 @@ public class EditPanel extends javax.swing.JPanel {
         cancelButton.setBackground(new java.awt.Color(153, 153, 153));
         cancelButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         cancelButton.setForeground(new java.awt.Color(255, 255, 255));
-        cancelButton.setText("Cancel");
+        cancelButton.setText("Batal");
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelButtonActionPerformed(evt);
@@ -135,7 +135,7 @@ public class EditPanel extends javax.swing.JPanel {
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel9.setText("ID");
 
-        typeField.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "income", "expense" }));
+        typeField.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pengeluaran", "Pemasukan" }));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel10.setText("Type");
@@ -143,7 +143,7 @@ public class EditPanel extends javax.swing.JPanel {
         deleteButton.setBackground(new java.awt.Color(255, 0, 51));
         deleteButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         deleteButton.setForeground(new java.awt.Color(255, 255, 255));
-        deleteButton.setText("Delete");
+        deleteButton.setText("Hapus");
         deleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteButtonActionPerformed(evt);
@@ -159,16 +159,9 @@ public class EditPanel extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel9))
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addGap(32, 32, 32)
-                                    .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(dateField, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel9)
+                            .addGap(56, 56, 56)
+                            .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                             .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -177,14 +170,18 @@ public class EditPanel extends javax.swing.JPanel {
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel8)
                                 .addComponent(jLabel7))
-                            .addGap(18, 18, 18)
+                            .addGap(22, 22, 22)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(noteField)
-                                .addComponent(amountField)))
+                                .addComponent(amountField)
+                                .addComponent(noteField)))
                         .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(jLabel5)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(categoryField)))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGap(19, 19, 19)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(dateField, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                                .addComponent(categoryField))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(changeButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)

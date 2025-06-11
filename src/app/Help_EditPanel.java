@@ -40,7 +40,6 @@ public class Help_EditPanel extends javax.swing.JPanel {
         jScrollPane3 = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -54,17 +53,14 @@ public class Help_EditPanel extends javax.swing.JPanel {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
 
         jPanel29.setBackground(new java.awt.Color(52, 73, 94));
 
         jButton160.setBackground(new java.awt.Color(52, 73, 94));
         jButton160.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton160.setForeground(new java.awt.Color(255, 255, 255));
-        jButton160.setText("Dashboard");
+        jButton160.setText("Beranda");
         jButton160.setBorder(null);
         jButton160.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton160.addActionListener(new java.awt.event.ActionListener() {
@@ -76,7 +72,7 @@ public class Help_EditPanel extends javax.swing.JPanel {
         jButton161.setBackground(new java.awt.Color(52, 73, 94));
         jButton161.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton161.setForeground(new java.awt.Color(255, 255, 255));
-        jButton161.setText("Month Rules");
+        jButton161.setText("Aturan Bulanan");
         jButton161.setBorder(null);
         jButton161.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,7 +83,7 @@ public class Help_EditPanel extends javax.swing.JPanel {
         jButton162.setBackground(new java.awt.Color(52, 73, 94));
         jButton162.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton162.setForeground(new java.awt.Color(255, 255, 255));
-        jButton162.setText("Income & Expense");
+        jButton162.setText("Transaksi");
         jButton162.setBorder(null);
         jButton162.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,7 +94,7 @@ public class Help_EditPanel extends javax.swing.JPanel {
         jButton163.setBackground(new java.awt.Color(52, 73, 94));
         jButton163.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton163.setForeground(new java.awt.Color(255, 255, 255));
-        jButton163.setText("Profile");
+        jButton163.setText("Biodata");
         jButton163.setBorder(null);
         jButton163.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,7 +105,7 @@ public class Help_EditPanel extends javax.swing.JPanel {
         jButton164.setBackground(new java.awt.Color(52, 73, 94));
         jButton164.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton164.setForeground(new java.awt.Color(255, 255, 255));
-        jButton164.setText("Edit Table\n");
+        jButton164.setText("Edit Tabel");
         jButton164.setBorder(null);
 
         jButton166.setBackground(new java.awt.Color(52, 73, 94));
@@ -126,35 +122,27 @@ public class Help_EditPanel extends javax.swing.JPanel {
         jLabel20.setFont(new java.awt.Font("Swis721 Hv BT", 3, 24)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel20.setText("HELP");
+        jLabel20.setText("Bantuan");
 
         javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
         jPanel29.setLayout(jPanel29Layout);
         jPanel29Layout.setHorizontalGroup(
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel29Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel29Layout.createSequentialGroup()
                 .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel29Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton166, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel29Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel29Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton164, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton163, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(jPanel29Layout.createSequentialGroup()
-                                        .addComponent(jButton162)
-                                        .addGap(0, 0, Short.MAX_VALUE))))
-                            .addComponent(jButton160, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton161, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel29Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton166, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton160, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton161, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton162, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton163, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton164, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(10, 10, 10))
-            .addGroup(jPanel29Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel29Layout.setVerticalGroup(
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,58 +167,47 @@ public class Help_EditPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel1.setText("Edit Data Table");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/page4.png"))); // NOI18N
-
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setText("Features");
+        jLabel3.setText("Fitur");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setText("1. ID Field");
+        jLabel4.setText("1. Kolom ID");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel5.setText("Displays the transaction ID. It is usually auto-filled and not editable.");
+        jLabel5.setText("Menampilkan ID transaksi. Biasanya diisi otomatis dan nggak bisa ");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel6.setText("2. Date Picker");
+        jLabel6.setText("2. Pemilih Tanggal ");
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel7.setText("Lets users change the transaction date.");
+        jLabel7.setText("Memungkinkan pengguna buat ganti tanggal transaksinya.");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel8.setText("3. Type Selector");
+        jLabel8.setText("3. Pilihan Tipe ");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel9.setText("Allows switching between \"income\" or \"expense\" for the selected entry.");
+        jLabel9.setText("Bisa pilih apakah transaksi itu pemasukan atau pengeluaran.");
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel10.setText("4. Category Dropdown");
+        jLabel10.setText("4. Pilihan Kategori");
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel11.setText("Update the transaction category (e.g., Salary, Food, Transport).");
+        jLabel11.setText("Untuk pilih kategori transaksi, misalnya Gaji, Makanan, Transportasi, dll.");
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel12.setText("5. Amount Input");
+        jLabel12.setText("5. Input Jumlah Uang");
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel13.setText("Modify the amount of money involved in the transaction.");
+        jLabel13.setText("Buat ganti jumlah uang yang terlibat dalam transaksi.");
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel14.setText("6. Note Field");
+        jLabel14.setText("6. Kolom Catatan ");
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel15.setText("Edit the note or description related to the transaction.  ");
+        jLabel15.setText("Bisa nulis atau edit catatan/keterangan yang berkaitan sama transaksi.");
 
-        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel16.setText("7. Action Buttons:");
-
-        jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel17.setText("~ Change → Saves the updated data.");
-
-        jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel18.setText("~ Delete → Removes the selected record.");
-
-        jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel19.setText("~ Cancel → Exits edit mode without saving changes.");
+        jLabel21.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel21.setText("diedit.");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -242,57 +219,49 @@ public class Help_EditPanel extends javax.swing.JPanel {
                         .addGap(10, 10, 10)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4)
                             .addComponent(jLabel6)
                             .addComponent(jLabel8)
                             .addComponent(jLabel10)
                             .addComponent(jLabel12)
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel16)))
+                            .addComponent(jLabel14)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
+                        .addGap(25, 25, 25)
                         .addComponent(jLabel5))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
+                        .addGap(25, 25, 25)
                         .addComponent(jLabel7))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
+                        .addGap(25, 25, 25)
                         .addComponent(jLabel9))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
+                        .addGap(25, 25, 25)
                         .addComponent(jLabel11))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
+                        .addGap(25, 25, 25)
                         .addComponent(jLabel13))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
+                        .addGap(25, 25, 25)
                         .addComponent(jLabel15))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(jLabel17))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(jLabel18))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(jLabel19)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel21)))
+                .addGap(0, 6, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(304, 304, 304)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel5)
+                .addGap(0, 0, 0)
+                .addComponent(jLabel21)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel6)
                 .addGap(0, 0, 0)
@@ -313,15 +282,7 @@ public class Help_EditPanel extends javax.swing.JPanel {
                 .addComponent(jLabel14)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel15)
-                .addGap(0, 0, 0)
-                .addComponent(jLabel16)
-                .addGap(0, 0, 0)
-                .addComponent(jLabel17)
-                .addGap(0, 0, 0)
-                .addComponent(jLabel18)
-                .addGap(0, 0, 0)
-                .addComponent(jLabel19)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jScrollPane3.setViewportView(jPanel3);
@@ -340,7 +301,7 @@ public class Help_EditPanel extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, 360, Short.MAX_VALUE)
+                    .addComponent(jPanel29, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -351,7 +312,7 @@ public class Help_EditPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 4, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -472,12 +433,8 @@ public class Help_EditPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

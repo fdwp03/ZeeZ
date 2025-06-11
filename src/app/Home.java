@@ -80,7 +80,7 @@ public class Home extends javax.swing.JFrame implements TableUpdate{
         jButton1.setBackground(new java.awt.Color(52, 73, 94));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Dashboard");
+        jButton1.setText("Beranda");
         jButton1.setBorder(null);
         jButton1.setBorderPainted(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -92,7 +92,7 @@ public class Home extends javax.swing.JFrame implements TableUpdate{
         jButton2.setBackground(new java.awt.Color(52, 73, 94));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Month' Rules");
+        jButton2.setText("Aturan Bulanan");
         jButton2.setBorder(null);
         jButton2.setBorderPainted(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -104,7 +104,7 @@ public class Home extends javax.swing.JFrame implements TableUpdate{
         jButton3.setBackground(new java.awt.Color(52, 73, 94));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Month' Income");
+        jButton3.setText("Pemasukan Bulanan");
         jButton3.setBorder(null);
         jButton3.setBorderPainted(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -116,7 +116,7 @@ public class Home extends javax.swing.JFrame implements TableUpdate{
         jButton4.setBackground(new java.awt.Color(52, 73, 94));
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Month' Expenses");
+        jButton4.setText("Pengeluaran Bulanan");
         jButton4.setBorder(null);
         jButton4.setBorderPainted(false);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -139,13 +139,13 @@ public class Home extends javax.swing.JFrame implements TableUpdate{
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("Dashboard");
+        jLabel1.setText("Beranda");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel2.setText("Current Balance :");
+        jLabel2.setText("Saldo Sekarang :");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setText("Monthly Limit");
+        jLabel3.setText("Batasan Bulanan");
 
         limitBar.setBackground(new java.awt.Color(204, 204, 204));
         limitBar.setForeground(new java.awt.Color(204, 0, 0));
@@ -187,7 +187,7 @@ public class Home extends javax.swing.JFrame implements TableUpdate{
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Date", "Type", "Category", "Amount", "Note"
+                "ID", "Tanggal", "Tipe", "Kategori", "Jumlah", "Catatan"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -263,7 +263,7 @@ public class Home extends javax.swing.JFrame implements TableUpdate{
         jButton7.setBackground(new java.awt.Color(51, 204, 0));
         jButton7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton7.setForeground(new java.awt.Color(255, 255, 255));
-        jButton7.setText("Search");
+        jButton7.setText("Cari");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
@@ -292,7 +292,7 @@ public class Home extends javax.swing.JFrame implements TableUpdate{
                                 .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton7))
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE)
+                            .addComponent(jScrollPane3)
                             .addComponent(chartJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -340,7 +340,7 @@ public class Home extends javax.swing.JFrame implements TableUpdate{
         jButton6.setBackground(new java.awt.Color(52, 73, 94));
         jButton6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setText("Help");
+        jButton6.setText("Bantuan");
         jButton6.setBorder(null);
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

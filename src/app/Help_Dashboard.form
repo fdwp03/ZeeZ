@@ -70,7 +70,6 @@
                                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel1" min="-2" pref="146" max="-2" attributes="0"/>
-                                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel3" alignment="0" min="-2" pref="138" max="-2" attributes="0"/>
                                       <Component id="jLabel4" alignment="0" min="-2" pref="132" max="-2" attributes="0"/>
                                       <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -82,40 +81,64 @@
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                                   <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                                   <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                                   <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                                   <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                                   <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                                   <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                                   <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                                   <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                                  <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                                  <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                                  <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                                  <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                                  <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                                  <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
@@ -127,18 +150,20 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jLabel2" min="-2" pref="280" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="304" max="-2" attributes="0"/>
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                          <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                          <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
@@ -146,13 +171,19 @@
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                          <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                          <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                          <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
@@ -163,6 +194,8 @@
                           <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                          <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -174,14 +207,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="20" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Dashboard"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel2">
-                  <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/image/page1.png"/>
-                    </Property>
+                    <Property name="text" type="java.lang.String" value="beranda"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel3">
@@ -189,7 +215,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Features"/>
+                    <Property name="text" type="java.lang.String" value="Fitur"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel4">
@@ -197,7 +223,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="1. Current Balance"/>
+                    <Property name="text" type="java.lang.String" value="1. Saldo Saat Ini"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel5">
@@ -205,7 +231,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Shows the total current balance based on income and expenses recorded."/>
+                    <Property name="text" type="java.lang.String" value="Menampilkan total saldo berdasarkan data pemasukan dan pengeluaran"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel6">
@@ -213,7 +239,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="2. User Profile Section"/>
+                    <Property name="text" type="java.lang.String" value="2.Biodata Pengguna"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel7">
@@ -221,7 +247,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Displays the logged-in user&#x2019;s profile picture and name for easy identification."/>
+                    <Property name="text" type="java.lang.String" value="Menampilkan Biodata pengguna yang sedang login biar gampang "/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel8">
@@ -229,7 +255,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Clicking on the profile photo allows the user to change or update their profile information"/>
+                    <Property name="text" type="java.lang.String" value="Klik foto profil juga bisa buat ganti atau update info akun kamu."/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel9">
@@ -237,7 +263,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="3. Finance Graph"/>
+                    <Property name="text" type="java.lang.String" value="3. Grafik Keuangan"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel10">
@@ -245,7 +271,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="A line graph visualizing monthly financial trends, including both income and expenses."/>
+                    <Property name="text" type="java.lang.String" value="Grafik garis yang nunjukin tren keuangan bulanan kamu, termasuk "/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel11">
@@ -253,7 +279,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="4. Monthly Limit Indicator"/>
+                    <Property name="text" type="java.lang.String" value="4. Indikator Batas Bulanan"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel12">
@@ -261,7 +287,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Displays the user&apos;s monthly spending limit along with how much has been used.  "/>
+                    <Property name="text" type="java.lang.String" value="Nunjukin batas pengeluaran bulanan kamu, plus berapa yang udah "/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel13">
@@ -269,7 +295,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="5. Search Filter"/>
+                    <Property name="text" type="java.lang.String" value="5. Filter Pencarian"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel14">
@@ -277,7 +303,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Allows users to search for specific transactions in the table by date, type, category, or notes."/>
+                    <Property name="text" type="java.lang.String" value="Bisa cari transaksi di tabel berdasarkan tanggal, jenis, kategori, atau "/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel15">
@@ -285,7 +311,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="6. Transaction Table"/>
+                    <Property name="text" type="java.lang.String" value="6. Tabel Transaksi"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel16">
@@ -293,7 +319,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Shows all financial transactions with details such"/>
+                    <Property name="text" type="java.lang.String" value="Menampilkan semua transaksi keuangan kamu secara detail."/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel17">
@@ -301,7 +327,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Users can select and edit existing records directly in the transaction table."/>
+                    <Property name="text" type="java.lang.String" value="Kamu bisa pilih dan edit data transaksi langsung dari tabel."/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel18">
@@ -309,7 +335,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="7. Edit Table Data"/>
+                    <Property name="text" type="java.lang.String" value="7. Edit Data Tabel"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel19">
@@ -317,7 +343,55 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="This allows quick corrections or updates to financial entries.  "/>
+                    <Property name="text" type="java.lang.String" value="Fitur ini bikin kamu gampang koreksi atau update catatan keuangan"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel21">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="14" style="0"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value=" yang sudah dicatat."/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel22">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="14" style="0"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="pemasukan dan pengeluaran."/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel23">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="14" style="0"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="yang udah masuk."/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel24">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="14" style="0"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="dikenali."/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel25">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="14" style="0"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="dipakai."/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel26">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="14" style="0"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="catatan."/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -334,28 +408,16 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jButton178" max="32767" attributes="0"/>
-                                  <Component id="jButton177" alignment="1" max="32767" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jButton176" max="32767" attributes="0"/>
-                                          <Component id="jButton174" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jButton175" alignment="0" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Component id="jButton179" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                              <Component id="jLabel20" min="-2" pref="105" max="-2" attributes="0"/>
-                          </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="jButton179" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jButton178" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jButton177" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jButton176" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jButton175" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jButton174" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jLabel20" alignment="0" pref="111" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="10" max="32767" attributes="0"/>
                   </Group>
@@ -395,7 +457,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Dashboard"/>
+                <Property name="text" type="java.lang.String" value="Beranda"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -418,7 +480,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Month Rules"/>
+                <Property name="text" type="java.lang.String" value="Aturan Bulanan"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -438,7 +500,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Income &amp; Expense"/>
+                <Property name="text" type="java.lang.String" value="Transaksi"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -458,7 +520,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Profile"/>
+                <Property name="text" type="java.lang.String" value="Biodata"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -478,7 +540,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Edit Table&#xa;"/>
+                <Property name="text" type="java.lang.String" value="Edit Tabel&#xa;"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -516,7 +578,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="HELP"/>
+                <Property name="text" type="java.lang.String" value="Bantuan"/>
               </Properties>
             </Component>
           </SubComponents>

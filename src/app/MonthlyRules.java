@@ -76,7 +76,7 @@ public class MonthlyRules extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(52, 73, 94));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Month' Rules");
+        jButton2.setText("Aturan Bulanan");
         jButton2.setBorder(null);
         jButton2.setBorderPainted(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -88,7 +88,7 @@ public class MonthlyRules extends javax.swing.JFrame {
         jButton3.setBackground(new java.awt.Color(52, 73, 94));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Month' Income");
+        jButton3.setText("Pemasukan Bulanan");
         jButton3.setBorder(null);
         jButton3.setBorderPainted(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -100,7 +100,7 @@ public class MonthlyRules extends javax.swing.JFrame {
         jButton4.setBackground(new java.awt.Color(52, 73, 94));
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Month' Expenses");
+        jButton4.setText("Pengeluaran Bulanan");
         jButton4.setBorder(null);
         jButton4.setBorderPainted(false);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -126,7 +126,7 @@ public class MonthlyRules extends javax.swing.JFrame {
         jLabel3.setText("Persentase");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setText("Add Montly Limits");
+        jLabel4.setText("Tambah Limit Bulanan");
 
         newPercentage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,7 +136,7 @@ public class MonthlyRules extends javax.swing.JFrame {
 
         jButton6.setBackground(new java.awt.Color(52, 73, 94));
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setText("Add");
+        jButton6.setText("Tambah");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -144,13 +144,13 @@ public class MonthlyRules extends javax.swing.JFrame {
         });
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel7.setText("Add Presentase");
+        jLabel7.setText("Tambah Presentase");
 
         persentase.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "50", "60", "70", "80", "90" }));
 
         jButton8.setBackground(new java.awt.Color(0, 204, 0));
         jButton8.setForeground(new java.awt.Color(255, 255, 255));
-        jButton8.setText("Add Limit");
+        jButton8.setText("Tambahkan Limit");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
@@ -158,13 +158,13 @@ public class MonthlyRules extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("Month' Rules");
+        jLabel1.setText("Aturan Bulanan");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel8.setText("Limit Calculation");
+        jLabel8.setText("Kalkulasi Limit");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel5.setText("1. The money you can spend is");
+        jLabel5.setText("1. Uang yang bisa kamu gunakan :");
 
         jPanel3.setBackground(new java.awt.Color(52, 73, 94));
 
@@ -183,7 +183,7 @@ public class MonthlyRules extends javax.swing.JFrame {
         spendLabel.setText("< amount >");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel9.setText("2. The money you can save is");
+        jLabel9.setText("2. Uang yang bisa kamu simpan : ");
 
         saveLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         saveLabel.setText("< amount >");
@@ -195,16 +195,16 @@ public class MonthlyRules extends javax.swing.JFrame {
         jLabel13.setAlignmentX(0.5F);
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel10.setText("Limit Overview");
+        jLabel10.setText("Ringkasan Limit");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel6.setText("Total Income");
+        jLabel6.setText("Total Pemasukan");
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel11.setText("Limit");
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel15.setText("Remaining Limit");
+        jLabel15.setText("Sisa Limit bulanan");
 
         percentLimit.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         percentLimit.setText("(<0%>)");
@@ -260,15 +260,21 @@ public class MonthlyRules extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jLabel5)
-                                                .addGap(9, 9, 9)
-                                                .addComponent(spendLabel))
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                                    .addComponent(jLabel5)
+                                                    .addGap(44, 44, 44)
+                                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(saveLabel)
+                                                        .addComponent(spendLabel)
+                                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addComponent(remaining)
+                                                            .addComponent(limit, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                            .addComponent(income, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                                    .addGap(183, 183, 183))
+                                                .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING))
                                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                                    .addComponent(jLabel15)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(remaining))
+                                                .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addComponent(jLabel6)
@@ -276,16 +282,9 @@ public class MonthlyRules extends javax.swing.JFrame {
                                                             .addComponent(jLabel11)
                                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                             .addComponent(percentLimit)))
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(limit, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addComponent(income, javax.swing.GroupLayout.Alignment.TRAILING)))
-                                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                                    .addComponent(jLabel9)
-                                                    .addGap(18, 18, 18)
-                                                    .addComponent(saveLabel))))))
-                                .addGap(297, 297, 297)))))
-                .addContainerGap(9, Short.MAX_VALUE))
+                                                    .addGap(15, 15, 15))))))
+                                .addGap(367, 367, 367)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -341,7 +340,7 @@ public class MonthlyRules extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(52, 73, 94));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Dashboard");
+        jButton1.setText("Beranda");
         jButton1.setBorder(null);
         jButton1.setBorderPainted(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -355,7 +354,7 @@ public class MonthlyRules extends javax.swing.JFrame {
         jButton7.setBackground(new java.awt.Color(52, 73, 94));
         jButton7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton7.setForeground(new java.awt.Color(255, 255, 255));
-        jButton7.setText("Help");
+        jButton7.setText("Bantuan");
         jButton7.setBorder(null);
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

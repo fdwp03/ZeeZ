@@ -32,7 +32,6 @@ public class Help_Dashboard extends javax.swing.JPanel {
         jScrollPane3 = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -50,6 +49,12 @@ public class Help_Dashboard extends javax.swing.JPanel {
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
         jPanel31 = new javax.swing.JPanel();
         jButton174 = new javax.swing.JButton();
         jButton175 = new javax.swing.JButton();
@@ -60,60 +65,76 @@ public class Help_Dashboard extends javax.swing.JPanel {
         jLabel20 = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        jLabel1.setText("Dashboard");
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/page1.png"))); // NOI18N
+        jLabel1.setText("beranda");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setText("Features");
+        jLabel3.setText("Fitur");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setText("1. Current Balance");
+        jLabel4.setText("1. Saldo Saat Ini");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel5.setText("Shows the total current balance based on income and expenses recorded.");
+        jLabel5.setText("Menampilkan total saldo berdasarkan data pemasukan dan pengeluaran");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel6.setText("2. User Profile Section");
+        jLabel6.setText("2.Biodata Pengguna");
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel7.setText("Displays the logged-in user’s profile picture and name for easy identification.");
+        jLabel7.setText("Menampilkan Biodata pengguna yang sedang login biar gampang ");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel8.setText("Clicking on the profile photo allows the user to change or update their profile information");
+        jLabel8.setText("Klik foto profil juga bisa buat ganti atau update info akun kamu.");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel9.setText("3. Finance Graph");
+        jLabel9.setText("3. Grafik Keuangan");
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel10.setText("A line graph visualizing monthly financial trends, including both income and expenses.");
+        jLabel10.setText("Grafik garis yang nunjukin tren keuangan bulanan kamu, termasuk ");
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel11.setText("4. Monthly Limit Indicator");
+        jLabel11.setText("4. Indikator Batas Bulanan");
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel12.setText("Displays the user's monthly spending limit along with how much has been used.  ");
+        jLabel12.setText("Nunjukin batas pengeluaran bulanan kamu, plus berapa yang udah ");
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel13.setText("5. Search Filter");
+        jLabel13.setText("5. Filter Pencarian");
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel14.setText("Allows users to search for specific transactions in the table by date, type, category, or notes.");
+        jLabel14.setText("Bisa cari transaksi di tabel berdasarkan tanggal, jenis, kategori, atau ");
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel15.setText("6. Transaction Table");
+        jLabel15.setText("6. Tabel Transaksi");
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel16.setText("Shows all financial transactions with details such");
+        jLabel16.setText("Menampilkan semua transaksi keuangan kamu secara detail.");
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel17.setText("Users can select and edit existing records directly in the transaction table.");
+        jLabel17.setText("Kamu bisa pilih dan edit data transaksi langsung dari tabel.");
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel18.setText("7. Edit Table Data");
+        jLabel18.setText("7. Edit Data Tabel");
 
         jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel19.setText("This allows quick corrections or updates to financial entries.  ");
+        jLabel19.setText("Fitur ini bikin kamu gampang koreksi atau update catatan keuangan");
+
+        jLabel21.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel21.setText(" yang sudah dicatat.");
+
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel22.setText("pemasukan dan pengeluaran.");
+
+        jLabel23.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel23.setText("yang udah masuk.");
+
+        jLabel24.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel24.setText("dikenali.");
+
+        jLabel25.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel25.setText("dipakai.");
+
+        jLabel26.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel26.setText("catatan.");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -125,7 +146,6 @@ public class Help_Dashboard extends javax.swing.JPanel {
                         .addGap(10, 10, 10)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6)
@@ -135,32 +155,50 @@ public class Help_Dashboard extends javax.swing.JPanel {
                             .addComponent(jLabel15)
                             .addComponent(jLabel18)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
+                        .addGap(25, 25, 25)
                         .addComponent(jLabel5))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
+                        .addGap(25, 25, 25)
                         .addComponent(jLabel7))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
+                        .addGap(25, 25, 25)
                         .addComponent(jLabel8))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
+                        .addGap(25, 25, 25)
                         .addComponent(jLabel10))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
+                        .addGap(25, 25, 25)
                         .addComponent(jLabel12))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
+                        .addGap(25, 25, 25)
                         .addComponent(jLabel14))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
+                        .addGap(25, 25, 25)
                         .addComponent(jLabel16))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
+                        .addGap(25, 25, 25)
                         .addComponent(jLabel17))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(jLabel19)))
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel19))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel21))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel22))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel23))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel24))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel25))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel26)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -168,18 +206,20 @@ public class Help_Dashboard extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(304, 304, 304)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel5)
                 .addGap(0, 0, 0)
+                .addComponent(jLabel21)
+                .addGap(0, 0, 0)
                 .addComponent(jLabel6)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel7)
+                .addGap(0, 0, 0)
+                .addComponent(jLabel24)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel8)
                 .addGap(0, 0, 0)
@@ -187,13 +227,19 @@ public class Help_Dashboard extends javax.swing.JPanel {
                 .addGap(0, 0, 0)
                 .addComponent(jLabel10)
                 .addGap(0, 0, 0)
+                .addComponent(jLabel22)
+                .addGap(0, 0, 0)
                 .addComponent(jLabel11)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel12)
                 .addGap(0, 0, 0)
+                .addComponent(jLabel25)
+                .addGap(0, 0, 0)
                 .addComponent(jLabel13)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel14)
+                .addGap(0, 0, 0)
+                .addComponent(jLabel26)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel15)
                 .addGap(0, 0, 0)
@@ -204,6 +250,8 @@ public class Help_Dashboard extends javax.swing.JPanel {
                 .addComponent(jLabel17)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel19)
+                .addGap(0, 0, 0)
+                .addComponent(jLabel23)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -214,7 +262,7 @@ public class Help_Dashboard extends javax.swing.JPanel {
         jButton174.setBackground(new java.awt.Color(52, 73, 94));
         jButton174.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton174.setForeground(new java.awt.Color(255, 255, 255));
-        jButton174.setText("Dashboard");
+        jButton174.setText("Beranda");
         jButton174.setBorder(null);
         jButton174.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton174.addActionListener(new java.awt.event.ActionListener() {
@@ -226,7 +274,7 @@ public class Help_Dashboard extends javax.swing.JPanel {
         jButton175.setBackground(new java.awt.Color(52, 73, 94));
         jButton175.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton175.setForeground(new java.awt.Color(255, 255, 255));
-        jButton175.setText("Month Rules");
+        jButton175.setText("Aturan Bulanan");
         jButton175.setBorder(null);
         jButton175.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -237,7 +285,7 @@ public class Help_Dashboard extends javax.swing.JPanel {
         jButton176.setBackground(new java.awt.Color(52, 73, 94));
         jButton176.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton176.setForeground(new java.awt.Color(255, 255, 255));
-        jButton176.setText("Income & Expense");
+        jButton176.setText("Transaksi");
         jButton176.setBorder(null);
         jButton176.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -248,7 +296,7 @@ public class Help_Dashboard extends javax.swing.JPanel {
         jButton177.setBackground(new java.awt.Color(52, 73, 94));
         jButton177.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton177.setForeground(new java.awt.Color(255, 255, 255));
-        jButton177.setText("Profile");
+        jButton177.setText("Biodata");
         jButton177.setBorder(null);
         jButton177.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -259,7 +307,7 @@ public class Help_Dashboard extends javax.swing.JPanel {
         jButton178.setBackground(new java.awt.Color(52, 73, 94));
         jButton178.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton178.setForeground(new java.awt.Color(255, 255, 255));
-        jButton178.setText("Edit Table\n");
+        jButton178.setText("Edit Tabel\n");
         jButton178.setBorder(null);
         jButton178.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -281,29 +329,22 @@ public class Help_Dashboard extends javax.swing.JPanel {
         jLabel20.setFont(new java.awt.Font("Swis721 Hv BT", 3, 24)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel20.setText("HELP");
+        jLabel20.setText("Bantuan");
 
         javax.swing.GroupLayout jPanel31Layout = new javax.swing.GroupLayout(jPanel31);
         jPanel31.setLayout(jPanel31Layout);
         jPanel31Layout.setHorizontalGroup(
             jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel31Layout.createSequentialGroup()
-                .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel31Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton178, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton177, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel31Layout.createSequentialGroup()
-                                .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton176, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton174, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton175, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jButton179, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel31Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jButton179, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton178, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton177, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton176, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton175, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton174, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE))
                 .addContainerGap(10, Short.MAX_VALUE))
         );
         jPanel31Layout.setVerticalGroup(
@@ -359,49 +400,6 @@ public class Help_Dashboard extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton174jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton174jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton174jButton4ActionPerformed
-
-    private void jButton176jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton176jButton6ActionPerformed
-        // TODO add your handling code here:
-        // Tutup dialog saat ini
-        java.awt.Window window = SwingUtilities.getWindowAncestor(this);
-        if (window instanceof javax.swing.JDialog) {
-            window.dispose(); // menutup dialog saat ini
-        }
-
-        // Buat panel baru
-        Help_IncomeExpense nextPanel = new Help_IncomeExpense();
-
-        // Buat dialog baru
-        javax.swing.JDialog dialog = new javax.swing.JDialog();
-        dialog.setModal(true);
-        dialog.setContentPane(nextPanel);
-        dialog.pack();
-        dialog.setLocationRelativeTo(null);
-        dialog.setVisible(true);
-    }//GEN-LAST:event_jButton176jButton6ActionPerformed
-
-    private void jButton177jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton177jButton9ActionPerformed
-        // TODO add your handling code here:
-        java.awt.Window window = SwingUtilities.getWindowAncestor(this);
-        if (window instanceof javax.swing.JDialog) {
-            window.dispose(); // menutup dialog saat ini
-        }
-
-        // Buat panel baru
-        Help_Profil nextPanel = new Help_Profil();
-
-        // Buat dialog baru
-        javax.swing.JDialog dialog = new javax.swing.JDialog();
-        dialog.setModal(true);
-        dialog.setContentPane(nextPanel);
-        dialog.pack();
-        dialog.setLocationRelativeTo(null);
-        dialog.setVisible(true);
-    }//GEN-LAST:event_jButton177jButton9ActionPerformed
-
     private void jButton179ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton179ActionPerformed
         // TODO add your handling code here:
         java.awt.Window window = SwingUtilities.getWindowAncestor(this);
@@ -420,25 +418,6 @@ public class Help_Dashboard extends javax.swing.JPanel {
         dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
     }//GEN-LAST:event_jButton179ActionPerformed
-
-    private void jButton175ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton175ActionPerformed
-        // TODO add your handling code here:
-        java.awt.Window window = SwingUtilities.getWindowAncestor(this);
-        if (window instanceof javax.swing.JDialog) {
-            window.dispose(); // menutup dialog saat ini
-        }
-
-        // Buat panel baru
-        Help_Monthlyrules nextPanel = new Help_Monthlyrules();
-
-        // Buat dialog baru
-        javax.swing.JDialog dialog = new javax.swing.JDialog();
-        dialog.setModal(true);
-        dialog.setContentPane(nextPanel);
-        dialog.pack();
-        dialog.setLocationRelativeTo(null);
-        dialog.setVisible(true);
-    }//GEN-LAST:event_jButton175ActionPerformed
 
     private void jButton178ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton178ActionPerformed
         // TODO add your handling code here:
@@ -460,14 +439,94 @@ public class Help_Dashboard extends javax.swing.JPanel {
         dialog.setVisible(true);
     }//GEN-LAST:event_jButton178ActionPerformed
 
+    private void jButton177jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton177jButton9ActionPerformed
+        // TODO add your handling code here:
+        java.awt.Window window = SwingUtilities.getWindowAncestor(this);
+        if (window instanceof javax.swing.JDialog) {
+            window.dispose(); // menutup dialog saat ini
+        }
+
+        // Buat panel baru
+        Help_Profil nextPanel = new Help_Profil();
+
+        // Buat dialog baru
+        javax.swing.JDialog dialog = new javax.swing.JDialog();
+        dialog.setModal(true);
+        dialog.setContentPane(nextPanel);
+        dialog.pack();
+        dialog.setLocationRelativeTo(null);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_jButton177jButton9ActionPerformed
+
+    private void jButton176jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton176jButton6ActionPerformed
+        // TODO add your handling code here:
+        // Tutup dialog saat ini
+        java.awt.Window window = SwingUtilities.getWindowAncestor(this);
+        if (window instanceof javax.swing.JDialog) {
+            window.dispose(); // menutup dialog saat ini
+        }
+
+        // Buat panel baru
+        Help_IncomeExpense nextPanel = new Help_IncomeExpense();
+
+        // Buat dialog baru
+        javax.swing.JDialog dialog = new javax.swing.JDialog();
+        dialog.setModal(true);
+        dialog.setContentPane(nextPanel);
+        dialog.pack();
+        dialog.setLocationRelativeTo(null);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_jButton176jButton6ActionPerformed
+
+    private void jButton175ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton175ActionPerformed
+        // TODO add your handling code here:
+        java.awt.Window window = SwingUtilities.getWindowAncestor(this);
+        if (window instanceof javax.swing.JDialog) {
+            window.dispose(); // menutup dialog saat ini
+        }
+
+        // Buat panel baru
+        Help_Monthlyrules nextPanel = new Help_Monthlyrules();
+
+        // Buat dialog baru
+        javax.swing.JDialog dialog = new javax.swing.JDialog();
+        dialog.setModal(true);
+        dialog.setContentPane(nextPanel);
+        dialog.pack();
+        dialog.setLocationRelativeTo(null);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_jButton175ActionPerformed
+
+    private void jButton174jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton174jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton174jButton4ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton160;
+    private javax.swing.JButton jButton161;
+    private javax.swing.JButton jButton162;
+    private javax.swing.JButton jButton163;
+    private javax.swing.JButton jButton164;
+    private javax.swing.JButton jButton165;
+    private javax.swing.JButton jButton166;
+    private javax.swing.JButton jButton167;
+    private javax.swing.JButton jButton168;
+    private javax.swing.JButton jButton169;
+    private javax.swing.JButton jButton170;
+    private javax.swing.JButton jButton171;
+    private javax.swing.JButton jButton172;
+    private javax.swing.JButton jButton173;
     private javax.swing.JButton jButton174;
     private javax.swing.JButton jButton175;
     private javax.swing.JButton jButton176;
     private javax.swing.JButton jButton177;
     private javax.swing.JButton jButton178;
     private javax.swing.JButton jButton179;
+    private javax.swing.JButton jButton180;
+    private javax.swing.JButton jButton181;
+    private javax.swing.JButton jButton182;
+    private javax.swing.JButton jButton183;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -479,9 +538,17 @@ public class Help_Dashboard extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -489,8 +556,11 @@ public class Help_Dashboard extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel29;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel30;
     private javax.swing.JPanel jPanel31;
+    private javax.swing.JPanel jPanel32;
     private javax.swing.JScrollPane jScrollPane3;
     // End of variables declaration//GEN-END:variables
 }
