@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 10 Jun 2025 pada 17.14
--- Versi server: 11.7.2-MariaDB
--- Versi PHP: 8.2.12
+-- Generation Time: Jun 11, 2025 at 08:07 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `account`
+-- Table structure for table `account`
 --
 
 CREATE TABLE `account` (
@@ -37,7 +37,23 @@ CREATE TABLE `account` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `monthly_limit`
+-- Table structure for table `biodata`
+--
+
+CREATE TABLE `biodata` (
+  `id` int(10) NOT NULL,
+  `alamat` varchar(27) NOT NULL,
+  `umur` int(10) NOT NULL,
+  `nik` varchar(16) NOT NULL,
+  `status` varchar(100) NOT NULL,
+  `pekerjaan` varchar(100) NOT NULL,
+  `nama` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `monthly_limit`
 --
 
 CREATE TABLE `monthly_limit` (
@@ -52,7 +68,7 @@ CREATE TABLE `monthly_limit` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `transactions`
+-- Table structure for table `transactions`
 --
 
 CREATE TABLE `transactions` (
@@ -70,59 +86,65 @@ CREATE TABLE `transactions` (
 --
 
 --
--- Indeks untuk tabel `account`
+-- Indexes for table `account`
 --
 ALTER TABLE `account`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `monthly_limit`
+-- Indexes for table `biodata`
+--
+ALTER TABLE `biodata`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `monthly_limit`
 --
 ALTER TABLE `monthly_limit`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `account_id` (`account_id`,`month`,`year`);
 
 --
--- Indeks untuk tabel `transactions`
+-- Indexes for table `transactions`
 --
 ALTER TABLE `transactions`
   ADD PRIMARY KEY (`id`),
   ADD KEY `account_id` (`account_id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `account`
+-- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `monthly_limit`
+-- AUTO_INCREMENT for table `monthly_limit`
 --
 ALTER TABLE `monthly_limit`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `transactions`
+-- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `monthly_limit`
+-- Constraints for table `monthly_limit`
 --
 ALTER TABLE `monthly_limit`
   ADD CONSTRAINT `monthly_limit_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `account` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `transactions`
+-- Constraints for table `transactions`
 --
 ALTER TABLE `transactions`
   ADD CONSTRAINT `transactions_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `account` (`id`);
