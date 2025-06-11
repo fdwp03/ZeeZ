@@ -443,8 +443,8 @@ public class MonthlyRules extends javax.swing.JFrame {
                 percentage = rsPersen.getInt("percentage_limit");
             }
             
-            int hasilLimit = totalIncome*percentage / 100;
-            int hasilSave = totalIncome*(100-percentage)/100;
+            int hasilSave = totalIncome*percentage / 100;
+            int hasilLimit = totalIncome*(100-percentage)/100;
 
             spendLabel.setText("Rp. " + String.format("%,d", hasilLimit));
             saveLabel.setText("Rp. " + String.format("%,d", hasilSave));
@@ -508,36 +508,38 @@ public class MonthlyRules extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
         int accountId = Session.id;
         int percentage = Integer.parseInt(persentase.getSelectedItem().toString());
         int month = LocalDate.now().getMonthValue();
         int year = LocalDate.now().getYear();        
 
         String checkQuery = "SELECT * FROM monthly_limit WHERE account_id = ? AND month = ? AND year = ?";
-        String updateQuery = "UPDATE monthly_limit SET percentage_limit = ? WHERE account_id = ? AND month = ? AND year = ?";
         String insertQuery = "INSERT INTO monthly_limit (account_id, percentage_limit, month, year) VALUES (?, ?, ?, ?)";
 
         try {
             ResultSet rs = Database.executeQuery(checkQuery, accountId, month, year);
 
             if (rs != null && rs.next()) {
-                // Update existing limit
-                int result = Database.executeUpdate(updateQuery, percentage, accountId, month, year);
-                if (result > 0) {
-                    loadCalculation();
-                    loadOverview();
-                    JOptionPane.showMessageDialog(null, "Limit berhasil diubah.");
-                } else {
-                    JOptionPane.showMessageDialog(null, "Gagal mengubah limit.");
-                }
+                // Sudah ada, tidak bisa diubah
+                JOptionPane.showMessageDialog(null, "Limit sudah ditetapkan bulan ini dan tidak bisa diubah.");
             } else {
-                // Insert new limit
-                int result = Database.executeUpdate(insertQuery, accountId, percentage, month, year);
-                if (result > 0) {
-                    JOptionPane.showMessageDialog(null, "Limit berhasil ditambahkan.");
-                } else {
-                    JOptionPane.showMessageDialog(null, "Gagal menambahkan limit.");
+                // Tampilkan peringatan sebelum insert
+                int confirm = JOptionPane.showConfirmDialog(
+                    null,
+                    "Setelah limit ditambahkan, Anda tidak dapat mengubahnya untuk bulan ini.\nApakah Anda yakin ingin menetapkan limit sekarang?",
+                    "Konfirmasi Penetapan Limit",
+                    JOptionPane.YES_NO_OPTION
+                );
+
+                if (confirm == JOptionPane.YES_OPTION) {
+                    int result = Database.executeUpdate(insertQuery, accountId, percentage, month, year);
+                    if (result > 0) {
+                        loadCalculation();
+                        loadOverview();
+                        JOptionPane.showMessageDialog(null, "Limit berhasil ditambahkan.");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Gagal menambahkan limit.");
+                    }
                 }
             }
         } catch (SQLException e) {
