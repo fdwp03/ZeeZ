@@ -512,6 +512,7 @@ public class Home extends javax.swing.JFrame implements TableUpdate{
                     + "type LIKE '%" + searchText + "%' OR "
                     + "category LIKE '%" + searchText + "%' OR "
                     + "amount LIKE '%" + searchText + "%' OR "
+                    + "id LIKE '%" + searchText + "%' OR "
                     + "note LIKE '%" + searchText + "%')";
         }
 
