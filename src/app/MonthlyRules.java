@@ -4,6 +4,7 @@
  */
 package app;
 
+import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -22,6 +23,7 @@ public class MonthlyRules extends javax.swing.JFrame {
         initComponents();
         loadCalculation();
         loadOverview();
+        checkLimitStatus(); 
     }
 
     /**
@@ -506,6 +508,27 @@ public class MonthlyRules extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void checkLimitStatus() {
+        String accountId = Session.id;
+        int month = LocalDate.now().getMonthValue();
+        int year = LocalDate.now().getYear();
+
+        String checkQuery = "SELECT * FROM monthly_limit WHERE account_id = ? AND month = ? AND year = ?";
+
+        try {
+            ResultSet rs = Database.executeQuery(checkQuery, accountId, month, year);
+            if (rs != null && rs.next()) {
+                // Limit sudah ada => disable tombol
+                jButton8.setEnabled(false);
+                jButton8.setBackground(Color.GRAY); // opsional, ubah warna tombol
+                jButton8.setText("Limit Bulan Ini Sudah Ditambah");
+            }
+            rs.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Gagal memeriksa limit: " + e.getMessage());
+        }
+    }
+    
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         String accountId = Session.id;
         int percentage = Integer.parseInt(persentase.getSelectedItem().toString());
@@ -519,10 +542,8 @@ public class MonthlyRules extends javax.swing.JFrame {
             ResultSet rs = Database.executeQuery(checkQuery, accountId, month, year);
 
             if (rs != null && rs.next()) {
-                // Sudah ada, tidak bisa diubah
                 JOptionPane.showMessageDialog(null, "Limit sudah ditetapkan bulan ini dan tidak bisa diubah.");
             } else {
-                // Tampilkan peringatan sebelum insert
                 int confirm = JOptionPane.showConfirmDialog(
                     null,
                     "Setelah limit ditambahkan, Anda tidak dapat mengubahnya untuk bulan ini.\nApakah Anda yakin ingin menetapkan limit sekarang?",
@@ -536,6 +557,11 @@ public class MonthlyRules extends javax.swing.JFrame {
                         loadCalculation();
                         loadOverview();
                         JOptionPane.showMessageDialog(null, "Limit berhasil ditambahkan.");
+
+                        //Disable tombol setelah berhasil
+                        jButton8.setEnabled(false);
+                        jButton8.setBackground(Color.GRAY);
+                        jButton8.setText("Limit Bulan Ini Sudah Ditambah");
                     } else {
                         JOptionPane.showMessageDialog(null, "Gagal menambahkan limit.");
                     }
