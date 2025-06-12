@@ -423,9 +423,9 @@ public class Home extends javax.swing.JFrame implements TableUpdate{
         Map<String, Integer> dataIncome = new HashMap<>();
 
         try {
-            // Query untuk expense
+            // Query untuk pengeluaran
             String queryExpense = "SELECT MONTHNAME(date) AS bulan, SUM(amount) AS total " +
-                                  "FROM transactions WHERE account_id = " + Session.id + " AND type='expense' GROUP BY MONTH(date)";
+                                  "FROM transactions WHERE account_id = " + Session.id + " AND type='pengeluaran' GROUP BY MONTH(date)";
             ResultSet rs1 = Database.executeQuery(queryExpense);
             while (rs1.next()) {
                 String bulan = rs1.getString("bulan");
@@ -433,9 +433,9 @@ public class Home extends javax.swing.JFrame implements TableUpdate{
                 dataExpense.put(bulan, total);
             }
 
-            // Query untuk income
+            // Query untuk pemasukan
             String queryIncome = "SELECT MONTHNAME(date) AS bulan, SUM(amount) AS total " +
-                                 "FROM transactions WHERE account_id = " + Session.id + " AND type='income' GROUP BY MONTH(date)";
+                                 "FROM transactions WHERE account_id = " + Session.id + " AND type='pemasukan' GROUP BY MONTH(date)";
             ResultSet rs2 = Database.executeQuery(queryIncome);
             while (rs2.next()) {
                 String bulan = rs2.getString("bulan");
@@ -544,13 +544,13 @@ public class Home extends javax.swing.JFrame implements TableUpdate{
     public void loadTotal() {
         try {
             String query = "SELECT " +
-                           "(SELECT IFNULL(SUM(amount), 0) FROM transactions WHERE account_id = '"+ Session.id +"' AND type = 'income') AS total_income, " +
-                           "(SELECT IFNULL(SUM(amount), 0) FROM transactions WHERE account_id = '"+ Session.id +"' AND type = 'expense') AS total_expense";
+                           "(SELECT IFNULL(SUM(amount), 0) FROM transactions WHERE account_id = '"+ Session.id +"' AND type = 'pemasukan') AS total_pemasukan, " +
+                           "(SELECT IFNULL(SUM(amount), 0) FROM transactions WHERE account_id = '"+ Session.id +"' AND type = 'pengeluaran') AS total_pengeluaran";
             ResultSet rs = Database.executeQuery(query);
 
             if (rs.next()) {
-                int totalIncome = rs.getInt("total_income");
-                int totalExpense = rs.getInt("total_expense");
+                int totalIncome = rs.getInt("total_pemasukan");
+                int totalExpense = rs.getInt("total_pengeluaran");
                 int totalBalance = totalIncome - totalExpense;
 
                 total.setText("Rp. " + String.format("%,d", totalBalance));
@@ -569,8 +569,8 @@ public class Home extends javax.swing.JFrame implements TableUpdate{
             int year = now.getYear();
 
             // Ambil total pengeluaran bulan ini
-            String expenseQuery = "SELECT IFNULL(SUM(amount), 0) AS total FROM transactions WHERE account_id = ? AND type = 'expense' AND MONTH(date) = ? AND YEAR(date) = ?";
-            ResultSet rs = Database.executeQuery(expenseQuery, accId, month, year);
+            String pengeluaranQuery = "SELECT IFNULL(SUM(amount), 0) AS total FROM transactions WHERE account_id = ? AND type = 'pengeluaran' AND MONTH(date) = ? AND YEAR(date) = ?";
+            ResultSet rs = Database.executeQuery(pengeluaranQuery, accId, month, year);
             int totalExpense = 0;
             if (rs.next()) {
                 totalExpense = rs.getInt("total");
@@ -586,9 +586,9 @@ public class Home extends javax.swing.JFrame implements TableUpdate{
             }
             rs.close();
 
-            // Ambil total income
-            String incomeQuery = "SELECT IFNULL(SUM(amount), 0) AS total FROM transactions WHERE account_id = ? AND type = 'income' AND MONTH(date) = ? AND YEAR(date) = ?";
-            rs = Database.executeQuery(incomeQuery, accId, month, year);
+            // Ambil total pemasukan
+            String pemasukanQuery = "SELECT IFNULL(SUM(amount), 0) AS total FROM transactions WHERE account_id = ? AND type = 'pemasukan' AND MONTH(date) = ? AND YEAR(date) = ?";
+            rs = Database.executeQuery(pemasukanQuery, accId, month, year);
             int totalIncome = 0;
             if (rs.next()) {
                 totalIncome = rs.getInt("total");
@@ -628,17 +628,17 @@ public class Home extends javax.swing.JFrame implements TableUpdate{
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        Income incomeFrame = new Income();
-        incomeFrame.setLocationRelativeTo(null);
-        incomeFrame.setVisible(true);
+        Income pemasukanFrame = new Income();
+        pemasukanFrame.setLocationRelativeTo(null);
+        pemasukanFrame.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        Expense expenseFrame = new Expense();
-        expenseFrame.setLocationRelativeTo(null);
-        expenseFrame.setVisible(true);
+        Expense pengeluaranFrame = new Expense();
+        pengeluaranFrame.setLocationRelativeTo(null);
+        pengeluaranFrame.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 

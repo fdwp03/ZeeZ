@@ -428,7 +428,7 @@ public class MonthlyRules extends javax.swing.JFrame {
             int month = now.getMonthValue();
             int year = now.getYear();
             
-            String qIncome = "SELECT SUM(amount) FROM transactions WHERE account_id = ? AND type = 'income' AND MONTH(date) = ? AND YEAR(date) = ?";
+            String qIncome = "SELECT SUM(amount) FROM transactions WHERE account_id = ? AND type = 'pemasukan' AND MONTH(date) = ? AND YEAR(date) = ?";
             ResultSet rsIncome = Database.executeQuery(qIncome, accId, month, year);
             int totalIncome = 0;
             if (rsIncome.next()) {
@@ -462,8 +462,8 @@ public class MonthlyRules extends javax.swing.JFrame {
             int month = now.getMonthValue();
             int year = now.getYear();
             
-            String incomeQuery = "SELECT IFNULL(SUM(amount), 0) AS total FROM transactions WHERE account_id = ? AND type = 'income' AND MONTH(date) = ? AND YEAR(date) = ?";
-            ResultSet rs = Database.executeQuery(incomeQuery, accId, month, year);
+            String pemasukanQuery = "SELECT IFNULL(SUM(amount), 0) AS total FROM transactions WHERE account_id = ? AND type = 'pemasukan' AND MONTH(date) = ? AND YEAR(date) = ?";
+            ResultSet rs = Database.executeQuery(pemasukanQuery, accId, month, year);
             int totalIncome = 0;
             if (rs.next()) {
                 totalIncome = rs.getInt("total");
@@ -570,9 +570,9 @@ public class MonthlyRules extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        Income incomeFrame = new Income();
-        incomeFrame.setLocationRelativeTo(null);
-        incomeFrame.setVisible(true);
+        Income pemasukanFrame = new Income();
+        pemasukanFrame.setLocationRelativeTo(null);
+        pemasukanFrame.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 

@@ -497,7 +497,7 @@ public class Income extends javax.swing.JFrame implements TableUpdate{
         // Map untuk menyimpan hasil dari database
         Map<String, Integer> dataBulan = new HashMap<>();
 
-        String query = "SELECT MONTH(date) AS bulan, SUM(amount) AS total FROM transactions WHERE account_id = " + Session.id + " AND type='income' GROUP BY MONTH(date)";
+        String query = "SELECT MONTH(date) AS bulan, SUM(amount) AS total FROM transactions WHERE account_id = " + Session.id + " AND type='pemasukan' GROUP BY MONTH(date)";
         ResultSet rs = Database.executeQuery(query);
         try {
             while (rs.next()) {
@@ -550,7 +550,7 @@ public class Income extends javax.swing.JFrame implements TableUpdate{
         int currentYear = currentDate.getYear();
         
         String query = "SELECT id, date, type, category, amount, note FROM transactions "
-                             + "WHERE account_id = '" + Session.id + "' AND type = 'income'"
+                             + "WHERE account_id = '" + Session.id + "' AND type = 'pemasukan'"
                              + "AND MONTH(date) = " + currentMonth + " "
                              + "AND YEAR(date) = " + currentYear;
 
@@ -588,7 +588,7 @@ public class Income extends javax.swing.JFrame implements TableUpdate{
     @Override
     public void loadTotal() {
         try {
-            String query = "SELECT SUM(amount) FROM transactions WHERE account_id = '" + Session.id + "' AND type = 'income' AND MONTH(date) = MONTH(CURRENT_DATE()) AND YEAR(date) = YEAR(CURRENT_DATE())";
+            String query = "SELECT SUM(amount) FROM transactions WHERE account_id = '" + Session.id + "' AND type = 'pemasukan' AND MONTH(date) = MONTH(CURRENT_DATE()) AND YEAR(date) = YEAR(CURRENT_DATE())";
             ResultSet rs = Database.executeQuery(query);
 
             if (rs.next()) {
@@ -656,7 +656,7 @@ public class Income extends javax.swing.JFrame implements TableUpdate{
 
             // Query insert termasuk id
             String query = "INSERT INTO transactions (id, account_id, type, date, category, amount, note) " +
-                           "VALUES (?, ?, 'income', ?, ?, ?, ?)";
+                           "VALUES (?, ?, 'pemasukan', ?, ?, ?, ?)";
 
             int rowsInserted = Database.executeUpdate(
                 query,
@@ -694,9 +694,9 @@ public class Income extends javax.swing.JFrame implements TableUpdate{
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        Expense expenseFrame = new Expense();
-        expenseFrame.setLocationRelativeTo(null);
-        expenseFrame.setVisible(true);
+        Expense pengeluaranFrame = new Expense();
+        pengeluaranFrame.setLocationRelativeTo(null);
+        pengeluaranFrame.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -744,7 +744,7 @@ public class Income extends javax.swing.JFrame implements TableUpdate{
             String note = jTable1.getValueAt(row, 4).toString();
 
             EditPanel edit = new EditPanel(Income.this); // karena Income implements TableUpdate
-            edit.setData(id, date, "income", category, amount, note);
+            edit.setData(id, date, "pemasukan", category, amount, note);
 
             javax.swing.JDialog dialog = new javax.swing.JDialog();
             dialog.setUndecorated(true);

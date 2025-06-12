@@ -10,6 +10,7 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import java.sql.ResultSet;
+import java.time.ZoneId;
 
 /**
  *
@@ -263,7 +264,7 @@ public class EditPanel extends javax.swing.JPanel {
         SwingUtilities.getWindowAncestor(this).dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
-    private boolean isEnoughBalance(int newExpenseAmount) {
+    private boolean isEnoughBalance(int newExpenseAmount, int transactionId) {
         int totalIncome = 0;
         int totalExpense = 0;
         int percentageLimit = 100; // default jika tidak ditemukan
@@ -273,26 +274,31 @@ public class EditPanel extends javax.swing.JPanel {
             int year = LocalDate.now().getYear();
             String accId = Session.id;
 
-            // Ambil total income dan expense
-            String query = "SELECT "
-                    + "(SELECT IFNULL(SUM(amount), 0) FROM transactions WHERE account_id = ? AND type = 'income' AND MONTH(date) = ? AND YEAR(date) = ?) AS total_income, "
-                    + "(SELECT IFNULL(SUM(amount), 0) FROM transactions WHERE account_id = ? AND type = 'expense' AND MONTH(date) = ? AND YEAR(date) = ?) AS total_expense";
-
-            ResultSet rs = Database.executeQuery(query, accId, month, year, accId, month, year);
+            // Ambil total pemasukan
+            String pemasukanQuery = "SELECT IFNULL(SUM(amount), 0) AS total_pemasukan FROM transactions " +
+                                 "WHERE account_id = ? AND type = 'pemasukan' AND MONTH(date) = ? AND YEAR(date) = ?";
+            ResultSet rs = Database.executeQuery(pemasukanQuery, accId, month, year);
             if (rs != null && rs.next()) {
-                totalIncome = rs.getInt("total_income");
-                totalExpense = rs.getInt("total_expense");
+                totalIncome = rs.getInt("total_pemasukan");
+                rs.close();
             }
-            if (rs != null) rs.close();
+
+            // Ambil total pengeluaran (kecuali transaksi yang sedang diedit)
+            String pengeluaranQuery = "SELECT IFNULL(SUM(amount), 0) AS total_pengeluaran FROM transactions " +
+                                  "WHERE account_id = ? AND type = 'pengeluaran' AND MONTH(date) = ? AND YEAR(date) = ? AND id != ?";
+            rs = Database.executeQuery(pengeluaranQuery, accId, month, year, transactionId);
+            if (rs != null && rs.next()) {
+                totalExpense = rs.getInt("total_pengeluaran");
+                rs.close();
+            }
 
             // Ambil limit persentase
             String limitQuery = "SELECT percentage_limit FROM monthly_limit WHERE account_id = ? AND month = ? AND year = ?";
             rs = Database.executeQuery(limitQuery, accId, month, year);
-
             if (rs != null && rs.next()) {
                 percentageLimit = rs.getInt("percentage_limit");
+                rs.close();
             }
-            if (rs != null) rs.close();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -305,40 +311,160 @@ public class EditPanel extends javax.swing.JPanel {
         return (totalExpense + newExpenseAmount) <= maxExpenseAllowed;
     }
     
-    private void changeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeButtonActionPerformed
-        // TODO add your handling code here:
-        String dateStr = new SimpleDateFormat("yyyy-MM-dd").format(dateField.getDate());
+    private boolean isIncomeStillCoversExpense(int newIncomeAmount, int transactionId) {
+        int totalExpense = 0;
+        int percentageLimit = 100;
+        int oldIncomeAmount = 0;
+
         try {
-            String query = "UPDATE transactions SET date='" + dateStr+
-                           "', type='" + typeField.getSelectedItem().toString() +
-                           "', category='" + categoryField.getText() +
-                           "', amount=" + Integer.parseInt(amountField.getText()) +
-                           ", note='" + noteField.getText() +
-                           "' WHERE id=" + idField.getText();
+            LocalDate date = dateField.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            int month = date.getMonthValue();
+            int year = date.getYear();
+            String accId = Session.id;
+
+            // Ambil total pengeluaran
+            String pengeluaranQuery = "SELECT IFNULL(SUM(amount), 0) AS total_pengeluaran FROM transactions " +
+                                  "WHERE account_id = ? AND type = 'pengeluaran' AND MONTH(date) = ? AND YEAR(date) = ?";
+            ResultSet rs = Database.executeQuery(pengeluaranQuery, accId, month, year);
+            if (rs != null && rs.next()) {
+                totalExpense = rs.getInt("total_pengeluaran");
+                rs.close();
+            }
+
+            // Ambil limit persentase
+            String limitQuery = "SELECT percentage_limit FROM monthly_limit WHERE account_id = ? AND month = ? AND year = ?";
+            rs = Database.executeQuery(limitQuery, accId, month, year);
+            if (rs != null && rs.next()) {
+                percentageLimit = rs.getInt("percentage_limit");
+                rs.close();
+            }
+
+            // Ambil jumlah pemasukan lama (yang sedang diedit)
+            String oldIncomeQuery = "SELECT amount FROM transactions WHERE id = ? AND type = 'pemasukan'";
+            rs = Database.executeQuery(oldIncomeQuery, transactionId);
+            if (rs != null && rs.next()) {
+                oldIncomeAmount = rs.getInt("amount");
+                rs.close();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // Hitung total pemasukan baru (mengganti pemasukan lama dengan yang baru)
+        int newTotalIncome = getCurrentTotalIncomeExcluding(transactionId) + newIncomeAmount;
+
+        // Hitung batas maksimal pengeluaran yang diizinkan
+        int maxExpenseAllowed = newTotalIncome * percentageLimit / 100;
+
+        return totalExpense <= maxExpenseAllowed;
+    }
+
+    // Helper untuk ambil total pemasukan selain transaksi yang sedang diedit
+    private int getCurrentTotalIncomeExcluding(int excludeId) {
+        int total = 0;
+        try {
+            LocalDate date = dateField.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            int month = date.getMonthValue();
+            int year = date.getYear();
+            String accId = Session.id;
+
+            String query = "SELECT IFNULL(SUM(amount), 0) AS total_pemasukan FROM transactions " +
+                           "WHERE account_id = ? AND type = 'pemasukan' AND MONTH(date) = ? AND YEAR(date) = ? AND id != ?";
+            ResultSet rs = Database.executeQuery(query, accId, month, year, excludeId);
+            if (rs != null && rs.next()) {
+                total = rs.getInt("total_pemasukan");
+                rs.close();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return total;
+    }
+
+    
+    private void changeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeButtonActionPerformed
+        String dateStr = new SimpleDateFormat("yyyy-MM-dd").format(dateField.getDate());
+        String type = typeField.getSelectedItem().toString();
+        String category = categoryField.getText();
+        int amount = Integer.parseInt(amountField.getText());
+        String note = noteField.getText();
+        int id = Integer.parseInt(idField.getText());
+
+        try {
+            // Validasi berdasarkan tipe transaksi
+            if (type.equalsIgnoreCase("pengeluaran")) {
+                if (!isEnoughBalance(amount, id)) {
+                    JOptionPane.showMessageDialog(this, "Pengeluaran melebihi batas limit bulanan!");
+                    return;
+                }
+            } else if (type.equalsIgnoreCase("pemasukan")) {
+                if (!isIncomeStillCoversExpense(amount, id)) {
+                    JOptionPane.showMessageDialog(this, "Perubahan pemasukan terlalu kecil. Total limit (dari persentase pemasukan) akan lebih kecil dari total pengeluaran.");
+                    return;
+                }
+            }
+
+            // Eksekusi update
+            String query = "UPDATE transactions SET date='" + dateStr +
+                           "', type='" + type +
+                           "', category='" + category +
+                           "', amount=" + amount +
+                           ", note='" + note +
+                           "' WHERE id=" + id;
+
             int updated = Database.executeUpdate(query);
+
             if (updated > 0) {
                 JOptionPane.showMessageDialog(this, "Data berhasil diubah.");
                 SwingUtilities.getWindowAncestor(this).dispose();
-                update.loadTableData(); // panggil method dari Home/Income/Expense
+                update.loadTableData();
                 update.loadTotal();
                 update.loadChart();
-                
+
                 if (update instanceof Home) {
                     ((Home) update).loadLimitBar();
                 }
             }
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error updating: " + e.getMessage());
         }
     }//GEN-LAST:event_changeButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
-        // TODO add your handling code here:
         int confirm = JOptionPane.showConfirmDialog(this, "Apakah Anda yakin ingin menghapus data ini?", "Konfirmasi Hapus", JOptionPane.YES_NO_OPTION);
         if (confirm == JOptionPane.YES_OPTION) {
             try {
+                int id = Integer.parseInt(idField.getText());
+
+                // Ambil informasi transaksi yang akan dihapus
+                String type = "";
+                int amount = 0;
+                String queryInfo = "SELECT type, amount FROM transactions WHERE id = ?";
+                ResultSet rs = Database.executeQuery(queryInfo, id);
+                if (rs != null && rs.next()) {
+                    type = rs.getString("type");
+                    amount = rs.getInt("amount");
+                    rs.close();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Data tidak ditemukan.");
+                    return;
+                }
+
+                // Validasi jika yang dihapus adalah pemasukan
+                if (type.equalsIgnoreCase("pemasukan")) {
+                    if (!isIncomeStillCoversExpense(amount, id)) {
+                        JOptionPane.showMessageDialog(this, "Penghapusan pemasukan ini menyebabkan total pengeluaran melebihi limit.");
+                        return;
+                    }
+                }
+
+                // Lakukan penghapusan
                 String query = "DELETE FROM transactions WHERE id = ?";
-                int deleted = Database.executeUpdate(query, idField.getText());
+                int deleted = Database.executeUpdate(query, id);
+
                 if (deleted > 0) {
                     JOptionPane.showMessageDialog(this, "Data berhasil dihapus.");
                     SwingUtilities.getWindowAncestor(this).dispose();
@@ -353,6 +479,7 @@ public class EditPanel extends javax.swing.JPanel {
                 } else {
                     JOptionPane.showMessageDialog(this, "Gagal menghapus data.");
                 }
+
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Error deleting: " + e.getMessage());
             }
