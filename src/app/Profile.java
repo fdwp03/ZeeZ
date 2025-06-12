@@ -253,8 +253,8 @@ public class Profile extends javax.swing.JFrame {
                 fnik.setText(nik);
                 falamat.setText(alamat);
                 fumur.setText(umur);
-                fname6.setText(status);
-                fstatus.setText(pekerjaan);
+                fstatus.setSelectedItem(status);
+                fpekerjaan.setText(pekerjaan);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -308,9 +308,9 @@ public class Profile extends javax.swing.JFrame {
             String nik = fnik.getText();
             String nama = fname.getText();
             String umur = fumur.getText();
-            String status = fname6.getText();
+            String status = (String) fstatus.getSelectedItem();
             String alamat = falamat.getText();
-            String pekerjaan = f.getText();
+            String pekerjaan = fpekerjaan.getText();
             String idpengguna = Session.id;
 
             // Cek apakah NIK sudah ada
