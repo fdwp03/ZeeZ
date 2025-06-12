@@ -499,7 +499,7 @@ public class Expense extends javax.swing.JFrame implements TableUpdate {
                     dataBulan.put(bulanArr[index], total);
                 }
             }
-            rs.close();
+            rs.close(); // Menutup database setelah mengambil data
         } catch (SQLException e) {
             e.printStackTrace();
         }
