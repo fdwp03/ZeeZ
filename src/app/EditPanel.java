@@ -359,6 +359,72 @@ public class EditPanel extends javax.swing.JPanel {
 
         return totalExpense <= maxExpenseAllowed;
     }
+    
+    private boolean canDeleteIncome(String transactionId) {
+        int totalExpense = 0;
+        int percentageLimit = 100;
+        int targetIncomeAmount = 0;
+        int currentTotalIncome = 0;
+
+        try {
+            // Ambil tanggal transaksi dari id yang akan dihapus
+            String getDateQuery = "SELECT date FROM transactions WHERE id = ?";
+            ResultSet rs = Database.executeQuery(getDateQuery, transactionId);
+            LocalDate date;
+            if (rs != null && rs.next()) {
+                java.sql.Date sqlDate = rs.getDate("date");
+                date = sqlDate.toLocalDate();
+                rs.close();
+            } else {
+                return true; // data tidak ditemukan, abaikan validasi
+            }
+
+            int month = date.getMonthValue();
+            int year = date.getYear();
+            String accId = Session.id;
+
+            // Total pengeluaran
+            String pengeluaranQuery = "SELECT IFNULL(SUM(amount), 0) AS total_pengeluaran FROM transactions " +
+                                      "WHERE account_id = ? AND type = 'pengeluaran' AND MONTH(date) = ? AND YEAR(date) = ?";
+            rs = Database.executeQuery(pengeluaranQuery, accId, month, year);
+            if (rs != null && rs.next()) {
+                totalExpense = rs.getInt("total_pengeluaran");
+                rs.close();
+            }
+
+            // Limit persentase
+            String limitQuery = "SELECT percentage_limit FROM monthly_limit WHERE account_id = ? AND month = ? AND year = ?";
+            rs = Database.executeQuery(limitQuery, accId, month, year);
+            if (rs != null && rs.next()) {
+                percentageLimit = rs.getInt("percentage_limit");
+                rs.close();
+            }
+
+            // Jumlah pemasukan yang akan dihapus
+            String incomeQuery = "SELECT amount FROM transactions WHERE id = ?";
+            rs = Database.executeQuery(incomeQuery, transactionId);
+            if (rs != null && rs.next()) {
+                targetIncomeAmount = rs.getInt("amount");
+                rs.close();
+            }
+
+            // Total pemasukan selain yang akan dihapus
+            String totalIncomeQuery = "SELECT IFNULL(SUM(amount), 0) AS total_income FROM transactions " +
+                                      "WHERE account_id = ? AND type = 'pemasukan' AND MONTH(date) = ? AND YEAR(date) = ? AND id != ?";
+            rs = Database.executeQuery(totalIncomeQuery, accId, month, year, transactionId);
+            if (rs != null && rs.next()) {
+                currentTotalIncome = rs.getInt("total_income");
+                rs.close();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return true; // anggap valid jika gagal mengambil data
+        }
+
+        int maxAllowedExpense = currentTotalIncome * percentageLimit / 100;
+        return totalExpense <= maxAllowedExpense;
+    }
 
     // Helper untuk ambil total pemasukan selain transaksi yang sedang diedit
     private int getCurrentTotalIncomeExcluding(int excludeId) {
@@ -437,7 +503,7 @@ public class EditPanel extends javax.swing.JPanel {
         int confirm = JOptionPane.showConfirmDialog(this, "Apakah Anda yakin ingin menghapus data ini?", "Konfirmasi Hapus", JOptionPane.YES_NO_OPTION);
         if (confirm == JOptionPane.YES_OPTION) {
             try {
-                int id = Integer.parseInt(idField.getText());
+                String id = idField.getText();
 
                 // Ambil informasi transaksi yang akan dihapus
                 String type = "";
@@ -455,7 +521,7 @@ public class EditPanel extends javax.swing.JPanel {
 
                 // Validasi jika yang dihapus adalah pemasukan
                 if (type.equalsIgnoreCase("pemasukan")) {
-                    if (!isIncomeStillCoversExpense(amount, id)) {
+                    if (!canDeleteIncome(id)) {
                         JOptionPane.showMessageDialog(this, "Penghapusan pemasukan ini menyebabkan total pengeluaran melebihi limit.");
                         return;
                     }

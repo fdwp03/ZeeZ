@@ -660,23 +660,23 @@ public class Expense extends javax.swing.JFrame implements TableUpdate {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         try {
-            // Parsing input jumlah ke integer
-            int amountInt = Integer.parseInt(amount.getText());
+            // Ambil dan validasi input jumlah
+            String amountStr = amount.getText();
+            int amountInt = Integer.parseInt(amountStr);
 
-            // Cek apakah saldo/limit mencukupi untuk pengeluaran ini
+            // Validasi saldo atau limit
             if (!isEnoughBalance(amountInt)) {
                 JOptionPane.showMessageDialog(null,
                     "Jumlah pengeluaran melebihi saldo/limit yang tersedia!",
                     "Saldo Tidak Cukup",
                     JOptionPane.WARNING_MESSAGE);
-                return; // Hentikan proses jika saldo tidak mencukupi
+                return;
             }
 
-            // Ambil data dari input form
-            Date dt = date.getDate();                          // Tanggal transaksi
-            String ctgry = (String) category.getSelectedItem(); // Kategori pengeluaran
-            String amountStr = amount.getText();               // Nilai jumlah sebagai string
-            String noteStr = note.getText();                   // Catatan transaksi
+            // Ambil data lainnya dari form
+            Date dt = date.getDate(); // tanggal
+            String ctgry = (String) category.getSelectedItem();
+            String noteStr = note.getText();
 
             if (dt == null || ctgry == null || amountStr.isEmpty()) {
                 JOptionPane.showMessageDialog(null,
@@ -686,26 +686,31 @@ public class Expense extends javax.swing.JFrame implements TableUpdate {
                 return;
             }
 
-            // Format ID transaksi: yyyyMM + 0001, 0002, dst.
+            // Format tanggal dan prefix ID (contoh: 202506)
             LocalDate localDate = dt.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             String yearMonth = String.format("%04d%02d", localDate.getYear(), localDate.getMonthValue());
 
             String prefixId = yearMonth;
-            String countQuery = "SELECT COUNT(*) AS total FROM transactions WHERE id LIKE ?";
-            ResultSet rs = Database.executeQuery(countQuery, prefixId + "%");
+
+            // Ambil ID terbesar yang dimulai dengan prefix
+            String maxIdQuery = "SELECT MAX(id) AS max_id FROM transactions WHERE id LIKE ?";
+            ResultSet rs = Database.executeQuery(maxIdQuery, prefixId + "%");
 
             int nextNumber = 1;
-            if (rs != null && rs.next()) {
-                nextNumber = rs.getInt("total") + 1;
+            if (rs != null && rs.next() && rs.getString("max_id") != null) {
+                String maxId = rs.getString("max_id"); // contoh: 2025060003
+                String numberPart = maxId.substring(6); // ambil "0003"
+                nextNumber = Integer.parseInt(numberPart) + 1; // jadi 4
             }
 
-            String idGenerated = prefixId + String.format("%04d", nextNumber); // contoh: 2025060002
+            // Buat ID baru
+            String idGenerated = prefixId + String.format("%04d", nextNumber);
 
-            // Query SQL untuk menyimpan pengeluaran
+            // Query simpan data pengeluaran
             String query = "INSERT INTO transactions (id, account_id, type, date, category, amount, note) " +
                            "VALUES (?, ?, 'pengeluaran', ?, ?, ?, ?)";
 
-            // Eksekusi query
+            // Eksekusi penyimpanan
             int rowsInserted = Database.executeUpdate(
                 query,
                 idGenerated,
@@ -716,11 +721,11 @@ public class Expense extends javax.swing.JFrame implements TableUpdate {
                 noteStr
             );
 
-            // Jika penyimpanan berhasil, perbarui data pada tabel, total, dan grafik
             if (rowsInserted > 0) {
-                loadTableData(); // Perbarui tabel transaksi
-                loadTotal();     // Hitung ulang total pengeluaran/pemasukan
-                loadChart();     // Perbarui grafik visualisasi
+                JOptionPane.showMessageDialog(null, "Pengeluaran berhasil ditambahkan!");
+                loadTableData();
+                loadTotal();
+                loadChart();
             }
 
         } catch (NumberFormatException ex) {
@@ -730,6 +735,10 @@ public class Expense extends javax.swing.JFrame implements TableUpdate {
                 JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {
             e.printStackTrace();
+            JOptionPane.showMessageDialog(null,
+                "Terjadi kesalahan saat menyimpan data: " + e.getMessage(),
+                "Error",
+                JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton8ActionPerformed
 

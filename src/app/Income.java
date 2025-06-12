@@ -642,17 +642,20 @@ public class Income extends javax.swing.JFrame implements TableUpdate{
             LocalDate localDate = dt.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             String yearMonth = String.format("%04d%02d", localDate.getYear(), localDate.getMonthValue());
 
-            // Hitung jumlah transaksi pada bulan dan tahun yang sama
-            String prefixId = yearMonth;
-            String countQuery = "SELECT COUNT(*) AS total FROM transactions WHERE id LIKE ?";
-            ResultSet rs = Database.executeQuery(countQuery, prefixId + "%");
+            // Cek ID terakhir yang dipakai di bulan tersebut
+            String prefixId = yearMonth; // contoh: "202506"
+            String maxIdQuery = "SELECT MAX(id) AS max_id FROM transactions WHERE id LIKE ?";
+            ResultSet rs = Database.executeQuery(maxIdQuery, prefixId + "%");
 
             int nextNumber = 1;
-            if (rs != null && rs.next()) {
-                nextNumber = rs.getInt("total") + 1;
+            if (rs != null && rs.next() && rs.getString("max_id") != null) {
+                String maxId = rs.getString("max_id"); // misalnya: "2025060004"
+                String numberPart = maxId.substring(6); // ambil "0004"
+                nextNumber = Integer.parseInt(numberPart) + 1; // jadi 5
             }
 
-            String idGenerated = prefixId + String.format("%04d", nextNumber); // contoh: 2025060001
+            // Buat ID baru
+            String idGenerated = prefixId + String.format("%04d", nextNumber); // misal: 2025060005
 
             // Query insert termasuk id
             String query = "INSERT INTO transactions (id, account_id, type, date, category, amount, note) " +
@@ -669,11 +672,11 @@ public class Income extends javax.swing.JFrame implements TableUpdate{
             );
 
             if (rowsInserted > 0) {
+                JOptionPane.showMessageDialog(null, "Pemasukan berhasil ditambahkan!");
                 loadTableData();
                 loadTotal();
                 loadChart();
             }
-
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(null,
                 "Masukkan angka yang valid untuk amount!",
@@ -681,6 +684,10 @@ public class Income extends javax.swing.JFrame implements TableUpdate{
                 JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {
             e.printStackTrace();
+            JOptionPane.showMessageDialog(null,
+                "Terjadi kesalahan saat menyimpan data: " + e.getMessage(),
+                "Error",
+                JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton8ActionPerformed
 

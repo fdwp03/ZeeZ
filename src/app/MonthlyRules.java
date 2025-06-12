@@ -442,8 +442,8 @@ public class MonthlyRules extends javax.swing.JFrame {
                 percentage = rsPersen.getInt("percentage_limit");
             }
             
-            int hasilSave = totalIncome*percentage / 100;
-            int hasilLimit = totalIncome*(100-percentage)/100;
+            int hasilLimit = totalIncome*percentage / 100;
+            int hasilSave = totalIncome*(100-percentage)/100;
 
             spendLabel.setText("Rp. " + String.format("%,d", hasilLimit));
             saveLabel.setText("Rp. " + String.format("%,d", hasilSave));
@@ -470,8 +470,8 @@ public class MonthlyRules extends javax.swing.JFrame {
             }
             rs.close();
             
-            String expenseQuery = "SELECT IFNULL(SUM(amount), 0) AS total FROM transactions WHERE account_id = ? AND type = 'expense' AND MONTH(date) = ? AND YEAR(date) = ?";
-            rs = Database.executeQuery(expenseQuery, accId, month, year);
+            String pengeluaranQuery = "SELECT IFNULL(SUM(amount), 0) AS total FROM transactions WHERE account_id = ? AND type = 'pengeluaran' AND MONTH(date) = ? AND YEAR(date) = ?";
+            rs = Database.executeQuery(pengeluaranQuery, accId, month, year);
             int totalExpense = 0;
             if (rs.next()) {
                 totalExpense = rs.getInt("total");
@@ -562,9 +562,9 @@ public class MonthlyRules extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        Expense expenseFrame = new Expense();
-        expenseFrame.setLocationRelativeTo(null);
-        expenseFrame.setVisible(true);
+        Expense pengeluaranFrame = new Expense();
+        pengeluaranFrame.setLocationRelativeTo(null);
+        pengeluaranFrame.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
