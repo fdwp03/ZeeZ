@@ -5,9 +5,11 @@
 package app;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import java.sql.ResultSet;
 
 /**
  *
@@ -261,6 +263,48 @@ public class EditPanel extends javax.swing.JPanel {
         SwingUtilities.getWindowAncestor(this).dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
+    private boolean isEnoughBalance(int newExpenseAmount) {
+        int totalIncome = 0;
+        int totalExpense = 0;
+        int percentageLimit = 100; // default jika tidak ditemukan
+
+        try {
+            int month = LocalDate.now().getMonthValue();
+            int year = LocalDate.now().getYear();
+            String accId = Session.id;
+
+            // Ambil total income dan expense
+            String query = "SELECT "
+                    + "(SELECT IFNULL(SUM(amount), 0) FROM transactions WHERE account_id = ? AND type = 'income' AND MONTH(date) = ? AND YEAR(date) = ?) AS total_income, "
+                    + "(SELECT IFNULL(SUM(amount), 0) FROM transactions WHERE account_id = ? AND type = 'expense' AND MONTH(date) = ? AND YEAR(date) = ?) AS total_expense";
+
+            ResultSet rs = Database.executeQuery(query, accId, month, year, accId, month, year);
+            if (rs != null && rs.next()) {
+                totalIncome = rs.getInt("total_income");
+                totalExpense = rs.getInt("total_expense");
+            }
+            if (rs != null) rs.close();
+
+            // Ambil limit persentase
+            String limitQuery = "SELECT percentage_limit FROM monthly_limit WHERE account_id = ? AND month = ? AND year = ?";
+            rs = Database.executeQuery(limitQuery, accId, month, year);
+
+            if (rs != null && rs.next()) {
+                percentageLimit = rs.getInt("percentage_limit");
+            }
+            if (rs != null) rs.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // Hitung batas maksimal pengeluaran
+        int maxExpenseAllowed = totalIncome * percentageLimit / 100;
+
+        // Cek apakah pengeluaran baru melampaui batas
+        return (totalExpense + newExpenseAmount) <= maxExpenseAllowed;
+    }
+    
     private void changeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeButtonActionPerformed
         // TODO add your handling code here:
         String dateStr = new SimpleDateFormat("yyyy-MM-dd").format(dateField.getDate());

@@ -557,6 +557,7 @@ public class Income extends javax.swing.JFrame implements TableUpdate{
         // Tambahkan kondisi pencarian jika searchText tidak kosong
         if (!searchText.isEmpty()) {
             query += " AND ("
+                    + "id LIKE '%" + searchText + "%' OR "
                     + "date LIKE '%" + searchText + "%' OR "
                     + "category LIKE '%" + searchText + "%' OR "
                     + "amount LIKE '%" + searchText + "%' OR "
